@@ -1,0 +1,48 @@
+<?php
+
+return [
+    'remote_settings' => [
+        'index' => 'Remote settings retrieved successfully.',
+        'show' => 'Remote setting retrieved successfully.',
+        'store' => 'Remote setting created successfully.',
+        'update' => 'Remote setting updated successfully.',
+        'destroy' => 'Remote setting deleted successfully.',
+        'not_found' => 'Remote setting not found.',
+        'invalid_country_code' => 'Invalid country code provided.',
+        'invalid_type' => 'Invalid type provided. Supported types are: json, xml, yaml.',
+    ],
+    'translation' => [
+        'index' => 'Translations retrieved successfully.',
+        'show' => 'Translation retrieved successfully.',
+        'store' => 'Translation created successfully.',
+        'update' => 'Translation updated successfully.',
+        'destroy' => 'Translation deleted successfully.',
+        'not_found' => 'Translation not found for the specified language code.',
+        'invalid_language_code' => 'Invalid language code provided.',
+        'invalid_data' => 'Invalid data provided. Ensure the translation data is correct.',
+    ],
+    'auth' => [
+        'register' => 'User registered successfully.',
+        'login' => 'User logged in successfully.',
+        'logout' => 'User logged out successfully.',
+        'profile_updated' => 'User profile updated successfully.',
+        'password_reset' => 'Password reset link sent to your email.',
+        'password_changed' => 'Password changed successfully.',
+        'phone_verified' => 'Phone number verified successfully.',
+        'phone_verification_code_sent' => 'Phone verification code sent successfully.',
+        'invalid_credentials' => 'Invalid credentials provided.',
+        'user_not_found' => 'User not found.',
+        'profile_retrieved' => 'User profile retrieved successfully.',
+        'invalid_phone_number' => 'Invalid phone number provided.',
+        'invalid_verification_code' => 'Invalid verification code provided.',
+        'token_refreshed' => 'Token refreshed successfully.',
+    ],
+    'user' => [
+        'index' => 'Users retrieved successfully.',
+        'show' => 'User retrieved successfully.',
+        'store' => 'User created successfully.',
+        'update' => 'User updated successfully.',
+        'destroy' => 'User deleted successfully.',
+        'not_found' => 'User not found.',
+    ],
+];

@@ -1,0 +1,147 @@
+<?php
+
+namespace App\Http\Controllers\API\V1;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\auth\LoginRequest;
+use App\Http\Requests\auth\RegisterRequest;
+use App\Http\Requests\auth\UpdateProfileRequest;
+use App\Http\Requests\auth\VerifyRequest;
+
+class AuthController extends Controller
+{
+    /**
+     * Register a new user (either anonymous or with full details)
+     */
+    public function register(RegisterRequest $request)
+    {
+        $data = $request->validated();
+
+        // Create an anonymous user with just a phone number and device info
+        $user = User::create([
+            'name' => $data['name'] ?? null,
+            'email' => $data['email'] ?? null,
+            'password' => $data['password'] ? Hash::make($data['password']) : null,
+            'phone' => $data['phone'],
+            'device_type' => $data['device_type'] ?? 'web',
+            'phone_verification_code' => rand(100000, 999999),
+            'mac_address' => $data['mac_address'] ?? null,
+            'timezone' => $data['timezone'] ?? 'UTC',
+            'ip_address' => $request->ip(),
+            'device_token' => $request->header('Device-Token') ?? null,
+            'country_code' => $data['country_code'] ?? null,
+            'role' => 'user',
+            'locale' => 'en',
+            'status' => 'pending',
+            'last_login_at' => null,
+        ]);
+
+        // Cache the verification code for the user
+        Cache::put("verification_code_{$data['phone']}", $user->phone_verification_code, now()->addMinutes(5));
+
+        // You can use a service like Twilio to send the verification code here
+        // Twilio::sendSms($data['phone'], "Your verification code is: {$user->phone_verification_code}");
+
+        return api_response($user, __('general.auth.phone_verification_code_sent'), 201);
+    }
+
+    /**
+     * Login an existing user (send verification code)
+     */
+    public function login(LoginRequest $request)
+    {
+        $data = $request->validated();
+
+        $user = User::where('phone', $data['phone'])->first();
+
+        if (!$user) {
+            return api_response(null, __('general.auth.not_found'), 404);
+        }
+
+        $verificationCode = rand(100000, 999999);
+        Cache::put("verification_code_{$data['phone']}", $verificationCode, now()->addMinutes(5));
+
+        // Update user phone verification code in case they try again
+        $user->update([
+            'phone_verification_code' => $verificationCode,
+            'status' => 'pending',
+        ]);
+
+        // Send SMS with the new verification code (using Twilio or similar)
+        // Twilio::sendSms($data['phone'], "Your verification code is: {$verificationCode}");
+
+        return api_response($user, __('general.auth.phone_verification_code_sent'), 200);
+    }
+
+    /**
+     * Verify the phone number and complete the user registration
+     */
+    public function verifyPhoneNumber(VerifyRequest $request)
+    {
+        $user = User::where('phone', $request->phone)->first();
+
+        // Verify the code
+        if (Cache::get("verification_code_{$user->phone}") == $request->verification_code) {
+            // Mark the user as verified
+            $user->update([
+                'phone_verified_at' => now(),
+                'status' => 'active',
+                'last_login_at' => now(),
+                'phone_verification_code' => null, // Clear the verification code
+            ]);
+
+            return login_response($user, __('general.auth.phone_verified'), 200);
+        }
+
+        return api_response(null, __('general.auth.invalid_verification_code'), 401);
+    }
+
+    /**
+     * Get the authenticated user's details
+     */
+    public function getProfile(Request $request)
+    {
+        return api_response($request->user(), __('general.auth.profile_retrieved'), 200);
+    }
+
+    /**
+     * Update the authenticated user's profile
+     */
+    public function updateProfile(UpdateProfileRequest $request)
+    {
+        $user = $request->user();
+
+        // Update user profile
+        $user->update($request->only(['name', 'email', 'phone', 'password']));
+
+        return api_response($user, __('general.auth.profile_updated'), 200);
+    }
+
+    /**
+     * Logout the user and revoke their token
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->tokens->each(function ($token) {
+            $token->delete();
+        });
+
+        return api_response(null, __('general.auth.logout'), 200);
+    }
+
+    /**
+     * Summary of refreshToken
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refreshToken(Request $request)
+    {
+        $user = $request->user();
+        $user->tokens()->delete(); // Revoke all tokens
+        return login_response($user, __('general.auth.token_refreshed'), 200);
+    }
+}
