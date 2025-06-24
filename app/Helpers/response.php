@@ -55,3 +55,27 @@ if (!function_exists('api_response')) {
         ], $statusCode);
     }
 }
+
+if (!function_exists('setEnv')) {
+    /**
+     * Update or create an environment variable in the .env file.
+     *
+     * @param string $key The environment variable key
+     * @param string $value The environment variable value
+     */
+    function setEnv($key, $value)
+    {
+        $path = base_path('.env');
+
+        if (file_exists($path)) {
+            file_put_contents(
+                $path,
+                preg_replace(
+                    "/^{$key}=.*/m",
+                    "{$key}={$value}",
+                    file_get_contents($path)
+                )
+            );
+        }
+    }
+}

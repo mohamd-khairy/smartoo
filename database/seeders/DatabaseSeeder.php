@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\RemoteSetting;
+use App\Models\Translation;
 use App\Models\User;
 use Database\Factories\RemoteSettingFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        RemoteSetting::factory()->count(3)->create();
+        RemoteSetting::factory()->count(1)->create();
+        User::factory()->count(1)->create();
+        Translation::factory()->count(1)->create();
     }
 }

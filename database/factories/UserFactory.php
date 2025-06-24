@@ -31,12 +31,12 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'country_code' => 'EG', // Generate a random country code
             'phone' => fake()->unique()->phoneNumber(), // Generate a unique phone number
-            'verification_code' => rand(100000, 999999), // Generate a random 6-digit verification code
+            'phone_verification_code' => rand(100000, 999999), // Generate a random 6-digit verification code
             'phone_verified_at' => now(), // Default phone verification time is now
             'locale' => 'en', // Default language is English
             'status' => 'active', // Default status is 'active
             'role' => 'user', // Default role is 'user
-            'image' => 'https://via.placeholder.com/150', // Placeholder image URL
+            'image' => null, // 'https://via.placeholder.com/150', // Placeholder image URL
             'created_at' => now(),
             'updated_at' => now(),
             'last_login_at' => now(), // Default last login time is now

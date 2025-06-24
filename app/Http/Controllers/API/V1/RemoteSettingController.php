@@ -87,4 +87,10 @@ class RemoteSettingController extends Controller
 
         return api_response([], ___('general.remote_settings.destroy'), 200);
     }
+
+    public function changeLanguage(Request $request)
+    {
+        setEnv('APP_LOCALE', $request->locale);
+        return api_response(true, 'Language changed successfully', 200);
+    }
 }

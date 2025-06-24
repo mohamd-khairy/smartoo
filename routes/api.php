@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
+    Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
 
     Route::group(['prefix' => 'remote-settings', 'middleware' => 'auth:sanctum', 'as' => 'remote-settings.'], function () {
         Route::get('/', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'index'])->name('index');

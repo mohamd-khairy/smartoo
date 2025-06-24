@@ -17,7 +17,7 @@ class RemoteSettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'country_code' => $this->faker->randomElement(['SA', 'AE', 'EG']),
+            'country_code' => 'EG',
             'type' => 'json', // Random type
             'value' => json_encode([
                 "app_config" => [
