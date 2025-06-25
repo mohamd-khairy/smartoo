@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('key', 255)->index(); // Translation key, e.g
             $table->text('value'); // Translated value
             $table->timestamps();
+
+            $table->unique(['code', 'key']); // Unique constraint for each language-key pair
         });
     }
 

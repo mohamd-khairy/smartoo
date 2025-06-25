@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Plan;
 use App\Models\RemoteSetting;
+use App\Models\Subscription;
 use App\Models\Translation;
 use App\Models\User;
 use Database\Factories\RemoteSettingFactory;
@@ -19,5 +21,7 @@ class DatabaseSeeder extends Seeder
         RemoteSetting::factory()->count(1)->create();
         User::factory()->count(1)->create();
         Translation::factory()->count(1)->create();
+        Plan::factory()->count(5)->create();
+        Subscription::factory()->count(5)->create();
     }
 }

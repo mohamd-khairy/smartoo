@@ -16,7 +16,10 @@ use App\Models\Subscription;
 class AuthController extends Controller
 {
     /**
-     * Register a new user (either anonymous or with full details)
+     * auth register a new user (either anonymous or with full details)
+     * @param \App\Http\Requests\auth\RegisterRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     * @unauthenticated
      */
     public function register(RegisterRequest $request)
     {
@@ -28,7 +31,7 @@ class AuthController extends Controller
             'last_name' => $data['last_name'] ?? null,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
-            'password' => $data['password'] ? Hash::make($data['password']) : null,
+            'password' => $data['password'] ?? null,
             'phone' => $data['phone'],
             'device_type' => $data['device_type'] ?? 'web',
             'phone_verification_code' => rand(100000, 999999),
@@ -58,7 +61,10 @@ class AuthController extends Controller
     }
 
     /**
-     * Login an existing user (send verification code)
+     * auth login user
+     * @param \App\Http\Requests\auth\LoginRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     * @unauthenticated
      */
     public function login(LoginRequest $request)
     {
@@ -86,7 +92,43 @@ class AuthController extends Controller
     }
 
     /**
-     * Verify the phone number and complete the user registration
+     * auth resend verification code
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     * @unauthenticated
+     */
+    public function resendVerificationCode(LoginRequest $request)
+    {
+        // Find the user by phone number
+        $user = User::where('phone', $request->phone)->first();
+
+        if (!$user) {
+            return api_response(null, 'User not found', 404);
+        }
+
+        // Generate a new phone verification code
+        $verificationCode = rand(100000, 999999); // You can use a more secure random generator if needed
+
+        // Store the verification code in the database and cache it for quick access (optional)
+        $user->phone_verification_code = $verificationCode;
+        $user->save();
+
+        // Optionally, cache the verification code for a period (e.g., 5 minutes)
+        Cache::put("verification_code_{$user->phone}", $verificationCode, now()->addMinutes(5));
+
+        // Send the verification code to the user's phone (using a service like Twilio or Nexmo)
+        // For demonstration, this can be done through any SMS service
+        // Twilio::sendSms($user->phone, "Your verification code is: {$verificationCode}");
+
+        // Return success response
+        return api_response(true, 'Verification code sent successfully.', 200);
+    }
+
+    /**
+     * auth verify phone number
+     * @param \App\Http\Requests\auth\VerifyRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     * @unauthenticated
      */
     public function verifyPhoneNumber(VerifyRequest $request)
     {
@@ -109,7 +151,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the authenticated user's details
+     * auth Get the authenticated user's profile
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getProfile(Request $request)
     {
@@ -117,7 +161,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Update the authenticated user's profile
+     * auth update profile
+     * @param \App\Http\Requests\auth\UpdateProfileRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function updateProfile(UpdateProfileRequest $request)
     {
@@ -142,7 +188,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Logout the user and revoke their token
+     * auth Logout the user and revoke their token
      */
     public function logout(Request $request)
     {
@@ -154,7 +200,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Summary of refreshToken
+     * auth refresh token
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */

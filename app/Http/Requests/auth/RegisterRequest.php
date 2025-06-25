@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
             'last_name' => 'nullable|string|max:255',
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255|unique:users,email',
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8',
             'phone' => 'required|string|unique:users,phone',
             'device_type' => 'required|string',
             'mac_address' => 'nullable|string',

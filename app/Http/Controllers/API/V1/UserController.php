@@ -4,13 +4,17 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\users\CreateUserRequest;
-use App\Http\Requests\users\updateUserRequest;
+use App\Http\Requests\users\UpdateUserRequest;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * user index
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         // Logic to get all users
@@ -18,7 +22,12 @@ class UserController extends Controller
         return api_response($users, __('general.user.index'), 200);
     }
 
-    public function show($id)
+    /**
+     * user show
+     * @param mixed $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(int $id)
     {
         // Logic to get a specific user
         $user = User::find($id);
@@ -28,6 +37,11 @@ class UserController extends Controller
         return api_response($user, __('general.user.show'), 200);
     }
 
+    /**
+     * user store
+     * @param \App\Http\Requests\users\CreateUserRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(CreateUserRequest $request)
     {
         // Logic to create a new user
@@ -48,7 +62,13 @@ class UserController extends Controller
         return api_response($user, __('general.user.store'), 201);
     }
 
-    public function update(updateUserRequest $request, $id)
+    /**
+     * user update
+     * @param \App\Http\Requests\users\UpdateUserRequest $request
+     * @param mixed $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(UpdateUserRequest $request,int $id)
     {
         // Logic to update a user
         $user = User::find($id);
@@ -73,7 +93,12 @@ class UserController extends Controller
         return api_response($user, __('general.user.update'), 200);
     }
 
-    public function destroy($id)
+    /**
+     * user destroy
+     * @param mixed $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(int $id)
     {
         // Logic to delete a user
         $user = User::find($id);

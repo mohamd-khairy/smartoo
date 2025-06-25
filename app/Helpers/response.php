@@ -14,13 +14,16 @@ if (!function_exists('login_response')) {
      */
     function login_response($user = null, $message = '', $statusCode = 200)
     {
+        if ($user && $user->locale) {
+            setEnv('APP_LOCALE', $user->locale);
+        }
         // If user is provided, prepare data for response
         $data = $user ? [
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
             // Cache translations per user locale to optimize performance
             'translations' => cache()->remember("translations_{$user->locale}", now()->addHours(1), function () use ($user) {
-                return Translation::where('locale', $user->locale)
+                return Translation::where('code', $user->locale)
                     ->pluck('value', 'key')
                     ->toArray();
             }),

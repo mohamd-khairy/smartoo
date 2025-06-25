@@ -17,6 +17,6 @@ class RemoteSetting extends Model
     ];
 
     protected $casts = [
-        'value' => 'array',
+        'value' => 'json',
     ];
 }

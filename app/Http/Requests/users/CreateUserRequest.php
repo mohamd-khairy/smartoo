@@ -11,7 +11,7 @@ class CreateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class CreateUserRequest extends FormRequest
             'last_name' => 'nullable|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
             'phone' => 'required|string|unique:users,phone',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'role' => 'required|string|in:admin,supervisor,employee,user',

@@ -3,23 +3,30 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\remote_settings\ChangeLanguageRequest;
+use App\Http\Requests\remote_settings\CreateRemoteSettingRequest;
+use App\Http\Requests\remote_settings\UpdateRemoteSettingRequest;
 use App\Models\RemoteSetting;
 use Illuminate\Http\Request;
 
 class RemoteSettingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * remote setting index
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {
         $remoteSettings = RemoteSetting::paginate(5);
 
-        return api_response($remoteSettings, ___('general.remote_settings.index'), 200);
+        return api_response($remoteSettings, __('general.remote_settings.index'), 200);
     }
 
     /**
-     * Display the specified resource.
+     * remote setting show
+     * @param mixed $country_code
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($country_code)
     {
@@ -27,52 +34,47 @@ class RemoteSettingController extends Controller
         $remoteSetting = RemoteSetting::where('country_code', $country_code)->first();
 
         if (!$remoteSetting) {
-            return api_response([], ___('general.remote_settings.not_found'), 404);
+            return api_response([], __('general.remote_settings.not_found'), 404);
         }
-        return api_response($remoteSetting, ___('general.remote_settings.show'), 200);
+        return api_response($remoteSetting, __('general.remote_settings.show'), 200);
     }
 
     /**
-     * Update the specified resource in storage.
+     * remote setting update
+     * @param UpdateRemoteSettingRequest $request
+     * @param mixed $country_code
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $country_code)
+    public function update(UpdateRemoteSettingRequest $request, $country_code)
     {
-        $data = $request->validate([
-            'type' => 'required|string|in:json,xml,yaml',
-            'value' => 'required|array',
-        ]);
-
         // Logic to update a specific remote setting by country code
         $remoteSetting = RemoteSetting::where('country_code', $country_code)->first();
 
         if (!$remoteSetting) {
-            return api_response([], ___('general.remote_settings.not_found'), 404);
+            return api_response([], __('general.remote_settings.not_found'), 404);
         }
 
-        $remoteSetting->update($data);
+        $remoteSetting->update($request->validated());
 
-        return api_response($remoteSetting, ___('general.remote_settings.update'), 200);
+        return api_response($remoteSetting, __('general.remote_settings.update'), 200);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * remote setting store
+     * @param CreateRemoteSettingRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(CreateRemoteSettingRequest $request)
     {
-        // Logic to create a new remote setting
-        $data = $request->validate([
-            'country_code' => 'required|string|max:10|unique:remote_settings,country_code',
-            'type' => 'required|string|in:json,xml,yaml',
-            'value' => 'required|array',
-        ]);
+        $remoteSetting = RemoteSetting::create($request->validated());
 
-        $remoteSetting = RemoteSetting::create($data);
-
-        return api_response($remoteSetting, ___('general.remote_settings.store'), 201);
+        return api_response($remoteSetting, __('general.remote_settings.store'), 201);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * remote setting destroy
+     * @param mixed $country_code
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($country_code)
     {
@@ -80,15 +82,20 @@ class RemoteSettingController extends Controller
         $remoteSetting = RemoteSetting::where('country_code', $country_code)->first();
 
         if (!$remoteSetting) {
-            return api_response([], ___('general.remote_settings.not_found'), 404);
+            return api_response([], __('general.remote_settings.not_found'), 404);
         }
 
         $remoteSetting->delete();
 
-        return api_response([], ___('general.remote_settings.destroy'), 200);
+        return api_response([], __('general.remote_settings.destroy'), 200);
     }
 
-    public function changeLanguage(Request $request)
+    /**
+     * remote setting change language
+     * @param ChangeLanguageRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changeLanguage(ChangeLanguageRequest $request)
     {
         setEnv('APP_LOCALE', $request->locale);
         return api_response(true, 'Language changed successfully', 200);
