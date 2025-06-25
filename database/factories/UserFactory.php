@@ -24,7 +24,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
             'name' => fake()->name(),
+            'gender' => fake()->randomElement(['male', 'female']),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
@@ -44,7 +47,11 @@ class UserFactory extends Factory
             'mac_address' => fake()->macAddress(), // Generate a random MAC address
             'device_type' => 'mobile', // Default device type is 'mobile
             'device_token' => Str::random(60), // Generate a random device token
-            'timezone' => 'UTC', // Default timezone is 'UTC'
+            'timezone' => 'UTC', // Default timezone is 'UTC',
+            'contact_permission' => false, // Default contact permission is false
+            'notification_permission' => false, // Default notification permission is false
+            'tracking_permission' => false, // Default tracking permission is false
+            'subscription_id' => null, // Default subscription ID is null
         ];
     }
 

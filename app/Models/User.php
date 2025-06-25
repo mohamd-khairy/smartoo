@@ -19,6 +19,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'first_name',
+        'last_name',
         'name',
         'email',
         'password',
@@ -36,7 +38,12 @@ class User extends Authenticatable
         'mac_address',
         'email_verified_at',
         'country_code',
-        'image'
+        'image',
+        'gender',
+        'contact_permission',
+        'notification_permission',
+        'tracking_permission',
+        'subscription_id',
     ];
 
     /**
@@ -62,6 +69,20 @@ class User extends Authenticatable
             'last_login_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function setNameAttribute($value)
+    {
+        if ($value) {
+            $this->attributes['name'] = $value;
+        } else {
+            $this->attributes['name'] = $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+        }
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
 
     public function setImageAttribute($value)

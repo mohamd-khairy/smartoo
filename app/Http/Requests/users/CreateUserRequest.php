@@ -22,6 +22,8 @@ class CreateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
@@ -34,6 +36,11 @@ class CreateUserRequest extends FormRequest
             'device_token' => 'nullable|string',
             'locale' => 'nullable|string|in:en,ar',
             'country_code' => 'nullable|string',
+            'gender' => 'nullable|string',
+            'contact_permission' => 'nullable|boolean',
+            'notification_permission' => 'nullable|boolean',
+            'tracking_permission' => 'nullable|boolean',
+            'subscription_id' => 'nullable|string'
         ];
     }
 }

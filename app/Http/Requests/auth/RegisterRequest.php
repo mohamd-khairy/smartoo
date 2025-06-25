@@ -22,6 +22,8 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255|unique:users,email',
             'password' => 'nullable|string|min:8|confirmed',
@@ -30,7 +32,13 @@ class RegisterRequest extends FormRequest
             'mac_address' => 'nullable|string',
             'timezone' => 'nullable|string',
             'country_code' => 'nullable|string',
-            'locale' => 'nullable|string'
+            'locale' => 'nullable|string',
+            'gender' => 'nullable|string',
+            'contact_permission' => 'nullable|boolean',
+            'notification_permission' => 'nullable|boolean',
+            'tracking_permission' => 'nullable|boolean',
+            'device_token' => 'nullable|string',
+            'subscription_id' => 'nullable|string'
         ];
     }
 }

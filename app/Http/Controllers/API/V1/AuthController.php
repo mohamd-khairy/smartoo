@@ -23,6 +23,8 @@ class AuthController extends Controller
 
         // Create an anonymous user with just a phone number and device info
         $user = User::create([
+            'first_name' => $data['first_name'] ?? null,
+            'last_name' => $data['last_name'] ?? null,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
             'password' => $data['password'] ? Hash::make($data['password']) : null,
@@ -32,12 +34,17 @@ class AuthController extends Controller
             'mac_address' => $data['mac_address'] ?? null,
             'timezone' => $data['timezone'] ?? 'UTC',
             'ip_address' => $request->ip(),
-            'device_token' => $request->header('Device-Token') ?? null,
+            'device_token' => $request->header('Device-Token') ?? $data['device_token'] ?? null,
             'country_code' => $data['country_code'] ?? null,
             'role' => 'user',
             'locale' => 'en',
             'status' => 'pending',
             'last_login_at' => null,
+            'gender' => $data['gender'] ?? null,
+            'contact_permission' => $data['contact_permission'] ?? false,
+            'notification_permission' => $data['notification_permission'] ?? false,
+            'tracking_permission' => $data['tracking_permission'] ?? false,
+            'subscription_id' => $data['subscription_id'] ?? null,
         ]);
 
         // Cache the verification code for the user
@@ -116,7 +123,7 @@ class AuthController extends Controller
         $user = $request->user();
 
         // Update user profile
-        $user->update($request->only(['name', 'email', 'phone', 'password']));
+        $user->update($request->validated());
 
         return api_response($user, __('general.auth.profile_updated'), 200);
     }
