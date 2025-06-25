@@ -7,7 +7,6 @@ use App\Models\RemoteSetting;
 use App\Models\Subscription;
 use App\Models\Translation;
 use App\Models\User;
-use Database\Factories\RemoteSettingFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::create([
+            'first_name' => 'Admin',
+            'last_name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => 'password',
+            'role' => 'admin',
+        ]);
         RemoteSetting::factory()->count(1)->create();
         User::factory()->count(1)->create();
         Translation::factory()->count(1)->create();

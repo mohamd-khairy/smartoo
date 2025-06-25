@@ -21,6 +21,8 @@ class StateOverview extends BaseWidget
                 ]),
             Stat::make(__('resources.remote_settings'), \App\Models\RemoteSetting::count()),
             Stat::make(__('resources.translations'), \App\Models\Translation::count()),
+            Stat::make(__('resources.plans'), \App\Models\Plan::count()),
+            Stat::make(__('resources.subscriptions'), \App\Models\Subscription::count()),
         ];
     }
 }
