@@ -42,7 +42,7 @@ class updateUserRequest extends FormRequest
             'contact_permission' => 'nullable|boolean',
             'notification_permission' => 'nullable|boolean',
             'tracking_permission' => 'nullable|boolean',
-            'subscription_id' => 'nullable|string'
+            'subscription_id' => 'nullable|string|exists:subscriptions,id'
         ];
     }
 }

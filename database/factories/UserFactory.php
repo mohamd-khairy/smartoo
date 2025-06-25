@@ -51,7 +51,6 @@ class UserFactory extends Factory
             'contact_permission' => false, // Default contact permission is false
             'notification_permission' => false, // Default notification permission is false
             'tracking_permission' => false, // Default tracking permission is false
-            'subscription_id' => null, // Default subscription ID is null
         ];
     }
 

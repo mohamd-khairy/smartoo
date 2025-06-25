@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
             'notification_permission' => 'nullable|boolean',
             'tracking_permission' => 'nullable|boolean',
             'device_token' => 'nullable|string',
-            'subscription_id' => 'nullable|string'
+            'subscription_id' => 'nullable|string|exists:subscriptions,id'
         ];
     }
 }

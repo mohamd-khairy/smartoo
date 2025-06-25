@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\users\CreateUserRequest;
+use App\Http\Requests\users\updateUserRequest;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,21 +28,48 @@ class UserController extends Controller
         return api_response($user, __('general.user.show'), 200);
     }
 
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
         // Logic to create a new user
-        $user = User::create($request->all());
+        $user = User::create($request->validated());
+
+        // Check if a new subscription ID is provided in the request
+        if ($request->has('subscription_id')) {
+            // Check if the provided subscription_id exists in the subscriptions table
+            $subscription = Subscription::find($request->subscription_id);
+
+            if ($subscription) {
+                // Update the user's subscription_id with the new plan
+                $user->subscription()->associate($subscription);
+                $user->save();
+            }
+        }
+
         return api_response($user, __('general.user.store'), 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(updateUserRequest $request, $id)
     {
         // Logic to update a user
         $user = User::find($id);
         if (!$user) {
             return api_response(null, __('general.user.not_found'), 404);
         }
-        $user->update($request->all());
+
+        $user->update($request->validated());
+
+        // Check if a new subscription ID is provided in the request
+        if ($request->has('subscription_id')) {
+            // Check if the provided subscription_id exists in the subscriptions table
+            $subscription = Subscription::find($request->subscription_id);
+
+            if ($subscription) {
+                // Update the user's subscription_id with the new plan
+                $user->subscription()->associate($subscription);
+                $user->save();
+            }
+        }
+
         return api_response($user, __('general.user.update'), 200);
     }
 

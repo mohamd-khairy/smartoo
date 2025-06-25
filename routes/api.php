@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
@@ -29,6 +27,22 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
         Route::post('/', [\App\Http\Controllers\API\V1\UserController::class, 'store'])->name('store');
         Route::put('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'update'])->name('update');
         Route::delete('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
+        Route::get('/', [\App\Http\Controllers\API\V1\PlanController::class, 'index'])->name('index');
+        Route::get('/{id}', [\App\Http\Controllers\API\V1\PlanController::class, 'show'])->name('show');
+        Route::post('/', [\App\Http\Controllers\API\V1\PlanController::class, 'store'])->name('store');
+        Route::put('/{id}', [\App\Http\Controllers\API\V1\PlanController::class, 'update'])->name('update');
+        Route::delete('/{id}', [\App\Http\Controllers\API\V1\PlanController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
+        Route::get('/', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'index'])->name('index');
+        Route::get('/{id}', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'show'])->name('show');
+        Route::post('/', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'store'])->name('store');
+        Route::put('/{id}', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'update'])->name('update');
+        Route::delete('/{id}', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {

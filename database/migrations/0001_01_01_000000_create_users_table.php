@@ -28,7 +28,6 @@ return new class extends Migration
             $table->boolean('contact_permission')->default(false);
             $table->boolean('notification_permission')->default(false);
             $table->boolean('tracking_permission')->default(false);
-            $table->unsignedBigInteger('subscription_id')->nullable(); // Nullable for users without subscription('age
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('role')->default('user');
             $table->string('locale')->default('en');
@@ -40,6 +39,7 @@ return new class extends Migration
             $table->string('device_token')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
+            $table->softDeletes(); // Soft delete column (deleted_at)
             $table->timestamps(); // Automatically creates created_at and updated_at columns
         });
 

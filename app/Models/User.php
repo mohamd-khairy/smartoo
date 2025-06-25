@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -11,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasFactory, Notifiable, HasApiTokens, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +44,6 @@ class User extends Authenticatable
         'contact_permission',
         'notification_permission',
         'tracking_permission',
-        'subscription_id',
     ];
 
     /**
@@ -101,5 +101,15 @@ class User extends Authenticatable
         } else {
             return $value ?? null;
         }
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class)->latestOfMany(); // A user has one subscription
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class); // A user has many subscriptions
     }
 }

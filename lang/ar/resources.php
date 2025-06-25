@@ -35,4 +35,25 @@ return [
     'text' => 'النص',
     'arabic' => 'العربية',
     'english' => 'الإنجليزية',
+    
+    'plans' => 'الخطط',
+    'plan' => 'الخطة',
+    'description' => 'الوصف',
+    'price' => 'السعر',
+    'currency' => 'العملة',
+    'duration_days' => 'مدة الخطة (أيام)',
+    'active' => 'نشط',
+    'inactive' => 'غير نشط',
+    'actions' => 'الإجراءات',
+    'edit' => 'تعديل',
+    'delete' => 'حذف',
+    'start_date' => 'تاريخ البدء',
+    'end_date' => 'تاريخ الانتهاء',
+    'renew' => 'تجديد',
+    'subscriptions' => 'الاشتراكات',
+    'subscription' => 'الاشتراك',
+    'user_id' => 'معرف المستخدم',
+    'plan_id' => 'معرف الخطة',
+    
+
 ];

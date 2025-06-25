@@ -11,6 +11,7 @@ use App\Http\Requests\auth\LoginRequest;
 use App\Http\Requests\auth\RegisterRequest;
 use App\Http\Requests\auth\UpdateProfileRequest;
 use App\Http\Requests\auth\VerifyRequest;
+use App\Models\Subscription;
 
 class AuthController extends Controller
 {
@@ -122,8 +123,20 @@ class AuthController extends Controller
     {
         $user = $request->user();
 
-        // Update user profile
+        // Update user profile with validated data
         $user->update($request->validated());
+
+        // Check if a new subscription ID is provided in the request
+        if ($request->has('subscription_id')) {
+            // Check if the provided subscription_id exists in the subscriptions table
+            $subscription = Subscription::find($request->subscription_id);
+
+            if ($subscription) {
+                // Update the user's subscription_id with the new plan
+                $user->subscription()->associate($subscription);
+                $user->save();
+            }
+        }
 
         return api_response($user, __('general.auth.profile_updated'), 200);
     }

@@ -45,4 +45,20 @@ return [
         'destroy' => 'User deleted successfully.',
         'not_found' => 'User not found.',
     ],
+    'plan' => [
+        'index' => 'Plans retrieved successfully.',
+        'show' => 'Plan retrieved successfully.',
+        'store' => 'Plan created successfully.',
+        'update' => 'Plan updated successfully.',
+        'destroy' => 'Plan deleted successfully.',
+        'not_found' => 'Plan not found.',
+    ],
+    'subscription' => [
+        'index' => 'Subscriptions retrieved successfully.',
+        'show' => 'Subscription retrieved successfully.',
+        'store' => 'Subscription created successfully.',
+        'update' => 'Subscription updated successfully.',
+        'destroy' => 'Subscription deleted successfully.',
+        'not_found' => 'Subscription not found.',
+    ],
 ];
