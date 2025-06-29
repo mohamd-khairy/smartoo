@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RemoteSettingResource\Pages;
 use App\Filament\Resources\RemoteSettingResource\RelationManagers;
+use App\Forms\Components\CodeEditor;
 use App\Models\RemoteSetting;
+use Creagia\FilamentCodeField\CodeField;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -52,8 +54,23 @@ class RemoteSettingResource extends Resource
                     ->maxLength(50)
                     ->default('json')
                     ->label(__('resources.type')),
-                Forms\Components\Textarea::make('value')
+                // Forms\Components\Textarea::make('value')
+                //     ->columnSpanFull()
+                //     ->label(__('resources.value')),
+                // CodeEditor::make('payload')
+                //     ->label('JSON Payload')
+                //     ->language('json')   // ace/mode/…
+                //     ->columnSpanFull()
+                //     ->required(),
+                // CodeField::make('my_json'),
+
+                CodeField::make('value')
+                    ->setLanguage('json')          // any CodeMirror language id
+                    ->htmlField()
+                    ->disableAutocompletion()
+                    ->withLineNumbers()
                     ->columnSpanFull()
+                    ->required()
                     ->label(__('resources.value')),
             ]);
     }
