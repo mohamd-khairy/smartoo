@@ -24,58 +24,8 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      first_name:
-        name: first_name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: b
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      last_name:
-        name: last_name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name:
-        name: name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: g
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      email:
-        name: email
-        description: 'Must be a valid email address. Must not be greater than 255 characters.'
-        required: false
-        example: rowan.gulgowski@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      password:
-        name: password
-        description: 'Must be at least 8 characters.'
-        required: false
-        example: 'BNvYgxwmi/#iw/kX'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      phone:
-        name: phone
+      uuid:
+        name: uuid
         description: ''
         required: true
         example: architecto
@@ -93,6 +43,66 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
+        custom: []
+      first_name:
+        name: first_name
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      last_name:
+        name: last_name
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      name:
+        name: name
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      email:
+        name: email
+        description: 'يجب أن يكون value عنوان بريد إلكتروني صالحًا. يجب ألا يكون value أكبر من 255 حرفًا.'
+        required: false
+        example: rempel.chadrick@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      password:
+        name: password
+        description: 'يجب أن يكون value على الأقل 8 حرفًا.'
+        required: false
+        example: 'NvYgxwmi/#iw/kX'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
         custom: []
       mac_address:
         name: mac_address
@@ -168,7 +178,7 @@ endpoints:
         name: tracking_permission
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -195,13 +205,14 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      first_name: b
-      last_name: 'n'
-      name: g
-      email: rowan.gulgowski@example.com
-      password: 'BNvYgxwmi/#iw/kX'
-      phone: architecto
+      uuid: architecto
       device_type: architecto
+      first_name: 'n'
+      last_name: g
+      name: z
+      email: rempel.chadrick@example.org
+      password: 'NvYgxwmi/#iw/kX'
+      phone: architecto
       mac_address: architecto
       timezone: America/Hermosillo
       country_code: architecto
@@ -209,7 +220,7 @@ endpoints:
       gender: architecto
       contact_permission: true
       notification_permission: true
-      tracking_permission: false
+      tracking_permission: true
       device_token: architecto
       subscription_id: architecto
     fileParameters: []
@@ -335,7 +346,7 @@ endpoints:
         custom: []
       verification_code:
         name: verification_code
-        description: 'Must be 6 digits.'
+        description: 'يجب أن يكون value 6 رقمًا.'
         required: true
         example: '569775'
         type: string
@@ -412,7 +423,7 @@ endpoints:
     bodyParameters:
       first_name:
         name: first_name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: b
         type: string
@@ -422,7 +433,7 @@ endpoints:
         custom: []
       last_name:
         name: last_name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: 'n'
         type: string
@@ -432,7 +443,7 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: g
         type: string
@@ -442,7 +453,7 @@ endpoints:
         custom: []
       email:
         name: email
-        description: 'Must be a valid email address.'
+        description: 'يجب أن يكون value عنوان بريد إلكتروني صالحًا.'
         required: false
         example: rowan.gulgowski@example.com
         type: string
@@ -462,7 +473,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Must be at least 8 characters.'
+        description: 'يجب أن يكون value على الأقل 8 حرفًا.'
         required: false
         example: ']|{+-0pBNvYg'
         type: string
@@ -474,7 +485,7 @@ endpoints:
         name: locale
         description: ''
         required: false
-        example: en
+        example: ar
         type: string
         enumValues:
           - en
@@ -484,7 +495,7 @@ endpoints:
         custom: []
       country_code:
         name: country_code
-        description: 'Must be 2 characters.'
+        description: 'يجب أن يكون value بحجم 2 حرفًا.'
         required: false
         example: hw
         type: string
@@ -494,7 +505,7 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        description: 'يجب أن يكون value صورة. يجب ألا يكون value أكبر من 2048 كيلوبايت.'
         required: false
         example: null
         type: file
@@ -512,32 +523,12 @@ endpoints:
         exampleWasSpecified: false
         nullable: true
         custom: []
-      contact_permission:
-        name: contact_permission
+      device_token:
+        name: device_token
         description: ''
         required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      notification_permission:
-        name: notification_permission
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      tracking_permission:
-        name: tracking_permission
-        description: ''
-        required: false
-        example: true
-        type: boolean
+        example: architecto
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
@@ -559,12 +550,10 @@ endpoints:
       email: rowan.gulgowski@example.com
       phone: architecto
       password: ']|{+-0pBNvYg'
-      locale: en
+      locale: ar
       country_code: hw
       gender: architecto
-      contact_permission: true
-      notification_permission: false
-      tracking_permission: true
+      device_token: architecto
       subscription_id: architecto
     fileParameters:
       image: null
@@ -850,7 +839,7 @@ endpoints:
     bodyParameters:
       country_code:
         name: country_code
-        description: 'Must not be greater than 10 characters.'
+        description: 'يجب ألا يكون value أكبر من 10 حرفًا.'
         required: true
         example: bngzmi
         type: string
@@ -1062,7 +1051,7 @@ endpoints:
     bodyParameters:
       code:
         name: code
-        description: 'Must be 2 characters.'
+        description: 'يجب أن يكون value بحجم 2 حرفًا.'
         required: true
         example: bn
         type: string
@@ -1072,7 +1061,7 @@ endpoints:
         custom: []
       key:
         name: key
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: true
         example: g
         type: string
@@ -1082,7 +1071,7 @@ endpoints:
         custom: []
       value:
         name: value
-        description: 'Must not be greater than 1000 characters.'
+        description: 'يجب ألا يكون value أكبر من 1000 حرفًا.'
         required: true
         example: z
         type: string
@@ -1140,7 +1129,7 @@ endpoints:
     bodyParameters:
       code:
         name: code
-        description: 'Must be 2 characters.'
+        description: 'يجب أن يكون value بحجم 2 حرفًا.'
         required: true
         example: bn
         type: string
@@ -1150,7 +1139,7 @@ endpoints:
         custom: []
       key:
         name: key
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: true
         example: g
         type: string
@@ -1160,7 +1149,7 @@ endpoints:
         custom: []
       value:
         name: value
-        description: 'Must not be greater than 1000 characters.'
+        description: 'يجب ألا يكون value أكبر من 1000 حرفًا.'
         required: false
         example: z
         type: string
@@ -1349,7 +1338,7 @@ endpoints:
     bodyParameters:
       first_name:
         name: first_name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: b
         type: string
@@ -1359,7 +1348,7 @@ endpoints:
         custom: []
       last_name:
         name: last_name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: 'n'
         type: string
@@ -1369,7 +1358,7 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: true
         example: g
         type: string
@@ -1379,7 +1368,7 @@ endpoints:
         custom: []
       email:
         name: email
-        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        description: 'يجب أن يكون value عنوان بريد إلكتروني صالحًا. يجب ألا يكون value أكبر من 255 حرفًا.'
         required: true
         example: rowan.gulgowski@example.com
         type: string
@@ -1389,7 +1378,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Must be at least 8 characters.'
+        description: 'يجب أن يكون value على الأقل 8 حرفًا.'
         required: true
         example: 'BNvYgxwmi/#iw/kX'
         type: string
@@ -1409,7 +1398,7 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        description: 'يجب أن يكون value صورة. يجب ألا يكون value أكبر من 2048 كيلوبايت.'
         required: false
         example: null
         type: file
@@ -1421,7 +1410,7 @@ endpoints:
         name: role
         description: ''
         required: true
-        example: supervisor
+        example: admin
         type: string
         enumValues:
           - admin
@@ -1475,7 +1464,7 @@ endpoints:
         name: locale
         description: ''
         required: false
-        example: en
+        example: ar
         type: string
         enumValues:
           - en
@@ -1527,7 +1516,7 @@ endpoints:
         name: tracking_permission
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1550,17 +1539,17 @@ endpoints:
       email: rowan.gulgowski@example.com
       password: 'BNvYgxwmi/#iw/kX'
       phone: architecto
-      role: supervisor
+      role: admin
       device_type: architecto
       mac_address: architecto
       timezone: America/Hermosillo
       device_token: architecto
-      locale: en
+      locale: ar
       country_code: architecto
       gender: architecto
       contact_permission: false
       notification_permission: false
-      tracking_permission: false
+      tracking_permission: true
       subscription_id: architecto
     fileParameters:
       image: null
@@ -1609,7 +1598,7 @@ endpoints:
     bodyParameters:
       first_name:
         name: first_name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: b
         type: string
@@ -1619,7 +1608,7 @@ endpoints:
         custom: []
       last_name:
         name: last_name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: 'n'
         type: string
@@ -1629,7 +1618,7 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: g
         type: string
@@ -1639,7 +1628,7 @@ endpoints:
         custom: []
       email:
         name: email
-        description: 'Must be a valid email address.'
+        description: 'يجب أن يكون value عنوان بريد إلكتروني صالحًا.'
         required: false
         example: rowan.gulgowski@example.com
         type: string
@@ -1659,7 +1648,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Must be at least 8 characters.'
+        description: 'يجب أن يكون value على الأقل 8 حرفًا.'
         required: false
         example: ']|{+-0pBNvYg'
         type: string
@@ -1669,7 +1658,7 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        description: 'يجب أن يكون value صورة. يجب ألا يكون value أكبر من 2048 كيلوبايت.'
         required: false
         example: null
         type: file
@@ -1681,7 +1670,7 @@ endpoints:
         name: role
         description: ''
         required: false
-        example: supervisor
+        example: admin
         type: string
         enumValues:
           - admin
@@ -1757,7 +1746,7 @@ endpoints:
         name: gender
         description: ''
         required: false
-        example: male
+        example: female
         type: string
         enumValues:
           - male
@@ -1812,14 +1801,14 @@ endpoints:
       email: rowan.gulgowski@example.com
       phone: architecto
       password: ']|{+-0pBNvYg'
-      role: supervisor
+      role: admin
       device_type: architecto
       mac_address: architecto
       timezone: America/Hermosillo
       device_token: architecto
       locale: en
       country_code: architecto
-      gender: male
+      gender: female
       contact_permission: false
       notification_permission: true
       tracking_permission: true
@@ -1908,7 +1897,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Plans retrieved successfully.","data":{"current_page":1,"data":[{"id":1,"name":"bfg","description":"Et animi quos velit et fugiat.","price":"42.00","currency":"GBP","duration_days":40,"status":"inactive","created_at":"2025-06-25T13:05:25.000000Z","updated_at":"2025-06-25T13:06:22.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/plans","per_page":10,"prev_page_url":null,"to":1,"total":1}}'
+        content: '{"success":true,"message":"\u062a\u0645 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0627\u0644\u062e\u0637\u0637 \u0628\u0646\u062c\u0627\u062d.","result":{"current_page":1,"data":[{"id":1,"name":"natus","description":"Qui amet et eos necessitatibus totam quia nulla.","price":"31.63","currency":"USD","duration_days":90,"status":"inactive","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":2,"name":"cupiditate","description":"Molestiae earum reiciendis possimus ut est quam debitis.","price":"30.44","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":3,"name":"minima","description":"Reiciendis sit architecto aut officiis.","price":"20.54","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":4,"name":"cupiditate","description":"Dolore perspiciatis pariatur harum voluptatibus eveniet ea.","price":"49.48","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":5,"name":"suscipit","description":"Ex qui aut odit praesentium recusandae est corrupti tempore.","price":"54.12","currency":"USD","duration_days":30,"status":"inactive","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","links":[{"url":null,"label":"&laquo; \u0627\u0644\u0633\u0627\u0628\u0642","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","label":"1","active":true},{"url":null,"label":"\u0627\u0644\u062a\u0627\u0644\u064a &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/plans","per_page":10,"prev_page_url":null,"to":5,"total":5}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1962,7 +1951,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Plan retrieved successfully.","data":{"id":1,"name":"bfg","description":"Et animi quos velit et fugiat.","price":"42.00","currency":"GBP","duration_days":40,"status":"inactive","created_at":"2025-06-25T13:05:25.000000Z","updated_at":"2025-06-25T13:06:22.000000Z"}}'
+        content: '{"success":true,"message":"\u062a\u0645 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0627\u0644\u062e\u0637\u0629 \u0628\u0646\u062c\u0627\u062d.","result":{"id":1,"name":"natus","description":"Qui amet et eos necessitatibus totam quia nulla.","price":"31.63","currency":"USD","duration_days":90,"status":"inactive","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2002,7 +1991,7 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: true
         example: b
         type: string
@@ -2012,7 +2001,7 @@ endpoints:
         custom: []
       description:
         name: description
-        description: 'Must not be greater than 500 characters.'
+        description: 'يجب ألا يكون value أكبر من 500 حرفًا.'
         required: false
         example: 'Et animi quos velit et fugiat.'
         type: string
@@ -2022,7 +2011,7 @@ endpoints:
         custom: []
       price:
         name: price
-        description: 'Must be at least 0.'
+        description: 'يجب أن يكون value على الأقل 0.'
         required: true
         example: 42
         type: number
@@ -2045,7 +2034,7 @@ endpoints:
         custom: []
       duration_days:
         name: duration_days
-        description: 'Must be at least 1.'
+        description: 'يجب أن يكون value على الأقل 1.'
         required: true
         example: 40
         type: integer
@@ -2118,7 +2107,7 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: b
         type: string
@@ -2128,7 +2117,7 @@ endpoints:
         custom: []
       description:
         name: description
-        description: 'Must not be greater than 500 characters.'
+        description: 'يجب ألا يكون value أكبر من 500 حرفًا.'
         required: false
         example: 'Et animi quos velit et fugiat.'
         type: string
@@ -2138,7 +2127,7 @@ endpoints:
         custom: []
       price:
         name: price
-        description: 'Must be at least 0.'
+        description: 'يجب أن يكون value على الأقل 0.'
         required: false
         example: 42
         type: number
@@ -2161,7 +2150,7 @@ endpoints:
         custom: []
       duration_days:
         name: duration_days
-        description: 'Must be at least 1.'
+        description: 'يجب أن يكون value على الأقل 1.'
         required: false
         example: 40
         type: integer
@@ -2271,7 +2260,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Subscriptions retrieved successfully.","data":{"current_page":1,"data":[{"id":2,"user_id":1,"plan_id":1,"start_date":"2021-07-19","end_date":"2051-07-19","status":"active","deleted_at":null,"created_at":"2025-06-25T13:07:29.000000Z","updated_at":"2025-06-25T13:07:29.000000Z"},{"id":3,"user_id":1,"plan_id":1,"start_date":"2021-07-19","end_date":"2051-07-19","status":"active","deleted_at":null,"created_at":"2025-06-25T13:07:32.000000Z","updated_at":"2025-06-25T13:07:32.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/subscriptions","per_page":10,"prev_page_url":null,"to":2,"total":2}}'
+        content: '{"success":true,"message":"\u062a\u0645 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0627\u0644\u0627\u0634\u062a\u0631\u0627\u0643\u0627\u062a \u0628\u0646\u062c\u0627\u062d.","result":{"current_page":1,"data":[{"id":1,"user_id":1,"plan_id":1,"start_date":"2013-04-19","end_date":"2010-09-23","status":"active","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":2,"user_id":1,"plan_id":1,"start_date":"1984-03-23","end_date":"1987-10-12","status":"active","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":3,"user_id":1,"plan_id":1,"start_date":"1973-08-01","end_date":"2014-10-14","status":"expired","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":4,"user_id":1,"plan_id":1,"start_date":"2008-05-09","end_date":"2017-02-08","status":"expired","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":5,"user_id":1,"plan_id":1,"start_date":"1981-10-12","end_date":"2021-10-06","status":"inactive","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","links":[{"url":null,"label":"&laquo; \u0627\u0644\u0633\u0627\u0628\u0642","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","label":"1","active":true},{"url":null,"label":"\u0627\u0644\u062a\u0627\u0644\u064a &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/subscriptions","per_page":10,"prev_page_url":null,"to":5,"total":5}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2309,14 +2298,14 @@ endpoints:
         name: id
         description: 'The ID of the subscription.'
         required: true
-        example: 2
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 2
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2325,7 +2314,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Subscription retrieved successfully.","data":{"id":2,"user_id":1,"plan_id":1,"start_date":"2021-07-19","end_date":"2051-07-19","status":"active","deleted_at":null,"created_at":"2025-06-25T13:07:29.000000Z","updated_at":"2025-06-25T13:07:29.000000Z"}}'
+        content: '{"success":true,"message":"\u062a\u0645 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0627\u0644\u0627\u0634\u062a\u0631\u0627\u0643 \u0628\u0646\u062c\u0627\u062d.","result":{"id":1,"user_id":1,"plan_id":1,"start_date":"2013-04-19","end_date":"2010-09-23","status":"active","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2385,9 +2374,9 @@ endpoints:
         custom: []
       start_date:
         name: start_date
-        description: 'Must be a valid date. Must be a date before <code>end_date</code>.'
+        description: 'يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا قبل <code>end_date</code>.'
         required: true
-        example: '2021-07-19'
+        example: '2021-07-23'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2395,9 +2384,9 @@ endpoints:
         custom: []
       end_date:
         name: end_date
-        description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
+        description: 'يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا بعد <code>start_date</code>.'
         required: true
-        example: '2051-07-19'
+        example: '2051-07-24'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2407,7 +2396,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: expired
+        example: inactive
         type: string
         enumValues:
           - active
@@ -2419,9 +2408,9 @@ endpoints:
     cleanBodyParameters:
       user_id: architecto
       plan_id: architecto
-      start_date: '2021-07-19'
-      end_date: '2051-07-19'
-      status: expired
+      start_date: '2021-07-23'
+      end_date: '2051-07-24'
+      status: inactive
     fileParameters: []
     responses: []
     responseFields: []
@@ -2455,14 +2444,14 @@ endpoints:
         name: id
         description: 'The ID of the subscription.'
         required: true
-        example: 2
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 2
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2488,9 +2477,9 @@ endpoints:
         custom: []
       start_date:
         name: start_date
-        description: 'Must be a valid date. Must be a date before <code>end_date</code>.'
+        description: 'يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا قبل <code>end_date</code>.'
         required: false
-        example: '2021-07-19'
+        example: '2021-07-23'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2498,9 +2487,9 @@ endpoints:
         custom: []
       end_date:
         name: end_date
-        description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
+        description: 'يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا بعد <code>start_date</code>.'
         required: false
-        example: '2051-07-19'
+        example: '2051-07-24'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2510,7 +2499,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: active
+        example: inactive
         type: string
         enumValues:
           - active
@@ -2522,9 +2511,9 @@ endpoints:
     cleanBodyParameters:
       user_id: architecto
       plan_id: architecto
-      start_date: '2021-07-19'
-      end_date: '2051-07-19'
-      status: active
+      start_date: '2021-07-23'
+      end_date: '2051-07-24'
+      status: inactive
     fileParameters: []
     responses: []
     responseFields: []
@@ -2558,14 +2547,14 @@ endpoints:
         name: id
         description: 'The ID of the subscription.'
         required: true
-        example: 2
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 2
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

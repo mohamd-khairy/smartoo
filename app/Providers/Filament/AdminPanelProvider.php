@@ -63,7 +63,7 @@ class AdminPanelProvider extends PanelProvider
 
             ->databaseTransactions()
             // ->brandLogo('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw_JmAXuH2Myq0ah2g_5ioG6Ku7aR02-mcvimzwFXuD25p2bjx7zhaL34oJ7H9khuFx50&usqp=CAU')
-            ->favicon('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw_JmAXuH2Myq0ah2g_5ioG6Ku7aR02-mcvimzwFXuD25p2bjx7zhaL34oJ7H9khuFx50&usqp=CAU')
+            ->favicon('images/logo.png')
             ->brandName(env('APP_NAME'))
             ->collapsibleNavigationGroups(true)
             ->sidebarCollapsibleOnDesktop()

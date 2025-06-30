@@ -22,13 +22,14 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'uuid' => 'required',
+            'device_type' => 'required|string',
             'first_name' => 'nullable|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255|unique:users,email',
             'password' => 'nullable|string|min:8',
-            'phone' => 'required|string|unique:users,phone',
-            'device_type' => 'required|string',
+            'phone' => 'nullable|string|unique:users,phone',
             'mac_address' => 'nullable|string',
             'timezone' => 'nullable|string',
             'country_code' => 'nullable|string',

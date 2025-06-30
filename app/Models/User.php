@@ -44,6 +44,7 @@ class User extends Authenticatable
         'contact_permission',
         'notification_permission',
         'tracking_permission',
+        'uuid'
     ];
 
     /**
