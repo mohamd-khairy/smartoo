@@ -43,19 +43,30 @@ class TranslationResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(10)
-                    ->default('en')
-                    ->label(__('resources.code')),
                 Forms\Components\TextInput::make('key')
                     ->required()
-                    ->maxLength(255)
-                    ->label(__('resources.key')),
-                Forms\Components\Textarea::make('value')
-                    ->required()
                     ->columnSpanFull()
-                    ->label(__('resources.value')),
+                    ->label(__('resources.key')),
+
+                Forms\Components\Repeater::make('value')
+                    ->label('Language Translations')
+                    ->columnSpanFull()
+                    ->schema([
+                        Forms\Components\TextInput::make('lang')
+                            ->required()
+                            ->maxLength(10)
+                            ->default('en')
+                            ->label(__('resources.code')),
+
+                        Forms\Components\TextInput::make('val')
+                            ->required()
+                            ->label(__('resources.value')),
+                    ])
+                    ->defaultItems(1)
+                    ->reorderable()
+                    ->cloneable()
+                    ->addActionLabel('+ Add Language')
+                    ->minItems(1),
             ]);
     }
 

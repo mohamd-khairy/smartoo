@@ -16,10 +16,7 @@ class Translation extends Model
         'value',
     ];
 
-    public static function getTranslation($language, $key)
-    {
-        return self::where('code', $language)
-            ->where('key', $key)
-            ->first();
-    }
+    protected $casts = [
+        'value' => 'json',
+    ];
 }
