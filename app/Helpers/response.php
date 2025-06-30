@@ -22,11 +22,11 @@ if (!function_exists('login_response')) {
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
             // Cache translations per user locale to optimize performance
-            'translations' => cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
-                return Translation::where('code', $user->locale)
-                    ->pluck('value', 'key')
-                    ->toArray();
+            'translations' => //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
+            Translation::get()->mapWithKeys(function ($item) {
+                return [$item->key => $item->value];
             }),
+            // }),
             // Cache remote settings based on user's country code with a default fallback
             'remote_settings' => cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
                 return RemoteSetting::where('country_code', $user->country_code)

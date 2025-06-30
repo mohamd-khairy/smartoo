@@ -25,15 +25,12 @@ class UpdateTranslationRequest extends FormRequest
         $translationId = $this->route('id'); // Assuming translation ID is passed as 'translation' in route
 
         return [
-            // 'code' is the language code for the translation (e.g., 'en', 'fr', 'es')
-            'code' => 'required|string|size:2', // The locale should be exactly 2 characters (e.g., 'en' for English, 'fr' for French)
-
             // 'key' is the translation key (e.g., 'greeting', 'welcome_message')
             // Ensure the 'key' is unique, but skip the current translation being updated
             'key' => 'required|string|max:255|unique:translations,key,id,code,' . $this->code, // Ensure the key is unique for the same language code
 
             // 'value' is the actual translation value (e.g., 'Hello', 'Bienvenue')
-            'value' => 'nullable|string|max:1000', // The translation value is optional for an update, but should be a string if provided
+            'translations' => 'nullable|array|max:1000', // The translation value is optional for an update, but should be a string if provided
         ];
     }
 }

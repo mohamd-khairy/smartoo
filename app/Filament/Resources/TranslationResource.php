@@ -48,7 +48,7 @@ class TranslationResource extends Resource
                     ->columnSpanFull()
                     ->label(__('resources.key')),
 
-                Forms\Components\Repeater::make('value')
+                Forms\Components\Repeater::make('translations')
                     ->label('Language Translations')
                     ->columnSpanFull()
                     ->schema([
@@ -74,12 +74,12 @@ class TranslationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('code')
-                    ->searchable()
-                    ->label(__('resources.code')),
                 Tables\Columns\TextColumn::make('key')
                     ->searchable()
                     ->label(__('resources.key')),
+                Tables\Columns\TextColumn::make('translations')
+                    ->searchable()
+                    ->label(__('resources.translations')),
                 Tables\Columns\TextColumn::make('value')
                     ->searchable()
                     ->label(__('resources.value')),

@@ -224,23 +224,7 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Accept: application/json" \
     --data "{
     \"uuid\": \"architecto\",
-    \"device_type\": \"architecto\",
-    \"first_name\": \"n\",
-    \"last_name\": \"g\",
-    \"name\": \"z\",
-    \"email\": \"rempel.chadrick@example.org\",
-    \"password\": \"NvYgxwmi\\/#iw\\/kX\",
-    \"phone\": \"architecto\",
-    \"mac_address\": \"architecto\",
-    \"timezone\": \"America\\/Hermosillo\",
-    \"country_code\": \"architecto\",
-    \"locale\": \"sr_BA\",
-    \"gender\": \"architecto\",
-    \"contact_permission\": true,
-    \"notification_permission\": true,
-    \"tracking_permission\": true,
-    \"device_token\": \"architecto\",
-    \"subscription_id\": \"architecto\"
+    \"device_type\": \"architecto\"
 }"
 </code></pre></div>
 
@@ -257,23 +241,7 @@ const headers = {
 
 let body = {
     "uuid": "architecto",
-    "device_type": "architecto",
-    "first_name": "n",
-    "last_name": "g",
-    "name": "z",
-    "email": "rempel.chadrick@example.org",
-    "password": "NvYgxwmi\/#iw\/kX",
-    "phone": "architecto",
-    "mac_address": "architecto",
-    "timezone": "America\/Hermosillo",
-    "country_code": "architecto",
-    "locale": "sr_BA",
-    "gender": "architecto",
-    "contact_permission": true,
-    "notification_permission": true,
-    "tracking_permission": true,
-    "device_token": "architecto",
-    "subscription_id": "architecto"
+    "device_type": "architecto"
 };
 
 fetch(url, {
@@ -377,212 +345,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="first_name"                data-endpoint="POSTapi-v1-auth-register"
-               value="n"
-               data-component="body">
-    <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>n</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="last_name"                data-endpoint="POSTapi-v1-auth-register"
-               value="g"
-               data-component="body">
-    <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="POSTapi-v1-auth-register"
-               value="z"
-               data-component="body">
-    <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-v1-auth-register"
-               value="rempel.chadrick@example.org"
-               data-component="body">
-    <br>
-<p>يجب أن يكون value عنوان بريد إلكتروني صالحًا. يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>rempel.chadrick@example.org</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-v1-auth-register"
-               value="NvYgxwmi/#iw/kX"
-               data-component="body">
-    <br>
-<p>يجب أن يكون value على الأقل 8 حرفًا. Example: <code>NvYgxwmi/#iw/kX</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="phone"                data-endpoint="POSTapi-v1-auth-register"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>mac_address</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="mac_address"                data-endpoint="POSTapi-v1-auth-register"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>timezone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="timezone"                data-endpoint="POSTapi-v1-auth-register"
-               value="America/Hermosillo"
-               data-component="body">
-    <br>
-<p>Example: <code>America/Hermosillo</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>country_code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="country_code"                data-endpoint="POSTapi-v1-auth-register"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="locale"                data-endpoint="POSTapi-v1-auth-register"
-               value="sr_BA"
-               data-component="body">
-    <br>
-<p>Example: <code>sr_BA</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="gender"                data-endpoint="POSTapi-v1-auth-register"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>contact_permission</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-v1-auth-register" style="display: none">
-            <input type="radio" name="contact_permission"
-                   value="true"
-                   data-endpoint="POSTapi-v1-auth-register"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-v1-auth-register" style="display: none">
-            <input type="radio" name="contact_permission"
-                   value="false"
-                   data-endpoint="POSTapi-v1-auth-register"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>notification_permission</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-v1-auth-register" style="display: none">
-            <input type="radio" name="notification_permission"
-                   value="true"
-                   data-endpoint="POSTapi-v1-auth-register"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-v1-auth-register" style="display: none">
-            <input type="radio" name="notification_permission"
-                   value="false"
-                   data-endpoint="POSTapi-v1-auth-register"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>tracking_permission</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-v1-auth-register" style="display: none">
-            <input type="radio" name="tracking_permission"
-                   value="true"
-                   data-endpoint="POSTapi-v1-auth-register"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-v1-auth-register" style="display: none">
-            <input type="radio" name="tracking_permission"
-                   value="false"
-                   data-endpoint="POSTapi-v1-auth-register"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_token</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="device_token"                data-endpoint="POSTapi-v1-auth-register"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>subscription_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="subscription_id"                data-endpoint="POSTapi-v1-auth-register"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the subscriptions table. Example: <code>architecto</code></p>
         </div>
         </form>
 
@@ -982,7 +744,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="569775"
                data-component="body">
     <br>
-<p>يجب أن يكون value 6 رقمًا. Example: <code>569775</code></p>
+<p>Must be 6 digits. Example: <code>569775</code></p>
         </div>
         </form>
 
@@ -1132,12 +894,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "email=rowan.gulgowski@example.com"\
     --form "phone=architecto"\
     --form "password=]|{+-0pBNvYg"\
-    --form "locale=ar"\
+    --form "locale=en"\
     --form "country_code=hw"\
     --form "gender=architecto"\
     --form "device_token=architecto"\
     --form "subscription_id=architecto"\
-    --form "image=@C:\Users\m.khairy\AppData\Local\Temp\phpA40E.tmp" </code></pre></div>
+    --form "image=@C:\Users\moham\AppData\Local\Temp\php9E26.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1158,7 +920,7 @@ body.append('name', 'g');
 body.append('email', 'rowan.gulgowski@example.com');
 body.append('phone', 'architecto');
 body.append('password', ']|{+-0pBNvYg');
-body.append('locale', 'ar');
+body.append('locale', 'en');
 body.append('country_code', 'hw');
 body.append('gender', 'architecto');
 body.append('device_token', 'architecto');
@@ -1265,7 +1027,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -1276,7 +1038,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="n"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>n</code></p>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -1287,7 +1049,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="g"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1298,7 +1060,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="rowan.gulgowski@example.com"
                data-component="body">
     <br>
-<p>يجب أن يكون value عنوان بريد إلكتروني صالحًا. Example: <code>rowan.gulgowski@example.com</code></p>
+<p>Must be a valid email address. Example: <code>rowan.gulgowski@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -1320,7 +1082,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="]|{+-0pBNvYg"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 8 حرفًا. Example: <code>]|{+-0pBNvYg</code></p>
+<p>Must be at least 8 characters. Example: <code>]|{+-0pBNvYg</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
@@ -1328,10 +1090,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="locale"                data-endpoint="PUTapi-v1-auth-profile"
-               value="ar"
+               value="en"
                data-component="body">
     <br>
-<p>Example: <code>ar</code></p>
+<p>Example: <code>en</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>en</code></li> <li><code>ar</code></li></ul>
         </div>
@@ -1344,7 +1106,7 @@ Must be one of:
                value="hw"
                data-component="body">
     <br>
-<p>يجب أن يكون value بحجم 2 حرفًا. Example: <code>hw</code></p>
+<p>Must be 2 characters. Example: <code>hw</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
@@ -1355,7 +1117,7 @@ Must be one of:
                value=""
                data-component="body">
     <br>
-<p>يجب أن يكون value صورة. يجب ألا يكون value أكبر من 2048 كيلوبايت. Example: <code>C:\Users\m.khairy\AppData\Local\Temp\phpA40E.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\moham\AppData\Local\Temp\php9E26.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -2260,7 +2022,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="bngzmi"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 10 حرفًا. Example: <code>bngzmi</code></p>
+<p>Must not be greater than 10 characters. Example: <code>bngzmi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -2853,7 +2615,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="bn"
                data-component="body">
     <br>
-<p>يجب أن يكون value بحجم 2 حرفًا. Example: <code>bn</code></p>
+<p>Must be 2 characters. Example: <code>bn</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
@@ -2864,7 +2626,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="g"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>value</code></b>&nbsp;&nbsp;
@@ -2875,7 +2637,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="z"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 1000 حرفًا. Example: <code>z</code></p>
+<p>Must not be greater than 1000 characters. Example: <code>z</code></p>
         </div>
         </form>
 
@@ -3034,7 +2796,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="bn"
                data-component="body">
     <br>
-<p>يجب أن يكون value بحجم 2 حرفًا. Example: <code>bn</code></p>
+<p>Must be 2 characters. Example: <code>bn</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
@@ -3045,7 +2807,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="g"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>value</code></b>&nbsp;&nbsp;
@@ -3056,7 +2818,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="z"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 1000 حرفًا. Example: <code>z</code></p>
+<p>Must not be greater than 1000 characters. Example: <code>z</code></p>
         </div>
         </form>
 
@@ -3506,7 +3268,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "email=rowan.gulgowski@example.com"\
     --form "password=BNvYgxwmi/#iw/kX"\
     --form "phone=architecto"\
-    --form "role=admin"\
+    --form "role=supervisor"\
     --form "device_type=architecto"\
     --form "mac_address=architecto"\
     --form "timezone=America/Hermosillo"\
@@ -3516,9 +3278,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "gender=architecto"\
     --form "contact_permission="\
     --form "notification_permission="\
-    --form "tracking_permission=1"\
+    --form "tracking_permission="\
     --form "subscription_id=architecto"\
-    --form "image=@C:\Users\m.khairy\AppData\Local\Temp\phpA4FA.tmp" </code></pre></div>
+    --form "image=@C:\Users\moham\AppData\Local\Temp\php9EF2.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3539,7 +3301,7 @@ body.append('name', 'g');
 body.append('email', 'rowan.gulgowski@example.com');
 body.append('password', 'BNvYgxwmi/#iw/kX');
 body.append('phone', 'architecto');
-body.append('role', 'admin');
+body.append('role', 'supervisor');
 body.append('device_type', 'architecto');
 body.append('mac_address', 'architecto');
 body.append('timezone', 'America/Hermosillo');
@@ -3549,7 +3311,7 @@ body.append('country_code', 'architecto');
 body.append('gender', 'architecto');
 body.append('contact_permission', '');
 body.append('notification_permission', '');
-body.append('tracking_permission', '1');
+body.append('tracking_permission', '');
 body.append('subscription_id', 'architecto');
 body.append('image', document.querySelector('input[name="image"]').files[0]);
 
@@ -3653,7 +3415,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -3664,7 +3426,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="n"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>n</code></p>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -3675,7 +3437,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="g"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -3686,7 +3448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="rowan.gulgowski@example.com"
                data-component="body">
     <br>
-<p>يجب أن يكون value عنوان بريد إلكتروني صالحًا. يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>rowan.gulgowski@example.com</code></p>
+<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>rowan.gulgowski@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -3697,7 +3459,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="BNvYgxwmi/#iw/kX"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 8 حرفًا. Example: <code>BNvYgxwmi/#iw/kX</code></p>
+<p>Must be at least 8 characters. Example: <code>BNvYgxwmi/#iw/kX</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -3719,7 +3481,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>يجب أن يكون value صورة. يجب ألا يكون value أكبر من 2048 كيلوبايت. Example: <code>C:\Users\m.khairy\AppData\Local\Temp\phpA4FA.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\moham\AppData\Local\Temp\php9EF2.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -3727,10 +3489,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="POSTapi-v1-users"
-               value="admin"
+               value="supervisor"
                data-component="body">
     <br>
-<p>Example: <code>admin</code></p>
+<p>Example: <code>supervisor</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>admin</code></li> <li><code>supervisor</code></li> <li><code>employee</code></li> <li><code>user</code></li></ul>
         </div>
@@ -3874,7 +3636,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>subscription_id</code></b>&nbsp;&nbsp;
@@ -3913,19 +3675,19 @@ Must be one of:
     --form "email=rowan.gulgowski@example.com"\
     --form "phone=architecto"\
     --form "password=]|{+-0pBNvYg"\
-    --form "role=admin"\
+    --form "role=user"\
     --form "device_type=architecto"\
     --form "mac_address=architecto"\
     --form "timezone=America/Hermosillo"\
     --form "device_token=architecto"\
     --form "locale=en"\
     --form "country_code=architecto"\
-    --form "gender=female"\
-    --form "contact_permission="\
+    --form "gender=male"\
+    --form "contact_permission=1"\
     --form "notification_permission=1"\
     --form "tracking_permission=1"\
     --form "subscription_id=architecto"\
-    --form "image=@C:\Users\m.khairy\AppData\Local\Temp\phpA50A.tmp" </code></pre></div>
+    --form "image=@C:\Users\moham\AppData\Local\Temp\php9F03.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3946,15 +3708,15 @@ body.append('name', 'g');
 body.append('email', 'rowan.gulgowski@example.com');
 body.append('phone', 'architecto');
 body.append('password', ']|{+-0pBNvYg');
-body.append('role', 'admin');
+body.append('role', 'user');
 body.append('device_type', 'architecto');
 body.append('mac_address', 'architecto');
 body.append('timezone', 'America/Hermosillo');
 body.append('device_token', 'architecto');
 body.append('locale', 'en');
 body.append('country_code', 'architecto');
-body.append('gender', 'female');
-body.append('contact_permission', '');
+body.append('gender', 'male');
+body.append('contact_permission', '1');
 body.append('notification_permission', '1');
 body.append('tracking_permission', '1');
 body.append('subscription_id', 'architecto');
@@ -4072,7 +3834,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -4083,7 +3845,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="n"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>n</code></p>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -4094,7 +3856,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="g"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -4105,7 +3867,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="rowan.gulgowski@example.com"
                data-component="body">
     <br>
-<p>يجب أن يكون value عنوان بريد إلكتروني صالحًا. Example: <code>rowan.gulgowski@example.com</code></p>
+<p>Must be a valid email address. Example: <code>rowan.gulgowski@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -4127,7 +3889,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="]|{+-0pBNvYg"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 8 حرفًا. Example: <code>]|{+-0pBNvYg</code></p>
+<p>Must be at least 8 characters. Example: <code>]|{+-0pBNvYg</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
@@ -4138,7 +3900,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>يجب أن يكون value صورة. يجب ألا يكون value أكبر من 2048 كيلوبايت. Example: <code>C:\Users\m.khairy\AppData\Local\Temp\phpA50A.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\moham\AppData\Local\Temp\php9F03.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -4146,10 +3908,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="PUTapi-v1-users--id-"
-               value="admin"
+               value="user"
                data-component="body">
     <br>
-<p>Example: <code>admin</code></p>
+<p>Example: <code>user</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>admin</code></li> <li><code>supervisor</code></li> <li><code>employee</code></li> <li><code>user</code></li></ul>
         </div>
@@ -4227,10 +3989,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="gender"                data-endpoint="PUTapi-v1-users--id-"
-               value="female"
+               value="male"
                data-component="body">
     <br>
-<p>Example: <code>female</code></p>
+<p>Example: <code>male</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>male</code></li> <li><code>female</code></li></ul>
         </div>
@@ -4253,7 +4015,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notification_permission</code></b>&nbsp;&nbsp;
@@ -4497,64 +4259,64 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;تم استرداد الخطط بنجاح.&quot;,
+    &quot;message&quot;: &quot;Plans retrieved successfully.&quot;,
     &quot;result&quot;: {
         &quot;current_page&quot;: 1,
         &quot;data&quot;: [
             {
                 &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;natus&quot;,
-                &quot;description&quot;: &quot;Qui amet et eos necessitatibus totam quia nulla.&quot;,
-                &quot;price&quot;: &quot;31.63&quot;,
+                &quot;name&quot;: &quot;iste&quot;,
+                &quot;description&quot;: &quot;Perferendis ad neque aliquid voluptates ut rerum quia repudiandae.&quot;,
+                &quot;price&quot;: &quot;23.67&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 90,
-                &quot;status&quot;: &quot;inactive&quot;,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;duration_days&quot;: 60,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             },
             {
                 &quot;id&quot;: 2,
                 &quot;name&quot;: &quot;cupiditate&quot;,
-                &quot;description&quot;: &quot;Molestiae earum reiciendis possimus ut est quam debitis.&quot;,
-                &quot;price&quot;: &quot;30.44&quot;,
-                &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 30,
-                &quot;status&quot;: &quot;active&quot;,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 3,
-                &quot;name&quot;: &quot;minima&quot;,
-                &quot;description&quot;: &quot;Reiciendis sit architecto aut officiis.&quot;,
-                &quot;price&quot;: &quot;20.54&quot;,
-                &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 30,
-                &quot;status&quot;: &quot;active&quot;,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;cupiditate&quot;,
-                &quot;description&quot;: &quot;Dolore perspiciatis pariatur harum voluptatibus eveniet ea.&quot;,
-                &quot;price&quot;: &quot;49.48&quot;,
-                &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 30,
-                &quot;status&quot;: &quot;active&quot;,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 5,
-                &quot;name&quot;: &quot;suscipit&quot;,
-                &quot;description&quot;: &quot;Ex qui aut odit praesentium recusandae est corrupti tempore.&quot;,
-                &quot;price&quot;: &quot;54.12&quot;,
+                &quot;description&quot;: &quot;Aut distinctio dolorem nihil laudantium velit ut.&quot;,
+                &quot;price&quot;: &quot;95.34&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
                 &quot;duration_days&quot;: 30,
                 &quot;status&quot;: &quot;inactive&quot;,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;enim&quot;,
+                &quot;description&quot;: &quot;Voluptas consequatur et itaque vero et sapiente.&quot;,
+                &quot;price&quot;: &quot;46.60&quot;,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;duration_days&quot;: 30,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;consequatur&quot;,
+                &quot;description&quot;: &quot;Numquam consequatur autem rerum.&quot;,
+                &quot;price&quot;: &quot;27.48&quot;,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;duration_days&quot;: 60,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;aperiam&quot;,
+                &quot;description&quot;: &quot;Et ut pariatur incidunt dolor et quasi.&quot;,
+                &quot;price&quot;: &quot;96.65&quot;,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;duration_days&quot;: 60,
+                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             }
         ],
         &quot;first_page_url&quot;: &quot;http://smartoo.test/api/v1/plans?page=1&quot;,
@@ -4564,7 +4326,7 @@ access-control-allow-origin: *
         &quot;links&quot;: [
             {
                 &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; السابق&quot;,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
                 &quot;active&quot;: false
             },
             {
@@ -4574,7 +4336,7 @@ access-control-allow-origin: *
             },
             {
                 &quot;url&quot;: null,
-                &quot;label&quot;: &quot;التالي &amp;raquo;&quot;,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
                 &quot;active&quot;: false
             }
         ],
@@ -4723,17 +4485,17 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;تم استرداد الخطة بنجاح.&quot;,
+    &quot;message&quot;: &quot;Plan retrieved successfully.&quot;,
     &quot;result&quot;: {
         &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;natus&quot;,
-        &quot;description&quot;: &quot;Qui amet et eos necessitatibus totam quia nulla.&quot;,
-        &quot;price&quot;: &quot;31.63&quot;,
+        &quot;name&quot;: &quot;iste&quot;,
+        &quot;description&quot;: &quot;Perferendis ad neque aliquid voluptates ut rerum quia repudiandae.&quot;,
+        &quot;price&quot;: &quot;23.67&quot;,
         &quot;currency&quot;: &quot;USD&quot;,
-        &quot;duration_days&quot;: 90,
-        &quot;status&quot;: &quot;inactive&quot;,
-        &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+        &quot;duration_days&quot;: 60,
+        &quot;status&quot;: &quot;active&quot;,
+        &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
     }
 }</code>
  </pre>
@@ -4854,9 +4616,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"name\": \"b\",
     \"description\": \"Et animi quos velit et fugiat.\",
     \"price\": 42,
-    \"currency\": \"GBP\",
+    \"currency\": \"EUR\",
     \"duration_days\": 40,
-    \"status\": \"inactive\"
+    \"status\": \"active\"
 }"
 </code></pre></div>
 
@@ -4876,9 +4638,9 @@ let body = {
     "name": "b",
     "description": "Et animi quos velit et fugiat.",
     "price": 42,
-    "currency": "GBP",
+    "currency": "EUR",
     "duration_days": 40,
-    "status": "inactive"
+    "status": "active"
 };
 
 fetch(url, {
@@ -4981,7 +4743,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -4992,7 +4754,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Et animi quos velit et fugiat."
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 500 حرفًا. Example: <code>Et animi quos velit et fugiat.</code></p>
+<p>Must not be greater than 500 characters. Example: <code>Et animi quos velit et fugiat.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
@@ -5003,7 +4765,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="42"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 0. Example: <code>42</code></p>
+<p>Must be at least 0. Example: <code>42</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>currency</code></b>&nbsp;&nbsp;
@@ -5011,10 +4773,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="currency"                data-endpoint="POSTapi-v1-plans"
-               value="GBP"
+               value="EUR"
                data-component="body">
     <br>
-<p>Example: <code>GBP</code></p>
+<p>Example: <code>EUR</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>USD</code></li> <li><code>EUR</code></li> <li><code>GBP</code></li></ul>
         </div>
@@ -5027,7 +4789,7 @@ Must be one of:
                value="40"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 1. Example: <code>40</code></p>
+<p>Must be at least 1. Example: <code>40</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -5035,10 +4797,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-v1-plans"
-               value="inactive"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>inactive</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -5066,7 +4828,7 @@ Must be one of:
     \"name\": \"b\",
     \"description\": \"Et animi quos velit et fugiat.\",
     \"price\": 42,
-    \"currency\": \"USD\",
+    \"currency\": \"EUR\",
     \"duration_days\": 40,
     \"status\": \"inactive\"
 }"
@@ -5088,7 +4850,7 @@ let body = {
     "name": "b",
     "description": "Et animi quos velit et fugiat.",
     "price": 42,
-    "currency": "USD",
+    "currency": "EUR",
     "duration_days": 40,
     "status": "inactive"
 };
@@ -5205,7 +4967,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -5216,7 +4978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Et animi quos velit et fugiat."
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 500 حرفًا. Example: <code>Et animi quos velit et fugiat.</code></p>
+<p>Must not be greater than 500 characters. Example: <code>Et animi quos velit et fugiat.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
@@ -5227,7 +4989,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="42"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 0. Example: <code>42</code></p>
+<p>Must be at least 0. Example: <code>42</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>currency</code></b>&nbsp;&nbsp;
@@ -5235,10 +4997,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="currency"                data-endpoint="PUTapi-v1-plans--id-"
-               value="USD"
+               value="EUR"
                data-component="body">
     <br>
-<p>Example: <code>USD</code></p>
+<p>Example: <code>EUR</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>USD</code></li> <li><code>EUR</code></li> <li><code>GBP</code></li></ul>
         </div>
@@ -5251,7 +5013,7 @@ Must be one of:
                value="40"
                data-component="body">
     <br>
-<p>يجب أن يكون value على الأقل 1. Example: <code>40</code></p>
+<p>Must be at least 1. Example: <code>40</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -5455,7 +5217,7 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;تم استرداد الاشتراكات بنجاح.&quot;,
+    &quot;message&quot;: &quot;Subscriptions retrieved successfully.&quot;,
     &quot;result&quot;: {
         &quot;current_page&quot;: 1,
         &quot;data&quot;: [
@@ -5463,56 +5225,56 @@ access-control-allow-origin: *
                 &quot;id&quot;: 1,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;2013-04-19&quot;,
-                &quot;end_date&quot;: &quot;2010-09-23&quot;,
-                &quot;status&quot;: &quot;active&quot;,
+                &quot;start_date&quot;: &quot;1970-01-27&quot;,
+                &quot;end_date&quot;: &quot;1999-02-01&quot;,
+                &quot;status&quot;: &quot;expired&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             },
             {
                 &quot;id&quot;: 2,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1984-03-23&quot;,
-                &quot;end_date&quot;: &quot;1987-10-12&quot;,
+                &quot;start_date&quot;: &quot;1995-01-28&quot;,
+                &quot;end_date&quot;: &quot;2016-10-23&quot;,
                 &quot;status&quot;: &quot;active&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             },
             {
                 &quot;id&quot;: 3,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1973-08-01&quot;,
-                &quot;end_date&quot;: &quot;2014-10-14&quot;,
-                &quot;status&quot;: &quot;expired&quot;,
+                &quot;start_date&quot;: &quot;2018-05-10&quot;,
+                &quot;end_date&quot;: &quot;2003-11-26&quot;,
+                &quot;status&quot;: &quot;inactive&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             },
             {
                 &quot;id&quot;: 4,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;2008-05-09&quot;,
-                &quot;end_date&quot;: &quot;2017-02-08&quot;,
-                &quot;status&quot;: &quot;expired&quot;,
+                &quot;start_date&quot;: &quot;1981-11-15&quot;,
+                &quot;end_date&quot;: &quot;2007-02-27&quot;,
+                &quot;status&quot;: &quot;active&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             },
             {
                 &quot;id&quot;: 5,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1981-10-12&quot;,
-                &quot;end_date&quot;: &quot;2021-10-06&quot;,
-                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;start_date&quot;: &quot;1988-07-14&quot;,
+                &quot;end_date&quot;: &quot;1977-05-13&quot;,
+                &quot;status&quot;: &quot;expired&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
             }
         ],
         &quot;first_page_url&quot;: &quot;http://smartoo.test/api/v1/subscriptions?page=1&quot;,
@@ -5522,7 +5284,7 @@ access-control-allow-origin: *
         &quot;links&quot;: [
             {
                 &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; السابق&quot;,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
                 &quot;active&quot;: false
             },
             {
@@ -5532,7 +5294,7 @@ access-control-allow-origin: *
             },
             {
                 &quot;url&quot;: null,
-                &quot;label&quot;: &quot;التالي &amp;raquo;&quot;,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
                 &quot;active&quot;: false
             }
         ],
@@ -5681,17 +5443,17 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;تم استرداد الاشتراك بنجاح.&quot;,
+    &quot;message&quot;: &quot;Subscription retrieved successfully.&quot;,
     &quot;result&quot;: {
         &quot;id&quot;: 1,
         &quot;user_id&quot;: 1,
         &quot;plan_id&quot;: 1,
-        &quot;start_date&quot;: &quot;2013-04-19&quot;,
-        &quot;end_date&quot;: &quot;2010-09-23&quot;,
-        &quot;status&quot;: &quot;active&quot;,
+        &quot;start_date&quot;: &quot;1970-01-27&quot;,
+        &quot;end_date&quot;: &quot;1999-02-01&quot;,
+        &quot;status&quot;: &quot;expired&quot;,
         &quot;deleted_at&quot;: null,
-        &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
+        &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
     }
 }</code>
  </pre>
@@ -5811,9 +5573,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"user_id\": \"architecto\",
     \"plan_id\": \"architecto\",
-    \"start_date\": \"2021-07-23\",
+    \"start_date\": \"2021-07-24\",
     \"end_date\": \"2051-07-24\",
-    \"status\": \"inactive\"
+    \"status\": \"expired\"
 }"
 </code></pre></div>
 
@@ -5832,9 +5594,9 @@ const headers = {
 let body = {
     "user_id": "architecto",
     "plan_id": "architecto",
-    "start_date": "2021-07-23",
+    "start_date": "2021-07-24",
     "end_date": "2051-07-24",
-    "status": "inactive"
+    "status": "expired"
 };
 
 fetch(url, {
@@ -5956,10 +5718,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-v1-subscriptions"
-               value="2021-07-23"
+               value="2021-07-24"
                data-component="body">
     <br>
-<p>يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا قبل <code>end_date</code>. Example: <code>2021-07-23</code></p>
+<p>Must be a valid date. Must be a date before <code>end_date</code>. Example: <code>2021-07-24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -5970,7 +5732,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2051-07-24"
                data-component="body">
     <br>
-<p>يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا بعد <code>start_date</code>. Example: <code>2051-07-24</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2051-07-24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -5978,10 +5740,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-v1-subscriptions"
-               value="inactive"
+               value="expired"
                data-component="body">
     <br>
-<p>Example: <code>inactive</code></p>
+<p>Example: <code>expired</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li> <li><code>expired</code></li></ul>
         </div>
@@ -6008,7 +5770,7 @@ Must be one of:
     --data "{
     \"user_id\": \"architecto\",
     \"plan_id\": \"architecto\",
-    \"start_date\": \"2021-07-23\",
+    \"start_date\": \"2021-07-24\",
     \"end_date\": \"2051-07-24\",
     \"status\": \"inactive\"
 }"
@@ -6029,7 +5791,7 @@ const headers = {
 let body = {
     "user_id": "architecto",
     "plan_id": "architecto",
-    "start_date": "2021-07-23",
+    "start_date": "2021-07-24",
     "end_date": "2051-07-24",
     "status": "inactive"
 };
@@ -6165,10 +5927,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="PUTapi-v1-subscriptions--id-"
-               value="2021-07-23"
+               value="2021-07-24"
                data-component="body">
     <br>
-<p>يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا قبل <code>end_date</code>. Example: <code>2021-07-23</code></p>
+<p>Must be a valid date. Must be a date before <code>end_date</code>. Example: <code>2021-07-24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -6179,7 +5941,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2051-07-24"
                data-component="body">
     <br>
-<p>يجب أن يكون value تاريخًا صالحًا. يجب أن يكون value تاريخًا بعد <code>start_date</code>. Example: <code>2051-07-24</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2051-07-24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;

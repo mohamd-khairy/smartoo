@@ -11,12 +11,27 @@ class Translation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
         'key',
-        'value',
+        'translations',
     ];
 
     protected $casts = [
-        'value' => 'json',
+        'translations' => 'json',
     ];
+
+    protected $appends = [
+        'value'
+    ];
+
+    public function getValueAttribute($value)
+    {
+        // Get the current language (you can define how to get this dynamically or statically)
+        $currentLanguage = app()->getLocale(); // Get the current language, e.g., 'en' or 'ar'
+
+        // Find the translation for the current language
+        $translation = collect($this->translations)->firstWhere('lang', $currentLanguage);
+
+        // If the translation exists, return the 'val' field, otherwise return null
+        return $translation ? $translation['val'] : null;
+    }
 }

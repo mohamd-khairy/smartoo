@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10)->default('en')->index(); // Language code, e.g., 'en', 'fr'
             $table->string('key', 255)->index(); // Translation key, e.g
-            $table->text('value'); // Translated value
+            $table->text('translations')->nullable(); // Translated value
             $table->timestamps();
-
-            $table->unique(['code', 'key']); // Unique constraint for each language-key pair
         });
     }
 

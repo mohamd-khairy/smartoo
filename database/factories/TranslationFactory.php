@@ -17,9 +17,11 @@ class TranslationFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => 'en',
             'key' => $this->faker->unique()->word,
-            'value' => $this->faker->sentence,
+            'translations' => [
+                ['lang' => 'en', 'val' => $this->faker->sentence],
+                ['lang' => 'ar', 'val' => $this->faker->sentence]
+            ],
         ];
     }
 }

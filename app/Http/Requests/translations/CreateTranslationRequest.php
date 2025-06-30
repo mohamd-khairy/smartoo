@@ -24,14 +24,11 @@ class CreateTranslationRequest extends FormRequest
         // Get the translation ID for the update request (if this is for an update operation)
 
         return [
-            // 'code' is the language code for the translation (e.g., 'en', 'fr', 'es')
-            'code' => 'required|string|size:2', // The locale should be exactly 2 characters (e.g., 'en' for English, 'fr' for French)
-
             // 'key' is the translation key (e.g., 'greeting', 'welcome_message')
             'key' => 'required|string|max:255|unique:translations,key,code,' . $this->code, // Ensure the key is unique for the same language code
 
             // 'value' is the actual translation value (e.g., 'Hello', 'Bienvenue')
-            'value' => 'required|string|max:1000', // The translation value is required and can be a maximum of 1000 characters
+            'translations' => 'required|array|max:1000', // The translation value is required and can be a maximum of 1000 characters
         ];
     }
 }
