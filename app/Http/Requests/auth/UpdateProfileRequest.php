@@ -27,14 +27,15 @@ class UpdateProfileRequest extends FormRequest
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|email|unique:users,email,' . $this->id,
             'phone' => 'nullable|string|unique:users,phone,' . $this->id,
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8',
             'locale' => 'nullable|string|in:en,ar',
             'country_code' => 'nullable|string|size:2',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'gender' => 'nullable|string',
-            'contact_permission' => 'nullable|boolean',
-            'notification_permission' => 'nullable|boolean',
-            'tracking_permission' => 'nullable|boolean',
+            'device_token' => 'nullable|string',
+            // 'contact_permission' => 'nullable|boolean',
+            // 'notification_permission' => 'nullable|boolean',
+            // 'tracking_permission' => 'nullable|boolean',
             'subscription_id' => 'nullable|string|exists:subscriptions,id'
         ];
     }

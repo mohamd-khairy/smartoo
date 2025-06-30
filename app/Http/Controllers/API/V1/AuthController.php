@@ -26,14 +26,17 @@ class AuthController extends Controller
         $data = $request->validated();
 
         // Create an anonymous user with just a phone number and device info
-        $user = User::create([
+        $user = User::firstOrCreate([
+            'device_type' => $data['device_type'],
+            'uuid' => $data['uuid'],
+        ], [
             'first_name' => $data['first_name'] ?? null,
             'last_name' => $data['last_name'] ?? null,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
             'password' => $data['password'] ?? null,
-            'phone' => $data['phone'],
-            'device_type' => $data['device_type'] ?? 'web',
+            'phone' => $data['phone'] ?? null,
+            'device_type' => $data['device_type'],
             'phone_verification_code' => rand(100000, 999999),
             'mac_address' => $data['mac_address'] ?? null,
             'timezone' => $data['timezone'] ?? 'UTC',
@@ -52,12 +55,18 @@ class AuthController extends Controller
         ]);
 
         // Cache the verification code for the user
-        Cache::put("verification_code_{$data['phone']}", $user->phone_verification_code, now()->addMinutes(5));
+        // Cache::put("verification_code_{$data['phone']}", $user->phone_verification_code, now()->addMinutes(5));
 
         // You can use a service like Twilio to send the verification code here
         // Twilio::sendSms($data['phone'], "Your verification code is: {$user->phone_verification_code}");
 
-        return api_response($user, __('general.auth.phone_verification_code_sent'), 201);
+        if ($user) {
+            $user->touch('last_login_at');
+            return login_response($user, __('general.auth.phone_verified'), 200);
+            // return api_response($user, __('general.auth.phone_verification_code_sent'), 201);
+        }
+
+        return api_response(null, __('general.auth.invalid_verification_code'), 401);
     }
 
     /**

@@ -14,6 +14,11 @@ return new class extends Migration
         // Create the users table
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('device_type')->nullable();
+            $table->string('uuid')->nullable()->unique();
+            $table->string('device_token')->nullable()->unique();
+            $table->string('ip_address')->nullable();
+            $table->string('mac_address')->nullable();
             $table->string('first_name')->nullable(); // Allow name to be nullable for anonymous users
             $table->string('last_name')->nullable(); // Allow name to be nullable for anonymous users
             $table->string('name')->nullable(); // Allow name to be nullable for anonymous users
@@ -32,11 +37,7 @@ return new class extends Migration
             $table->string('role')->default('user');
             $table->string('locale')->default('en');
             $table->string('status')->default('pending'); // Default status for new users
-            $table->string('device_type')->nullable();
-            $table->string('mac_address')->nullable();
-            $table->string('ip_address')->nullable();
             $table->string('timezone')->nullable();
-            $table->string('device_token')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->softDeletes(); // Soft delete column (deleted_at)

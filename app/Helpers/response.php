@@ -22,13 +22,13 @@ if (!function_exists('login_response')) {
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
             // Cache translations per user locale to optimize performance
-            'translations' => cache()->remember("translations_{$user->locale}", now()->addHours(1), function () use ($user) {
+            'translations' => cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
                 return Translation::where('code', $user->locale)
                     ->pluck('value', 'key')
                     ->toArray();
             }),
             // Cache remote settings based on user's country code with a default fallback
-            'remote_settings' => cache()->remember("remote_settings_{$user->country_code}", now()->addHours(1), function () use ($user) {
+            'remote_settings' => cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
                 return RemoteSetting::where('country_code', $user->country_code)
                     ->value('value') ?: []; // Cache the remote settings, fallback to empty array if not found
             }),
@@ -54,7 +54,7 @@ if (!function_exists('api_response')) {
         return response()->json([
             'success' => $statusCode < 400,
             'message' => $message,
-            'data' => $data ?? new \stdClass(),  // Return empty object if no data
+            'result' => $data ?? new \stdClass(),  // Return empty object if no data
         ], $statusCode);
     }
 }
