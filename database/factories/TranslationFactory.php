@@ -17,10 +17,16 @@ class TranslationFactory extends Factory
     public function definition(): array
     {
         return [
-            'key' => $this->faker->unique()->word,
+            // 'key' => $this->faker->unique()->word,
+            // 'translations' => [
+            //     ['lang' => 'en', 'val' => $this->faker->sentence],
+            //     ['lang' => 'ar', 'val' => $this->faker->sentence]
+            // ],
+
+            'key' => 'hello',
             'translations' => [
-                ['lang' => 'en', 'val' => $this->faker->sentence],
-                ['lang' => 'ar', 'val' => $this->faker->sentence]
+                ['lang' => 'en', 'val' => 'hello'],
+                ['lang' => 'ar', 'val' => 'مرحبا']
             ],
         ];
     }
