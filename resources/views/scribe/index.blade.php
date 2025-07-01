@@ -74,15 +74,6 @@
                                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-auth-register">
                                 <a href="#endpoints-POSTapi-v1-auth-register">auth register a new user (either anonymous or with full details)</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-auth-login">
-                                <a href="#endpoints-POSTapi-v1-auth-login">auth login user</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-auth-resend-verification-code">
-                                <a href="#endpoints-POSTapi-v1-auth-resend-verification-code">auth resend verification code</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-auth-verify-phone">
-                                <a href="#endpoints-POSTapi-v1-auth-verify-phone">auth verify phone number</a>
-                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-auth-logout">
                                 <a href="#endpoints-POSTapi-v1-auth-logout">auth Logout the user and revoke their token</a>
                             </li>
@@ -181,7 +172,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 30, 2025</li>
+        <li>Last updated: July 1, 2025</li>
     </ul>
 </div>
 
@@ -348,406 +339,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-auth-login">auth login user</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTapi-v1-auth-login">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://smartoo.test/api/v1/auth/login" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"phone\": \"architecto\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://smartoo.test/api/v1/auth/login"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "phone": "architecto"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-v1-auth-login">
-</span>
-<span id="execution-results-POSTapi-v1-auth-login" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-auth-login"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-auth-login"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-v1-auth-login" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-auth-login">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-v1-auth-login" data-method="POST"
-      data-path="api/v1/auth/login"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-auth-login', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-auth-login"
-                    onclick="tryItOut('POSTapi-v1-auth-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-auth-login"
-                    onclick="cancelTryOut('POSTapi-v1-auth-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-auth-login"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/v1/auth/login</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-v1-auth-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-v1-auth-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="phone"                data-endpoint="POSTapi-v1-auth-login"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-        </form>
-
-                    <h2 id="endpoints-POSTapi-v1-auth-resend-verification-code">auth resend verification code</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTapi-v1-auth-resend-verification-code">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://smartoo.test/api/v1/auth/resend-verification-code" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"phone\": \"architecto\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://smartoo.test/api/v1/auth/resend-verification-code"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "phone": "architecto"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-v1-auth-resend-verification-code">
-</span>
-<span id="execution-results-POSTapi-v1-auth-resend-verification-code" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-auth-resend-verification-code"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-auth-resend-verification-code"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-v1-auth-resend-verification-code" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-auth-resend-verification-code">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-v1-auth-resend-verification-code" data-method="POST"
-      data-path="api/v1/auth/resend-verification-code"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-auth-resend-verification-code', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-auth-resend-verification-code"
-                    onclick="tryItOut('POSTapi-v1-auth-resend-verification-code');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-auth-resend-verification-code"
-                    onclick="cancelTryOut('POSTapi-v1-auth-resend-verification-code');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-auth-resend-verification-code"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/v1/auth/resend-verification-code</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-v1-auth-resend-verification-code"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-v1-auth-resend-verification-code"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="phone"                data-endpoint="POSTapi-v1-auth-resend-verification-code"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>Example: <code>architecto</code></p>
-        </div>
-        </form>
-
-                    <h2 id="endpoints-POSTapi-v1-auth-verify-phone">auth verify phone number</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTapi-v1-auth-verify-phone">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://smartoo.test/api/v1/auth/verify-phone" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"phone\": \"architecto\",
-    \"verification_code\": \"569775\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://smartoo.test/api/v1/auth/verify-phone"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "phone": "architecto",
-    "verification_code": "569775"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-v1-auth-verify-phone">
-</span>
-<span id="execution-results-POSTapi-v1-auth-verify-phone" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-auth-verify-phone"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-auth-verify-phone"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-v1-auth-verify-phone" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-auth-verify-phone">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-v1-auth-verify-phone" data-method="POST"
-      data-path="api/v1/auth/verify-phone"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-auth-verify-phone', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-auth-verify-phone"
-                    onclick="tryItOut('POSTapi-v1-auth-verify-phone');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-auth-verify-phone"
-                    onclick="cancelTryOut('POSTapi-v1-auth-verify-phone');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-auth-verify-phone"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/v1/auth/verify-phone</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-v1-auth-verify-phone"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-v1-auth-verify-phone"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="phone"                data-endpoint="POSTapi-v1-auth-verify-phone"
-               value="architecto"
-               data-component="body">
-    <br>
-<p>The <code>phone</code> of an existing record in the users table. Example: <code>architecto</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>verification_code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="verification_code"                data-endpoint="POSTapi-v1-auth-verify-phone"
-               value="569775"
-               data-component="body">
-    <br>
-<p>Must be 6 digits. Example: <code>569775</code></p>
-        </div>
-        </form>
-
                     <h2 id="endpoints-POSTapi-v1-auth-logout">auth Logout the user and revoke their token</h2>
 
 <p>
@@ -899,7 +490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "gender=architecto"\
     --form "device_token=architecto"\
     --form "subscription_id=architecto"\
-    --form "image=@C:\Users\moham\AppData\Local\Temp\php9E26.tmp" </code></pre></div>
+    --form "image=@C:\Users\m.khairy\AppData\Local\Temp\php9715.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1117,7 +708,7 @@ Must be one of:
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\moham\AppData\Local\Temp\php9E26.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\m.khairy\AppData\Local\Temp\php9715.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -1295,7 +886,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"locale\": \"ar\"
+    \"locale\": \"en\"
 }"
 </code></pre></div>
 
@@ -1312,7 +903,7 @@ const headers = {
 };
 
 let body = {
-    "locale": "ar"
+    "locale": "en"
 };
 
 fetch(url, {
@@ -1412,10 +1003,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="locale"                data-endpoint="POSTapi-v1-change-language"
-               value="ar"
+               value="en"
                data-component="body">
     <br>
-<p>Example: <code>ar</code></p>
+<p>Example: <code>en</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>en</code></li> <li><code>ar</code></li></ul>
         </div>
@@ -2491,9 +2082,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"code\": \"bn\",
-    \"key\": \"g\",
-    \"value\": \"z\"
+    \"key\": \"b\",
+    \"translations\": []
 }"
 </code></pre></div>
 
@@ -2510,9 +2100,8 @@ const headers = {
 };
 
 let body = {
-    "code": "bn",
-    "key": "g",
-    "value": "z"
+    "key": "b",
+    "translations": []
 };
 
 fetch(url, {
@@ -2607,37 +2196,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="POSTapi-v1-translations"
-               value="bn"
-               data-component="body">
-    <br>
-<p>Must be 2 characters. Example: <code>bn</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="key"                data-endpoint="POSTapi-v1-translations"
-               value="g"
+               value="b"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>value</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+            <b style="line-height: 2;"><code>translations</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="value"                data-endpoint="POSTapi-v1-translations"
-               value="z"
+                              name="translations"                data-endpoint="POSTapi-v1-translations"
+               value=""
                data-component="body">
     <br>
-<p>Must not be greater than 1000 characters. Example: <code>z</code></p>
+<p>Must not have more than 1000 items.</p>
         </div>
         </form>
 
@@ -2660,9 +2238,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"code\": \"bn\",
-    \"key\": \"g\",
-    \"value\": \"z\"
+    \"key\": \"b\"
 }"
 </code></pre></div>
 
@@ -2679,9 +2255,7 @@ const headers = {
 };
 
 let body = {
-    "code": "bn",
-    "key": "g",
-    "value": "z"
+    "key": "b"
 };
 
 fetch(url, {
@@ -2788,37 +2362,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="PUTapi-v1-translations--id-"
-               value="bn"
-               data-component="body">
-    <br>
-<p>Must be 2 characters. Example: <code>bn</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="key"                data-endpoint="PUTapi-v1-translations--id-"
-               value="g"
+               value="b"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>value</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+            <b style="line-height: 2;"><code>translations</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="value"                data-endpoint="PUTapi-v1-translations--id-"
-               value="z"
+                              name="translations"                data-endpoint="PUTapi-v1-translations--id-"
+               value=""
                data-component="body">
     <br>
-<p>Must not be greater than 1000 characters. Example: <code>z</code></p>
+<p>Must not have more than 1000 items.</p>
         </div>
         </form>
 
@@ -3278,9 +2841,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "gender=architecto"\
     --form "contact_permission="\
     --form "notification_permission="\
-    --form "tracking_permission="\
+    --form "tracking_permission=1"\
     --form "subscription_id=architecto"\
-    --form "image=@C:\Users\moham\AppData\Local\Temp\php9EF2.tmp" </code></pre></div>
+    --form "image=@C:\Users\m.khairy\AppData\Local\Temp\php9810.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3311,7 +2874,7 @@ body.append('country_code', 'architecto');
 body.append('gender', 'architecto');
 body.append('contact_permission', '');
 body.append('notification_permission', '');
-body.append('tracking_permission', '');
+body.append('tracking_permission', '1');
 body.append('subscription_id', 'architecto');
 body.append('image', document.querySelector('input[name="image"]').files[0]);
 
@@ -3481,7 +3044,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\moham\AppData\Local\Temp\php9EF2.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\m.khairy\AppData\Local\Temp\php9810.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -3636,7 +3199,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>subscription_id</code></b>&nbsp;&nbsp;
@@ -3675,7 +3238,7 @@ Must be one of:
     --form "email=rowan.gulgowski@example.com"\
     --form "phone=architecto"\
     --form "password=]|{+-0pBNvYg"\
-    --form "role=user"\
+    --form "role=supervisor"\
     --form "device_type=architecto"\
     --form "mac_address=architecto"\
     --form "timezone=America/Hermosillo"\
@@ -3683,11 +3246,11 @@ Must be one of:
     --form "locale=en"\
     --form "country_code=architecto"\
     --form "gender=male"\
-    --form "contact_permission=1"\
+    --form "contact_permission="\
     --form "notification_permission=1"\
     --form "tracking_permission=1"\
     --form "subscription_id=architecto"\
-    --form "image=@C:\Users\moham\AppData\Local\Temp\php9F03.tmp" </code></pre></div>
+    --form "image=@C:\Users\m.khairy\AppData\Local\Temp\php9820.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3708,7 +3271,7 @@ body.append('name', 'g');
 body.append('email', 'rowan.gulgowski@example.com');
 body.append('phone', 'architecto');
 body.append('password', ']|{+-0pBNvYg');
-body.append('role', 'user');
+body.append('role', 'supervisor');
 body.append('device_type', 'architecto');
 body.append('mac_address', 'architecto');
 body.append('timezone', 'America/Hermosillo');
@@ -3716,7 +3279,7 @@ body.append('device_token', 'architecto');
 body.append('locale', 'en');
 body.append('country_code', 'architecto');
 body.append('gender', 'male');
-body.append('contact_permission', '1');
+body.append('contact_permission', '');
 body.append('notification_permission', '1');
 body.append('tracking_permission', '1');
 body.append('subscription_id', 'architecto');
@@ -3900,7 +3463,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\moham\AppData\Local\Temp\php9F03.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\m.khairy\AppData\Local\Temp\php9820.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -3908,10 +3471,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="PUTapi-v1-users--id-"
-               value="user"
+               value="supervisor"
                data-component="body">
     <br>
-<p>Example: <code>user</code></p>
+<p>Example: <code>supervisor</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>admin</code></li> <li><code>supervisor</code></li> <li><code>employee</code></li> <li><code>user</code></li></ul>
         </div>
@@ -4015,7 +3578,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notification_permission</code></b>&nbsp;&nbsp;
@@ -4265,58 +3828,58 @@ access-control-allow-origin: *
         &quot;data&quot;: [
             {
                 &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;iste&quot;,
-                &quot;description&quot;: &quot;Perferendis ad neque aliquid voluptates ut rerum quia repudiandae.&quot;,
-                &quot;price&quot;: &quot;23.67&quot;,
+                &quot;name&quot;: &quot;natus&quot;,
+                &quot;description&quot;: &quot;Qui amet et eos necessitatibus totam quia nulla.&quot;,
+                &quot;price&quot;: &quot;31.63&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 60,
-                &quot;status&quot;: &quot;active&quot;,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;duration_days&quot;: 90,
+                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 2,
                 &quot;name&quot;: &quot;cupiditate&quot;,
-                &quot;description&quot;: &quot;Aut distinctio dolorem nihil laudantium velit ut.&quot;,
-                &quot;price&quot;: &quot;95.34&quot;,
+                &quot;description&quot;: &quot;Molestiae earum reiciendis possimus ut est quam debitis.&quot;,
+                &quot;price&quot;: &quot;30.44&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
                 &quot;duration_days&quot;: 30,
-                &quot;status&quot;: &quot;inactive&quot;,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 3,
-                &quot;name&quot;: &quot;enim&quot;,
-                &quot;description&quot;: &quot;Voluptas consequatur et itaque vero et sapiente.&quot;,
-                &quot;price&quot;: &quot;46.60&quot;,
+                &quot;name&quot;: &quot;minima&quot;,
+                &quot;description&quot;: &quot;Reiciendis sit architecto aut officiis.&quot;,
+                &quot;price&quot;: &quot;20.54&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
                 &quot;duration_days&quot;: 30,
                 &quot;status&quot;: &quot;active&quot;,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;consequatur&quot;,
-                &quot;description&quot;: &quot;Numquam consequatur autem rerum.&quot;,
-                &quot;price&quot;: &quot;27.48&quot;,
+                &quot;name&quot;: &quot;cupiditate&quot;,
+                &quot;description&quot;: &quot;Dolore perspiciatis pariatur harum voluptatibus eveniet ea.&quot;,
+                &quot;price&quot;: &quot;49.48&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 60,
+                &quot;duration_days&quot;: 30,
                 &quot;status&quot;: &quot;active&quot;,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 5,
-                &quot;name&quot;: &quot;aperiam&quot;,
-                &quot;description&quot;: &quot;Et ut pariatur incidunt dolor et quasi.&quot;,
-                &quot;price&quot;: &quot;96.65&quot;,
+                &quot;name&quot;: &quot;suscipit&quot;,
+                &quot;description&quot;: &quot;Ex qui aut odit praesentium recusandae est corrupti tempore.&quot;,
+                &quot;price&quot;: &quot;54.12&quot;,
                 &quot;currency&quot;: &quot;USD&quot;,
-                &quot;duration_days&quot;: 60,
+                &quot;duration_days&quot;: 30,
                 &quot;status&quot;: &quot;inactive&quot;,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             }
         ],
         &quot;first_page_url&quot;: &quot;http://smartoo.test/api/v1/plans?page=1&quot;,
@@ -4488,14 +4051,14 @@ access-control-allow-origin: *
     &quot;message&quot;: &quot;Plan retrieved successfully.&quot;,
     &quot;result&quot;: {
         &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;iste&quot;,
-        &quot;description&quot;: &quot;Perferendis ad neque aliquid voluptates ut rerum quia repudiandae.&quot;,
-        &quot;price&quot;: &quot;23.67&quot;,
+        &quot;name&quot;: &quot;natus&quot;,
+        &quot;description&quot;: &quot;Qui amet et eos necessitatibus totam quia nulla.&quot;,
+        &quot;price&quot;: &quot;31.63&quot;,
         &quot;currency&quot;: &quot;USD&quot;,
-        &quot;duration_days&quot;: 60,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+        &quot;duration_days&quot;: 90,
+        &quot;status&quot;: &quot;inactive&quot;,
+        &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
     }
 }</code>
  </pre>
@@ -4616,9 +4179,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"name\": \"b\",
     \"description\": \"Et animi quos velit et fugiat.\",
     \"price\": 42,
-    \"currency\": \"EUR\",
+    \"currency\": \"GBP\",
     \"duration_days\": 40,
-    \"status\": \"active\"
+    \"status\": \"inactive\"
 }"
 </code></pre></div>
 
@@ -4638,9 +4201,9 @@ let body = {
     "name": "b",
     "description": "Et animi quos velit et fugiat.",
     "price": 42,
-    "currency": "EUR",
+    "currency": "GBP",
     "duration_days": 40,
-    "status": "active"
+    "status": "inactive"
 };
 
 fetch(url, {
@@ -4773,10 +4336,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="currency"                data-endpoint="POSTapi-v1-plans"
-               value="EUR"
+               value="GBP"
                data-component="body">
     <br>
-<p>Example: <code>EUR</code></p>
+<p>Example: <code>GBP</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>USD</code></li> <li><code>EUR</code></li> <li><code>GBP</code></li></ul>
         </div>
@@ -4797,10 +4360,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-v1-plans"
-               value="active"
+               value="inactive"
                data-component="body">
     <br>
-<p>Example: <code>active</code></p>
+<p>Example: <code>inactive</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -4828,7 +4391,7 @@ Must be one of:
     \"name\": \"b\",
     \"description\": \"Et animi quos velit et fugiat.\",
     \"price\": 42,
-    \"currency\": \"EUR\",
+    \"currency\": \"GBP\",
     \"duration_days\": 40,
     \"status\": \"inactive\"
 }"
@@ -4850,7 +4413,7 @@ let body = {
     "name": "b",
     "description": "Et animi quos velit et fugiat.",
     "price": 42,
-    "currency": "EUR",
+    "currency": "GBP",
     "duration_days": 40,
     "status": "inactive"
 };
@@ -4997,10 +4560,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="currency"                data-endpoint="PUTapi-v1-plans--id-"
-               value="EUR"
+               value="GBP"
                data-component="body">
     <br>
-<p>Example: <code>EUR</code></p>
+<p>Example: <code>GBP</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>USD</code></li> <li><code>EUR</code></li> <li><code>GBP</code></li></ul>
         </div>
@@ -5225,56 +4788,56 @@ access-control-allow-origin: *
                 &quot;id&quot;: 1,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1970-01-27&quot;,
-                &quot;end_date&quot;: &quot;1999-02-01&quot;,
-                &quot;status&quot;: &quot;expired&quot;,
+                &quot;start_date&quot;: &quot;2013-04-19&quot;,
+                &quot;end_date&quot;: &quot;2010-09-23&quot;,
+                &quot;status&quot;: &quot;active&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 2,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1995-01-28&quot;,
-                &quot;end_date&quot;: &quot;2016-10-23&quot;,
+                &quot;start_date&quot;: &quot;1984-03-23&quot;,
+                &quot;end_date&quot;: &quot;1987-10-12&quot;,
                 &quot;status&quot;: &quot;active&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 3,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;2018-05-10&quot;,
-                &quot;end_date&quot;: &quot;2003-11-26&quot;,
-                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;start_date&quot;: &quot;1973-08-01&quot;,
+                &quot;end_date&quot;: &quot;2014-10-14&quot;,
+                &quot;status&quot;: &quot;expired&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 4,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1981-11-15&quot;,
-                &quot;end_date&quot;: &quot;2007-02-27&quot;,
-                &quot;status&quot;: &quot;active&quot;,
+                &quot;start_date&quot;: &quot;2008-05-09&quot;,
+                &quot;end_date&quot;: &quot;2017-02-08&quot;,
+                &quot;status&quot;: &quot;expired&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             },
             {
                 &quot;id&quot;: 5,
                 &quot;user_id&quot;: 1,
                 &quot;plan_id&quot;: 1,
-                &quot;start_date&quot;: &quot;1988-07-14&quot;,
-                &quot;end_date&quot;: &quot;1977-05-13&quot;,
-                &quot;status&quot;: &quot;expired&quot;,
+                &quot;start_date&quot;: &quot;1981-10-12&quot;,
+                &quot;end_date&quot;: &quot;2021-10-06&quot;,
+                &quot;status&quot;: &quot;inactive&quot;,
                 &quot;deleted_at&quot;: null,
-                &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+                &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
             }
         ],
         &quot;first_page_url&quot;: &quot;http://smartoo.test/api/v1/subscriptions?page=1&quot;,
@@ -5448,12 +5011,12 @@ access-control-allow-origin: *
         &quot;id&quot;: 1,
         &quot;user_id&quot;: 1,
         &quot;plan_id&quot;: 1,
-        &quot;start_date&quot;: &quot;1970-01-27&quot;,
-        &quot;end_date&quot;: &quot;1999-02-01&quot;,
-        &quot;status&quot;: &quot;expired&quot;,
+        &quot;start_date&quot;: &quot;2013-04-19&quot;,
+        &quot;end_date&quot;: &quot;2010-09-23&quot;,
+        &quot;status&quot;: &quot;active&quot;,
         &quot;deleted_at&quot;: null,
-        &quot;created_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-06-25T21:02:49.000000Z&quot;
+        &quot;created_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-30T11:42:01.000000Z&quot;
     }
 }</code>
  </pre>
@@ -5574,8 +5137,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"user_id\": \"architecto\",
     \"plan_id\": \"architecto\",
     \"start_date\": \"2021-07-24\",
-    \"end_date\": \"2051-07-24\",
-    \"status\": \"expired\"
+    \"end_date\": \"2051-07-25\",
+    \"status\": \"active\"
 }"
 </code></pre></div>
 
@@ -5595,8 +5158,8 @@ let body = {
     "user_id": "architecto",
     "plan_id": "architecto",
     "start_date": "2021-07-24",
-    "end_date": "2051-07-24",
-    "status": "expired"
+    "end_date": "2051-07-25",
+    "status": "active"
 };
 
 fetch(url, {
@@ -5729,10 +5292,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="POSTapi-v1-subscriptions"
-               value="2051-07-24"
+               value="2051-07-25"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2051-07-24</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2051-07-25</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -5740,10 +5303,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-v1-subscriptions"
-               value="expired"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>expired</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li> <li><code>expired</code></li></ul>
         </div>
@@ -5771,8 +5334,8 @@ Must be one of:
     \"user_id\": \"architecto\",
     \"plan_id\": \"architecto\",
     \"start_date\": \"2021-07-24\",
-    \"end_date\": \"2051-07-24\",
-    \"status\": \"inactive\"
+    \"end_date\": \"2051-07-25\",
+    \"status\": \"active\"
 }"
 </code></pre></div>
 
@@ -5792,8 +5355,8 @@ let body = {
     "user_id": "architecto",
     "plan_id": "architecto",
     "start_date": "2021-07-24",
-    "end_date": "2051-07-24",
-    "status": "inactive"
+    "end_date": "2051-07-25",
+    "status": "active"
 };
 
 fetch(url, {
@@ -5938,10 +5501,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="PUTapi-v1-subscriptions--id-"
-               value="2051-07-24"
+               value="2051-07-25"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2051-07-24</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2051-07-25</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -5949,10 +5512,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-v1-subscriptions--id-"
-               value="inactive"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>inactive</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li> <li><code>expired</code></li></ul>
         </div>

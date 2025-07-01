@@ -56,140 +56,6 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/login
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'auth login user'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      phone:
-        name: phone
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      phone: architecto
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/v1/auth/resend-verification-code
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'auth resend verification code'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      phone:
-        name: phone
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      phone: architecto
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/v1/auth/verify-phone
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'auth verify phone number'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      phone:
-        name: phone
-        description: 'The <code>phone</code> of an existing record in the users table.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      verification_code:
-        name: verification_code
-        description: 'Must be 6 digits.'
-        required: true
-        example: '569775'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      phone: architecto
-      verification_code: '569775'
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
     uri: api/v1/auth/logout
     metadata:
       groupName: Endpoints
@@ -449,7 +315,7 @@ endpoints:
         name: locale
         description: ''
         required: true
-        example: ar
+        example: en
         type: string
         enumValues:
           - en
@@ -458,7 +324,7 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      locale: ar
+      locale: en
     fileParameters: []
     responses: []
     responseFields: []
@@ -871,40 +737,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      code:
-        name: code
-        description: 'Must be 2 characters.'
-        required: true
-        example: bn
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
       key:
         name: key
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: g
+        example: b
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      value:
-        name: value
-        description: 'Must not be greater than 1000 characters.'
+      translations:
+        name: translations
+        description: 'Must not have more than 1000 items.'
         required: true
-        example: z
-        type: string
+        example: []
+        type: object
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      code: bn
-      key: g
-      value: z
+      key: b
+      translations: []
     fileParameters: []
     responses: []
     responseFields: []
@@ -949,40 +804,28 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      code:
-        name: code
-        description: 'Must be 2 characters.'
-        required: true
-        example: bn
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
       key:
         name: key
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: g
+        example: b
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      value:
-        name: value
-        description: 'Must not be greater than 1000 characters.'
+      translations:
+        name: translations
+        description: 'Must not have more than 1000 items.'
         required: false
-        example: z
-        type: string
+        example: null
+        type: object
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      code: bn
-      key: g
-      value: z
+      key: b
     fileParameters: []
     responses: []
     responseFields: []
@@ -1338,7 +1181,7 @@ endpoints:
         name: tracking_permission
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1371,7 +1214,7 @@ endpoints:
       gender: architecto
       contact_permission: false
       notification_permission: false
-      tracking_permission: false
+      tracking_permission: true
       subscription_id: architecto
     fileParameters:
       image: null
@@ -1492,7 +1335,7 @@ endpoints:
         name: role
         description: ''
         required: false
-        example: user
+        example: supervisor
         type: string
         enumValues:
           - admin
@@ -1580,7 +1423,7 @@ endpoints:
         name: contact_permission
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1623,7 +1466,7 @@ endpoints:
       email: rowan.gulgowski@example.com
       phone: architecto
       password: ']|{+-0pBNvYg'
-      role: user
+      role: supervisor
       device_type: architecto
       mac_address: architecto
       timezone: America/Hermosillo
@@ -1631,7 +1474,7 @@ endpoints:
       locale: en
       country_code: architecto
       gender: male
-      contact_permission: true
+      contact_permission: false
       notification_permission: true
       tracking_permission: true
       subscription_id: architecto
@@ -1719,7 +1562,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Plans retrieved successfully.","result":{"current_page":1,"data":[{"id":1,"name":"iste","description":"Perferendis ad neque aliquid voluptates ut rerum quia repudiandae.","price":"23.67","currency":"USD","duration_days":60,"status":"active","created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":2,"name":"cupiditate","description":"Aut distinctio dolorem nihil laudantium velit ut.","price":"95.34","currency":"USD","duration_days":30,"status":"inactive","created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":3,"name":"enim","description":"Voluptas consequatur et itaque vero et sapiente.","price":"46.60","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":4,"name":"consequatur","description":"Numquam consequatur autem rerum.","price":"27.48","currency":"USD","duration_days":60,"status":"active","created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":5,"name":"aperiam","description":"Et ut pariatur incidunt dolor et quasi.","price":"96.65","currency":"USD","duration_days":60,"status":"inactive","created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/plans","per_page":10,"prev_page_url":null,"to":5,"total":5}}'
+        content: '{"success":true,"message":"Plans retrieved successfully.","result":{"current_page":1,"data":[{"id":1,"name":"natus","description":"Qui amet et eos necessitatibus totam quia nulla.","price":"31.63","currency":"USD","duration_days":90,"status":"inactive","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":2,"name":"cupiditate","description":"Molestiae earum reiciendis possimus ut est quam debitis.","price":"30.44","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":3,"name":"minima","description":"Reiciendis sit architecto aut officiis.","price":"20.54","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":4,"name":"cupiditate","description":"Dolore perspiciatis pariatur harum voluptatibus eveniet ea.","price":"49.48","currency":"USD","duration_days":30,"status":"active","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":5,"name":"suscipit","description":"Ex qui aut odit praesentium recusandae est corrupti tempore.","price":"54.12","currency":"USD","duration_days":30,"status":"inactive","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/plans?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/plans","per_page":10,"prev_page_url":null,"to":5,"total":5}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1773,7 +1616,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Plan retrieved successfully.","result":{"id":1,"name":"iste","description":"Perferendis ad neque aliquid voluptates ut rerum quia repudiandae.","price":"23.67","currency":"USD","duration_days":60,"status":"active","created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"}}'
+        content: '{"success":true,"message":"Plan retrieved successfully.","result":{"id":1,"name":"natus","description":"Qui amet et eos necessitatibus totam quia nulla.","price":"31.63","currency":"USD","duration_days":90,"status":"inactive","created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1845,7 +1688,7 @@ endpoints:
         name: currency
         description: ''
         required: true
-        example: EUR
+        example: GBP
         type: string
         enumValues:
           - USD
@@ -1868,7 +1711,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: active
+        example: inactive
         type: string
         enumValues:
           - active
@@ -1880,9 +1723,9 @@ endpoints:
       name: b
       description: 'Et animi quos velit et fugiat.'
       price: 42
-      currency: EUR
+      currency: GBP
       duration_days: 40
-      status: active
+      status: inactive
     fileParameters: []
     responses: []
     responseFields: []
@@ -1961,7 +1804,7 @@ endpoints:
         name: currency
         description: ''
         required: false
-        example: EUR
+        example: GBP
         type: string
         enumValues:
           - USD
@@ -1996,7 +1839,7 @@ endpoints:
       name: b
       description: 'Et animi quos velit et fugiat.'
       price: 42
-      currency: EUR
+      currency: GBP
       duration_days: 40
       status: inactive
     fileParameters: []
@@ -2082,7 +1925,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Subscriptions retrieved successfully.","result":{"current_page":1,"data":[{"id":1,"user_id":1,"plan_id":1,"start_date":"1970-01-27","end_date":"1999-02-01","status":"expired","deleted_at":null,"created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":2,"user_id":1,"plan_id":1,"start_date":"1995-01-28","end_date":"2016-10-23","status":"active","deleted_at":null,"created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":3,"user_id":1,"plan_id":1,"start_date":"2018-05-10","end_date":"2003-11-26","status":"inactive","deleted_at":null,"created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":4,"user_id":1,"plan_id":1,"start_date":"1981-11-15","end_date":"2007-02-27","status":"active","deleted_at":null,"created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"},{"id":5,"user_id":1,"plan_id":1,"start_date":"1988-07-14","end_date":"1977-05-13","status":"expired","deleted_at":null,"created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/subscriptions","per_page":10,"prev_page_url":null,"to":5,"total":5}}'
+        content: '{"success":true,"message":"Subscriptions retrieved successfully.","result":{"current_page":1,"data":[{"id":1,"user_id":1,"plan_id":1,"start_date":"2013-04-19","end_date":"2010-09-23","status":"active","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":2,"user_id":1,"plan_id":1,"start_date":"1984-03-23","end_date":"1987-10-12","status":"active","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":3,"user_id":1,"plan_id":1,"start_date":"1973-08-01","end_date":"2014-10-14","status":"expired","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":4,"user_id":1,"plan_id":1,"start_date":"2008-05-09","end_date":"2017-02-08","status":"expired","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"},{"id":5,"user_id":1,"plan_id":1,"start_date":"1981-10-12","end_date":"2021-10-06","status":"inactive","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}],"first_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/smartoo.test\/api\/v1\/subscriptions?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/smartoo.test\/api\/v1\/subscriptions","per_page":10,"prev_page_url":null,"to":5,"total":5}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2136,7 +1979,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Subscription retrieved successfully.","result":{"id":1,"user_id":1,"plan_id":1,"start_date":"1970-01-27","end_date":"1999-02-01","status":"expired","deleted_at":null,"created_at":"2025-06-25T21:02:49.000000Z","updated_at":"2025-06-25T21:02:49.000000Z"}}'
+        content: '{"success":true,"message":"Subscription retrieved successfully.","result":{"id":1,"user_id":1,"plan_id":1,"start_date":"2013-04-19","end_date":"2010-09-23","status":"active","deleted_at":null,"created_at":"2025-06-30T11:42:01.000000Z","updated_at":"2025-06-30T11:42:01.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2208,7 +2051,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
         required: true
-        example: '2051-07-24'
+        example: '2051-07-25'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2218,7 +2061,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: expired
+        example: active
         type: string
         enumValues:
           - active
@@ -2231,8 +2074,8 @@ endpoints:
       user_id: architecto
       plan_id: architecto
       start_date: '2021-07-24'
-      end_date: '2051-07-24'
-      status: expired
+      end_date: '2051-07-25'
+      status: active
     fileParameters: []
     responses: []
     responseFields: []
@@ -2311,7 +2154,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
         required: false
-        example: '2051-07-24'
+        example: '2051-07-25'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2321,7 +2164,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: inactive
+        example: active
         type: string
         enumValues:
           - active
@@ -2334,8 +2177,8 @@ endpoints:
       user_id: architecto
       plan_id: architecto
       start_date: '2021-07-24'
-      end_date: '2051-07-24'
-      status: inactive
+      end_date: '2051-07-25'
+      status: active
     fileParameters: []
     responses: []
     responseFields: []

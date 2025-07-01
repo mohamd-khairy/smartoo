@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
         Route::post('/register', [\App\Http\Controllers\API\V1\AuthController::class, 'register'])->name('register');
-        Route::post('/login', [\App\Http\Controllers\API\V1\AuthController::class, 'login'])->name('login');
-        Route::post('/resend-verification-code', [\App\Http\Controllers\API\V1\AuthController::class, 'resendVerificationCode'])->name('resend-verify-phone');
-        Route::post('/verify-phone', [\App\Http\Controllers\API\V1\AuthController::class, 'verifyPhoneNumber'])->name('verify-phone');
+        // Route::post('/login', [\App\Http\Controllers\API\V1\AuthController::class, 'login'])->name('login');
+        // Route::post('/resend-verification-code', [\App\Http\Controllers\API\V1\AuthController::class, 'resendVerificationCode'])->name('resend-verify-phone');
+        // Route::post('/verify-phone', [\App\Http\Controllers\API\V1\AuthController::class, 'verifyPhoneNumber'])->name('verify-phone');
 
         Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('/logout', [\App\Http\Controllers\API\V1\AuthController::class, 'logout'])->name('logout');
