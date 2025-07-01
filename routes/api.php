@@ -41,8 +41,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     //     Route::delete('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'destroy'])->name('destroy');
     // });
 
-    Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
-
     // Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
     //     Route::get('/', [\App\Http\Controllers\API\V1\PlanController::class, 'index'])->name('index');
     //     Route::get('/{id}', [\App\Http\Controllers\API\V1\PlanController::class, 'show'])->name('show');

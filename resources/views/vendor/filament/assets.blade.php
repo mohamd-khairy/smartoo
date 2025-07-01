@@ -45,7 +45,7 @@
         const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';
 
         try {
-            const response = await fetch('{{ route('api.change-language') }}', {
+            const response = await fetch('{{ route('change-language') }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

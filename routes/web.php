@@ -18,3 +18,5 @@ Route::get('/swagger-docs', function () {
         'Content-Type' => 'application/yaml',
     ]);
 });
+
+Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
