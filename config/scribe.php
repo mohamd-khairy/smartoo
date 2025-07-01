@@ -155,8 +155,24 @@ return [
     'openapi' => [
         'enabled' => true,
 
+        // 'overrides' => [
+        //     // 'info.version' => '2.0.0',
+        // ],
+
         'overrides' => [
-            // 'info.version' => '2.0.0',
+            'components' => [
+                'parameters' => [
+                    'XAuthorizationHeader' => [
+                        'name' => 'X-Authorization',
+                        'in' => 'header',
+                        'required' => true,
+                        'schema' => [
+                            'type' => 'string',
+                        ],
+                        'description' => 'Your custom API token for access.',
+                    ],
+                ],
+            ],
         ],
 
         // Additional generators to use when generating the OpenAPI spec.
@@ -214,6 +230,7 @@ return [
             Strategies\StaticData::withSettings(data: [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
+                'X-Authorization' => env('SCRIBE_X_AUTH', 'your-default-x-auth-token'),
             ]),
         ],
         'urlParameters' => [

@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "creagia/filament-code-field": "^3.0",
+        "ejarnutowski/laravel-api-key": "^1.0",
         "filament/filament": "^3.3",
         "knuckleswtf/scribe": "^5.2",
         "laravel/framework": "^12.0",

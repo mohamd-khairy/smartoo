@@ -30,7 +30,7 @@ if (!function_exists('login_response')) {
             // Cache remote settings based on user's country code with a default fallback
             'remote_settings' => //cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
                 json_decode(RemoteSetting::where('country_code', 'default' ?? $user->country_code)
-                    ->value('value') ?: []) // Cache the remote settings, fallback to empty array if not found
+                    ->value('value') ?: '[]') // Cache the remote settings, fallback to empty array if not found
             //}),
         ] : null;
 
