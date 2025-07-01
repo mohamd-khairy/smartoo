@@ -23,15 +23,15 @@ if (!function_exists('login_response')) {
             'token' => $user->createToken('auth_token')->plainTextToken,
             // Cache translations per user locale to optimize performance
             'translations' => //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
-            Translation::get()->mapWithKeys(function ($item) {
-                return [$item->key => $item->value];
-            }),
+                Translation::get()->mapWithKeys(function ($item) {
+                    return [$item->key => $item->value];
+                }),
             // }),
             // Cache remote settings based on user's country code with a default fallback
-            'remote_settings' => cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
-                return RemoteSetting::where('country_code', $user->country_code)
-                    ->value('value') ?: []; // Cache the remote settings, fallback to empty array if not found
-            }),
+            'remote_settings' => //cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
+                RemoteSetting::where('country_code', 'default' ?? $user->country_code)
+                    ->value('value') ?: [] // Cache the remote settings, fallback to empty array if not found
+            //}),
         ] : null;
 
         // Return the API response with success flag, message, and data

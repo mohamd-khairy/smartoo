@@ -17,7 +17,7 @@ class RemoteSettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'country_code' => 'EG',
+            'country_code' => 'default',
             'type' => 'json', // Random type
             'value' => json_encode([
                 "app_config" => [
