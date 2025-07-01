@@ -44,7 +44,8 @@ class User extends Authenticatable
         'contact_permission',
         'notification_permission',
         'tracking_permission',
-        'uuid'
+        'uuid',
+        'subscription_id'
     ];
 
     /**
@@ -102,15 +103,5 @@ class User extends Authenticatable
         } else {
             return $value ?? null;
         }
-    }
-
-    public function subscription()
-    {
-        return $this->hasOne(Subscription::class)->latestOfMany(); // A user has one subscription
-    }
-
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class); // A user has many subscriptions
     }
 }

@@ -177,23 +177,12 @@ class AuthController extends Controller
     public function updateProfile(UpdateProfileRequest $request)
     {
         $user = $request->user();
+        $user = User::find($user->id);
 
         // Update user profile with validated data
         $user->update($request->validated());
 
-        // Check if a new subscription ID is provided in the request
-        if ($request->has('subscription_id')) {
-            // Check if the provided subscription_id exists in the subscriptions table
-            $subscription = Subscription::find($request->subscription_id);
-
-            if ($subscription) {
-                // Update the user's subscription_id with the new plan
-                $user->subscription()->associate($subscription);
-                $user->save();
-            }
-        }
-
-        return api_response($user, __('general.auth.profile_updated'), 200);
+        return api_response($user->refresh(), __('general.auth.profile_updated'), 200);
     }
 
     /**

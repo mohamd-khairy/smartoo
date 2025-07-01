@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('device_type')->nullable();
             $table->string('uuid')->nullable()->unique();
             $table->string('device_token')->nullable()->unique();
+            $table->string('subscription_id')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('mac_address')->nullable();
             $table->string('first_name')->nullable(); // Allow name to be nullable for anonymous users
