@@ -19,6 +19,11 @@ class PlanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     public static function getModelLabel(): string
     {
         return __('resources.plan');
