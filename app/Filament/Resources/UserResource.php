@@ -53,8 +53,6 @@ class UserResource extends Resource
                     ->email()
                     ->maxLength(255)
                     ->label(__('resources.email')),
-                Forms\Components\DateTimePicker::make('email_verified_at')
-                    ->label(__('resources.email_verified_at')),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->maxLength(255)
