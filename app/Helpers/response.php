@@ -26,8 +26,10 @@ if (!function_exists('login_response')) {
         $data = $user ? [
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
-            'translations' => (object) Translation::get()->map(function ($item) {
-                return [$item->key => $item->value];  // Each item is now a dictionary with key-value pair
+            'translations' => Translation::get()->mapWithKeys(function ($item) {
+                $obj = new \stdClass();
+                $obj->{$item->key} = $item->value;  // Assign key-value pair to the stdClass object
+                return [$item->key => $obj];  // Return key-value pair in the correct format
             }), //$translationsObject,
             //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
 
