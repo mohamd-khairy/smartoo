@@ -9,8 +9,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
         Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/me', [\App\Http\Controllers\API\V1\AuthController::class, 'me'])->name('me');
             Route::put('/profile', [\App\Http\Controllers\API\V1\AuthController::class, 'updateProfile'])->name('update-profile');
-            Route::post('/refresh-token', [\App\Http\Controllers\API\V1\AuthController::class, 'refreshToken'])->name('refresh-token');
-            Route::post('/logout', [\App\Http\Controllers\API\V1\AuthController::class, 'logout'])->name('logout');
+            // Route::post('/refresh-token', [\App\Http\Controllers\API\V1\AuthController::class, 'refreshToken'])->name('refresh-token');
+            // Route::post('/logout', [\App\Http\Controllers\API\V1\AuthController::class, 'logout'])->name('logout');
         });
     });
 
@@ -19,7 +19,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
         // Route::get('/{id}', [\App\Http\Controllers\API\V1\TranslationController::class, 'show'])->name('show');
         Route::post('/', [\App\Http\Controllers\API\V1\TranslationController::class, 'store'])->name('store');
         // Route::put('/{id}', [\App\Http\Controllers\API\V1\TranslationController::class, 'update'])->name('update');
-        Route::delete('/{id}', [\App\Http\Controllers\API\V1\TranslationController::class, 'destroy'])->name('destroy');
+        // Route::delete('/{id}', [\App\Http\Controllers\API\V1\TranslationController::class, 'destroy'])->name('destroy');
     });
 
     // Route::group(['prefix' => 'remote-settings', 'middleware' => 'auth:sanctum', 'as' => 'remote-settings.'], function () {
