@@ -20,8 +20,16 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (\Illuminate\Validation\ValidationException $e, $request) {
+            // First, get the errors array and shift the first field's errors
+            $errors = $e->errors();
+            $firstError = array_shift($errors); // This gets the first field's errors
+    
+            // Then get the first error message from that array
+            $firstErrorMessage = $firstError[0]; // Get the first message of the first field's errors
+    
+            // Return the first validation error message
             return api_response(
-                message: array_shift($e->errors())[0],
+                message: $firstErrorMessage,
                 statusCode: 422
             );
         });
