@@ -2,6 +2,11 @@
 
 return [
 
+    'logo' => env('APP_LOGO', 'images/logo.png'), // Use an image path or URL
+    
+    'sidebar' => [
+        'logo' => env('APP_LOGO', 'images/logo.png'), // Set logo for sidebar
+    ],
     /*
     |--------------------------------------------------------------------------
     | Broadcasting
