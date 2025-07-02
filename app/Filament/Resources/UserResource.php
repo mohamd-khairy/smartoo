@@ -43,12 +43,12 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('first_name')
                     ->maxLength(255)
-                    ->label(__('resources.name')),
-                Forms\Components\Textarea::make('image')
-                    ->columnSpanFull()
-                    ->label(__('resources.image')),
+                    ->label(__('resources.first_name')),
+                Forms\Components\TextInput::make('last_name')
+                    ->maxLength(255)
+                    ->label(__('resources.last_name')),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->maxLength(255)
@@ -67,12 +67,6 @@ class UserResource extends Resource
                     ->tel()
                     ->maxLength(255)
                     ->label(__('resources.phone')),
-                Forms\Components\TextInput::make('phone_verification_code')
-                    ->tel()
-                    ->maxLength(6)
-                    ->label(__('resources.phone_verification_code')),
-                Forms\Components\DateTimePicker::make('phone_verified_at')
-                    ->label(__('resources.phone_verified_at')),
                 Forms\Components\TextInput::make('role')
                     ->required()
                     ->maxLength(255)
@@ -88,20 +82,13 @@ class UserResource extends Resource
                     ->maxLength(255)
                     ->default('pending')
                     ->label(__('resources.status')),
-                Forms\Components\TextInput::make('device_type')
-                    ->maxLength(255)
-                    ->label(__('resources.device_type')),
-                Forms\Components\TextInput::make('mac_address')
-                    ->maxLength(255)
-                    ->label(__('resources.mac_address')),
-                Forms\Components\TextInput::make('ip_address')
-                    ->maxLength(255)
-                    ->label(__('resources.ip_address')),
                 Forms\Components\TextInput::make('timezone')
                     ->maxLength(255)
                     ->label(__('resources.timezone')),
-                Forms\Components\DateTimePicker::make('last_login_at')
-                    ->label(__('resources.last_login_at')),
+                Forms\Components\FileUpload::make('image')
+                    ->columnSpanFull()
+                    ->label(__('resources.image'))
+                    ->image(),
             ]);
     }
 
