@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'v1', 'as' => 'api.' ], function () { // 'middleware' => 'auth.apikey'
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], function () {
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
         Route::post('/register', [\App\Http\Controllers\API\V1\AuthController::class, 'register'])->name('register');
         // Route::post('/login', [\App\Http\Controllers\API\V1\AuthController::class, 'login'])->name('login');
