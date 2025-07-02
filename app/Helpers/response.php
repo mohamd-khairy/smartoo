@@ -17,20 +17,22 @@ if (!function_exists('login_response')) {
         if ($user && $user->locale) {
             setEnv('APP_LOCALE', $user->locale);
         }
-        // If user is provided, prepare data for response
+
+        $translations = Translation::get()->mapWithKeys(function ($item) {
+            return [$item->key => $item->value];
+        });
+        $translationsObject = (object) $translations->toArray();
+
         $data = $user ? [
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
-            // Cache translations per user locale to optimize performance
-            'translations' => //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
-                Translation::get()->mapWithKeys(function ($item) {
-                    return [[$item->key => $item->value]];
-                }),
+            'translations' => $translationsObject,
+            //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
+
             // }),
-            // Cache remote settings based on user's country code with a default fallback
             'remote_settings' => //cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
-                json_decode(RemoteSetting::where('country_code', 'default' ?? $user->country_code)
-                    ->value('value') ?: '[]') // Cache the remote settings, fallback to empty array if not found
+            json_decode(RemoteSetting::where('country_code', 'default' ?? $user->country_code)
+                ->value('value') ?: '[]') // Cache the remote settings, fallback to empty array if not found
             //}),
         ] : null;
 
