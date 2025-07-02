@@ -43,12 +43,12 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('first_name')
+                Forms\Components\TextInput::make('name')
                     ->maxLength(255)
-                    ->label(__('resources.first_name')),
-                Forms\Components\TextInput::make('last_name')
-                    ->maxLength(255)
-                    ->label(__('resources.last_name')),
+                    ->label(__('resources.name')),
+                // Forms\Components\TextInput::make('last_name')
+                //     ->maxLength(255)
+                //     ->label(__('resources.last_name')),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->maxLength(255)
