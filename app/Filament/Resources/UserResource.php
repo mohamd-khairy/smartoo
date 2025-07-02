@@ -144,6 +144,7 @@ class UserResource extends Resource
                     ->label(__('resources.locale')),
                 Tables\Columns\TextColumn::make('status')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.status')),
                 Tables\Columns\TextColumn::make('device_type')
                     ->searchable()
