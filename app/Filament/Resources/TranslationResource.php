@@ -120,6 +120,7 @@ class TranslationResource extends Resource
             'index' => Pages\ListTranslations::route('/'),
             'create' => Pages\CreateTranslation::route('/create'),
             'edit' => Pages\EditTranslation::route('/{record}/edit'),
+            'show' => Pages\ShowAudit::route('/{record}'),
         ];
     }
 }

@@ -28,7 +28,7 @@ class CreateTranslationRequest extends FormRequest
             'key' => 'required|string|max:255|unique:translations,key,code,' . $this->code, // Ensure the key is unique for the same language code
 
             // 'value' is the actual translation value (e.g., 'Hello', 'Bienvenue')
-            'translations' => 'required|array|max:1000', // The translation value is required and can be a maximum of 1000 characters
+            'translations' => 'required|array', // The translation value is required and can be a maximum of 1000 characters
         ];
     }
 }

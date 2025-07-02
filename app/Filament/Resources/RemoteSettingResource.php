@@ -113,6 +113,7 @@ class RemoteSettingResource extends Resource
             'index' => Pages\ListRemoteSettings::route('/'),
             'create' => Pages\CreateRemoteSetting::route('/create'),
             'edit' => Pages\EditRemoteSetting::route('/{record}/edit'),
+            'show' => Pages\ShowAudit::route('/{record}'),
         ];
     }
 }

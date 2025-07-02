@@ -30,7 +30,7 @@ class UpdateTranslationRequest extends FormRequest
             'key' => 'required|string|max:255|unique:translations,key,id,code,' . $this->code, // Ensure the key is unique for the same language code
 
             // 'value' is the actual translation value (e.g., 'Hello', 'Bienvenue')
-            'translations' => 'nullable|array|max:1000', // The translation value is optional for an update, but should be a string if provided
+            'translations' => 'nullable|array', // The translation value is optional for an update, but should be a string if provided
         ];
     }
 }

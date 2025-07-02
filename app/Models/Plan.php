@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Plan extends Model
+class Plan extends Model implements Auditable
 {
-    /** @use HasFactory<\Database\Factories\PlanFactory> */
+    use \OwenIt\Auditing\Auditable;
     use HasFactory;
     protected $fillable = ['name', 'description', 'price', 'currency', 'duration_days', 'status'];
 

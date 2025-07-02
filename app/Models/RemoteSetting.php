@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class RemoteSetting extends Model
+class RemoteSetting extends Model implements Auditable
 {
-    /** @use HasFactory<\Database\Factories\RemoteSettingFactory> */
+    use \OwenIt\Auditing\Auditable;
     use HasFactory;
 
     protected $fillable = [

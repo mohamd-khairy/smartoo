@@ -131,6 +131,7 @@ class PlanResource extends Resource
             'index' => Pages\ListPlans::route('/'),
             'create' => Pages\CreatePlan::route('/create'),
             'edit' => Pages\EditPlan::route('/{record}/edit'),
+            'show' => Pages\ShowAudit::route('/{record}'),
         ];
     }
 }
