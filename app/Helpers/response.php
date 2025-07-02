@@ -26,7 +26,9 @@ if (!function_exists('login_response')) {
         $data = $user ? [
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
-            'translations' => $translationsObject,
+            'translations' => (object) Translation::get()->map(function ($item) {
+                return [$item->key => $item->value];  // Each item is now a dictionary with key-value pair
+            }), //$translationsObject,
             //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
 
             // }),
