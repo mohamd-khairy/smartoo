@@ -21,31 +21,34 @@ class User extends Authenticatable implements Auditable
      * @var list<string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'uuid',
+        'app_version',
+        'oc',
+        'client_secret',
+        'client_id',
+        'device_type',
+        'country_code',
+
+        'locale',
+        'phone',
         'name',
         'email',
         'password',
-        'phone',
         'phone_verification_code',
         'phone_verified_at',
-        'locale',
         'role',
         'status',
         'timezone',
         'last_login_at',
         'device_token',
-        'device_type',
         'ip_address',
         'mac_address',
         'email_verified_at',
-        'country_code',
         'image',
         'gender',
         'contact_permission',
         'notification_permission',
         'tracking_permission',
-        'uuid',
         'subscription_id'
     ];
 
@@ -72,20 +75,6 @@ class User extends Authenticatable implements Auditable
             'last_login_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function setNameAttribute($value)
-    {
-        if ($value) {
-            $this->attributes['name'] = $value;
-        } else {
-            $this->attributes['name'] = $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
-        }
-    }
-
-    public function getNameAttribute()
-    {
-        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
 
     public function setImageAttribute($value)

@@ -15,6 +15,7 @@ if (!function_exists('login_response')) {
     function login_response($user = null, $message = '', $statusCode = 200)
     {
         if ($user && $user->locale) {
+            $user->touch('last_login_at');
             setEnv('APP_LOCALE', $user->locale);
         }
 

@@ -22,8 +22,6 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|email|unique:users,email,' . $this->id,
             'phone' => 'nullable|string|unique:users,phone,' . $this->id,

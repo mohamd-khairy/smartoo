@@ -22,16 +22,16 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
-            'locale' => 'nullable|string|in:en,ar',
+            'name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string',
             'country_code' => 'nullable|string|size:2',
-            'gender' => 'nullable|string|in:male,female',
-            'device_token' => 'nullable|string',
-            'subscription_id' => 'nullable|string',
-            // 'name' => 'nullable|string|max:255',
+
+            // 'locale' => 'nullable|string|in:en,ar',
+            // 'gender' => 'nullable|string|in:male,female',
+            // 'device_token' => 'nullable|string',
+            // 'subscription_id' => 'nullable|string',
+
             // 'email' => 'nullable|email|unique:users,email,' . $this->id,
-            // 'phone' => 'nullable|string|unique:users,phone,' . $this->id,
             // 'password' => 'nullable|string|min:8',
             // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             // 'contact_permission' => 'nullable|boolean',

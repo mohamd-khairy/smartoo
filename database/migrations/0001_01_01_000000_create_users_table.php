@@ -14,21 +14,26 @@ return new class extends Migration
         // Create the users table
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('client_secret')->nullable();
+            $table->string('client_id')->nullable();
             $table->string('device_type')->nullable();
             $table->string('uuid')->nullable()->unique();
+            $table->string('app_version')->nullable(); 
+            $table->string('oc')->nullable(); 
+
+            $table->string('locale')->default('en');
+            $table->string('phone')->nullable(); // Required phone number for registration
+            $table->string('country_code')->nullable()->default('EG'); // Nullable for users without email
+            $table->string('name')->nullable(); 
+
             $table->string('device_token')->nullable()->unique();
             $table->string('subscription_id')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('mac_address')->nullable();
-            $table->string('first_name')->nullable(); // Allow name to be nullable for anonymous users
-            $table->string('last_name')->nullable(); // Allow name to be nullable for anonymous users
-            $table->string('name')->nullable(); // Allow name to be nullable for anonymous users
             $table->text('image')->nullable();
             $table->string('email')->unique()->nullable(); // Allow email to be nullable
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(); // Allow password to be nullable
-            $table->string('country_code')->nullable()->default('EG'); // Nullable for users without email
-            $table->string('phone')->unique()->nullable(); // Required phone number for registration
             $table->string('phone_verification_code', 6)->nullable();
             $table->enum('gender', ['male', 'female'])->nullable(); // Nullable for users without gender('age')
             $table->boolean('contact_permission')->default(false);
@@ -36,7 +41,6 @@ return new class extends Migration
             $table->boolean('tracking_permission')->default(false);
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('role')->default('user');
-            $table->string('locale')->default('en');
             $table->string('status')->default('pending'); // Default status for new users
             $table->string('timezone')->nullable();
             $table->timestamp('last_login_at')->nullable();
