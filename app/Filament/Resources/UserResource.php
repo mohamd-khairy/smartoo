@@ -114,10 +114,12 @@ class UserResource extends Resource
                     ->label(__('resources.name')),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.email')),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.email_verified_at')),
                 Tables\Columns\TextColumn::make('country_code')
                     ->searchable()
@@ -127,10 +129,12 @@ class UserResource extends Resource
                     ->label(__('resources.phone')),
                 Tables\Columns\TextColumn::make('phone_verification_code')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.phone_verification_code')),
                 Tables\Columns\TextColumn::make('phone_verified_at')
                     ->dateTime()
                     ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.phone_verified_at')),
                 Tables\Columns\TextColumn::make('role')
                     ->searchable()
@@ -146,12 +150,14 @@ class UserResource extends Resource
                     ->label(__('resources.device_type')),
                 Tables\Columns\TextColumn::make('mac_address')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.mac_address')),
                 Tables\Columns\TextColumn::make('ip_address')
                     ->searchable()
                     ->label(__('resources.ip_address')),
                 Tables\Columns\TextColumn::make('timezone')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.timezone')),
                 Tables\Columns\TextColumn::make('last_login_at')
                     ->dateTime()
