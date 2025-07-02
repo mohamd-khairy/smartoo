@@ -18,11 +18,6 @@ if (!function_exists('login_response')) {
             setEnv('APP_LOCALE', $user->locale);
         }
 
-        $translations = Translation::get()->mapWithKeys(function ($item) {
-            return [$item->key => $item->value];
-        });
-        $translationsObject = (object) $translations->toArray();
-
         $data = $user ? [
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
