@@ -24,7 +24,7 @@ if (!function_exists('login_response')) {
             // Cache translations per user locale to optimize performance
             'translations' => //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
                 Translation::get()->mapWithKeys(function ($item) {
-                    return [$item->key => $item->value];
+                    return [[$item->key => $item->value]];
                 }),
             // }),
             // Cache remote settings based on user's country code with a default fallback

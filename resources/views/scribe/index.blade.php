@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "https://smartoo.site";
+        var tryItOutBaseUrl = "http://smartoo.test";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -109,7 +109,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>https://smartoo.site</code>
+    <strong>Base URL</strong>: <code>http://smartoo.test</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -138,7 +138,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://smartoo.site/api/v1/auth/register" \
+    "http://smartoo.test/api/v1/auth/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "X-Authorization: your-default-x-auth-token" \
@@ -151,7 +151,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://smartoo.site/api/v1/auth/register"
+    "http://smartoo.test/api/v1/auth/register"
 );
 
 const headers = {
@@ -294,7 +294,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "https://smartoo.site/api/v1/auth/profile" \
+    "http://smartoo.test/api/v1/auth/profile" \
     --header "Authorization: Bearer 6g43cv8PD1aE5beadkZfhV6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -302,9 +302,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"b\",
     \"last_name\": \"n\",
-    \"locale\": \"ar\",
+    \"locale\": \"en\",
     \"country_code\": \"gz\",
-    \"gender\": \"male\",
+    \"gender\": \"female\",
     \"device_token\": \"architecto\",
     \"subscription_id\": \"architecto\"
 }"
@@ -313,7 +313,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://smartoo.site/api/v1/auth/profile"
+    "http://smartoo.test/api/v1/auth/profile"
 );
 
 const headers = {
@@ -326,9 +326,9 @@ const headers = {
 let body = {
     "first_name": "b",
     "last_name": "n",
-    "locale": "ar",
+    "locale": "en",
     "country_code": "gz",
-    "gender": "male",
+    "gender": "female",
     "device_token": "architecto",
     "subscription_id": "architecto"
 };
@@ -444,7 +444,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -455,7 +455,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="n"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>n</code></p>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
@@ -463,10 +463,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="locale"                data-endpoint="PUTapi-v1-auth-profile"
-               value="ar"
+               value="en"
                data-component="body">
     <br>
-<p>Example: <code>ar</code></p>
+<p>Example: <code>en</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>en</code></li> <li><code>ar</code></li></ul>
         </div>
@@ -479,7 +479,7 @@ Must be one of:
                value="gz"
                data-component="body">
     <br>
-<p>يجب أن يكون value بحجم 2 حرفًا. Example: <code>gz</code></p>
+<p>Must be 2 characters. Example: <code>gz</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -487,10 +487,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="gender"                data-endpoint="PUTapi-v1-auth-profile"
-               value="male"
+               value="female"
                data-component="body">
     <br>
-<p>Example: <code>male</code></p>
+<p>Example: <code>female</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>male</code></li> <li><code>female</code></li></ul>
         </div>
@@ -532,7 +532,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://smartoo.site/api/v1/auth/refresh-token" \
+    "http://smartoo.test/api/v1/auth/refresh-token" \
     --header "Authorization: Bearer 6g43cv8PD1aE5beadkZfhV6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -541,7 +541,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://smartoo.site/api/v1/auth/refresh-token"
+    "http://smartoo.test/api/v1/auth/refresh-token"
 );
 
 const headers = {
@@ -667,7 +667,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://smartoo.site/api/v1/translations" \
+    "http://smartoo.test/api/v1/translations" \
     --header "Authorization: Bearer 6g43cv8PD1aE5beadkZfhV6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -681,7 +681,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://smartoo.site/api/v1/translations"
+    "http://smartoo.test/api/v1/translations"
 );
 
 const headers = {
@@ -807,7 +807,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="b"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 255 حرفًا. Example: <code>b</code></p>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>translations</code></b>&nbsp;&nbsp;
@@ -836,7 +836,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "https://smartoo.site/api/v1/translations/architecto" \
+    "http://smartoo.test/api/v1/translations/architecto" \
     --header "Authorization: Bearer 6g43cv8PD1aE5beadkZfhV6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -845,7 +845,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://smartoo.site/api/v1/translations/architecto"
+    "http://smartoo.test/api/v1/translations/architecto"
 );
 
 const headers = {
@@ -983,14 +983,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://smartoo.site/api/v1/remote-settings" \
+    "http://smartoo.test/api/v1/remote-settings" \
     --header "Authorization: Bearer 6g43cv8PD1aE5beadkZfhV6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "X-Authorization: your-default-x-auth-token" \
     --data "{
     \"country_code\": \"bngzmi\",
-    \"type\": \"xml\",
+    \"type\": \"yaml\",
     \"value\": \"architecto\"
 }"
 </code></pre></div>
@@ -998,7 +998,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://smartoo.site/api/v1/remote-settings"
+    "http://smartoo.test/api/v1/remote-settings"
 );
 
 const headers = {
@@ -1010,7 +1010,7 @@ const headers = {
 
 let body = {
     "country_code": "bngzmi",
-    "type": "xml",
+    "type": "yaml",
     "value": "architecto"
 };
 
@@ -1125,7 +1125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="bngzmi"
                data-component="body">
     <br>
-<p>يجب ألا يكون value أكبر من 10 حرفًا. Example: <code>bngzmi</code></p>
+<p>Must not be greater than 10 characters. Example: <code>bngzmi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -1133,10 +1133,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-v1-remote-settings"
-               value="xml"
+               value="yaml"
                data-component="body">
     <br>
-<p>Example: <code>xml</code></p>
+<p>Example: <code>yaml</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>json</code></li> <li><code>xml</code></li> <li><code>yaml</code></li></ul>
         </div>
