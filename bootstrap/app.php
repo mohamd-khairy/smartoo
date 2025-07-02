@@ -21,7 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->render(function (\Illuminate\Validation\ValidationException $e, $request) {
             return api_response(
-                message: $e->errors(),
+                message: array_shift($e->errors())[0],
                 statusCode: 422
             );
         });
