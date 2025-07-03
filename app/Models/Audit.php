@@ -25,4 +25,19 @@ class Audit extends Model implements \OwenIt\Auditing\Contracts\Audit
     {
         return $this->serializeDate($date);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->user_id = auth()->id() ?? null;
+            $model->user_type = auth()->user() ? get_class(auth()->user()) : null;
+        });
+
+        static::updating(function ($model) {
+            $model->user_id = auth()->id() ?? null;
+            $model->user_type = auth()->user() ? get_class(auth()->user()) : null;
+        });
+    }
 }
