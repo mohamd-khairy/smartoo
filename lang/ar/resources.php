@@ -68,4 +68,5 @@ return [
     'ip_address' => 'عنوان IP',
     'timezone' => 'المنطقة الزمنية',
     'last_login_at' => 'تاريخ آخر تسجيل دخول',
+    'uuid' => 'UUID',
 ];

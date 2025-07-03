@@ -68,4 +68,5 @@ return [
     'client_secret' => 'Client Secret',
     'device_type' => 'Device Type',
     'status' => 'Status',
+    'uuid' => 'UUID',
 ];
