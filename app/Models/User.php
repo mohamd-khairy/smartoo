@@ -77,6 +77,10 @@ class User extends Authenticatable implements Auditable
         ];
     }
 
+    protected $auditExclude = [
+        'last_login_at',
+    ];
+
     public function setImageAttribute($value)
     {
         if (!strpos($value, 'http')) {
