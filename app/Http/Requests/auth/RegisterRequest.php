@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
             'uuid' => 'required',
             'device_type' => 'required|string',
             'country_code' => 'nullable|string',
-            'locale' => 'nullable|string',
+            'locale' => 'nullable|string|in:en,ar',
             'app_version' => 'nullable|string',
             'oc' => 'nullable|string',
             'client_secret' => 'nullable|string',
