@@ -46,17 +46,32 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->maxLength(255)
                     ->label(__('resources.name')),
-                // Forms\Components\TextInput::make('last_name')
+                Forms\Components\TextInput::make('uuid')
+                    ->maxLength(255)
+                    ->label(__('resources.uuid')),
+                Forms\Components\TextInput::make('oc')
+                    ->maxLength(255)
+                    ->label(__('resources.oc')),
+                Forms\Components\TextInput::make('app_version')
+                    ->maxLength(255)
+                    ->label(__('resources.app_version')),
+                Forms\Components\TextInput::make('client_id')
+                    ->maxLength(255)
+                    ->label(__('resources.client_id')),
+                Forms\Components\TextInput::make('client_secret')
+                    ->maxLength(255)
+                    ->label(__('resources.client_secret')),
+                Forms\Components\TextInput::make('device_type')
+                    ->maxLength(255)
+                    ->label(__('resources.device_type')),
+                // Forms\Components\TextInput::make('email')
+                //     ->email()
                 //     ->maxLength(255)
-                //     ->label(__('resources.last_name')),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->maxLength(255)
-                    ->label(__('resources.email')),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->maxLength(255)
-                    ->label(__('resources.password')),
+                //     ->label(__('resources.email')),
+                // Forms\Components\TextInput::make('password')
+                //     ->password()
+                //     ->maxLength(255)
+                //     ->label(__('resources.password')),
                 Forms\Components\TextInput::make('country_code')
                     ->maxLength(255)
                     ->default('EG')
@@ -65,28 +80,28 @@ class UserResource extends Resource
                     ->tel()
                     ->maxLength(255)
                     ->label(__('resources.phone')),
-                Forms\Components\TextInput::make('role')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('user')
-                    ->label(__('resources.role')),
+                // Forms\Components\TextInput::make('role')
+                //     ->required()
+                //     ->maxLength(255)
+                //     ->default('user')
+                //     ->label(__('resources.role')),
                 Forms\Components\TextInput::make('locale')
                     ->required()
                     ->maxLength(255)
                     ->default('en')
                     ->label(__('resources.locale')),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('pending')
-                    ->label(__('resources.status')),
-                Forms\Components\TextInput::make('timezone')
-                    ->maxLength(255)
-                    ->label(__('resources.timezone')),
-                Forms\Components\FileUpload::make('image')
-                    ->columnSpanFull()
-                    ->label(__('resources.image'))
-                    ->image(),
+                // Forms\Components\TextInput::make('status')
+                //     ->required()
+                //     ->maxLength(255)
+                //     ->default('pending')
+                //     ->label(__('resources.status')),
+                // Forms\Components\TextInput::make('timezone')
+                //     ->maxLength(255)
+                //     ->label(__('resources.timezone')),
+                // Forms\Components\FileUpload::make('image')
+                //     ->columnSpanFull()
+                //     ->label(__('resources.image'))
+                //     ->image(),
             ]);
     }
 
@@ -94,9 +109,27 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->searchable()
+                    ->label(__('resources.id')),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->label(__('resources.name')),
+                Tables\Columns\TextColumn::make('uuid')
+                    ->searchable()
+                    ->label(__('resources.uuid')),
+                Tables\Columns\TextColumn::make('oc')
+                    ->searchable()
+                    ->label(__('resources.oc')),
+                Tables\Columns\TextColumn::make('app_version')
+                    ->searchable()
+                    ->label(__('resources.app_version')),
+                Tables\Columns\TextColumn::make('client_id')
+                    ->searchable()
+                    ->label(__('resources.client_id')),
+                Tables\Columns\TextColumn::make('client_secret')
+                    ->searchable()
+                    ->label(__('resources.client_secret')),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true)
@@ -123,6 +156,7 @@ class UserResource extends Resource
                     ->label(__('resources.phone_verified_at')),
                 Tables\Columns\TextColumn::make('role')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.role')),
                 Tables\Columns\TextColumn::make('locale')
                     ->searchable()
@@ -140,6 +174,7 @@ class UserResource extends Resource
                     ->label(__('resources.mac_address')),
                 Tables\Columns\TextColumn::make('ip_address')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.ip_address')),
                 Tables\Columns\TextColumn::make('timezone')
                     ->searchable()

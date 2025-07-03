@@ -8,6 +8,7 @@ use App\Http\Requests\users\UpdateUserRequest;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -68,7 +69,7 @@ class UserController extends Controller
      * @param mixed $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UpdateUserRequest $request,int $id)
+    public function update(UpdateUserRequest $request, int $id)
     {
         // Logic to update a user
         $user = User::find($id);
@@ -100,12 +101,15 @@ class UserController extends Controller
      */
     public function destroy(int $id)
     {
-        // Logic to delete a user
-        $user = User::find($id);
-        if (!$user) {
-            return api_response(null, __('general.user.not_found'), 404);
-        }
-        $user->delete();
-        return api_response(null, __('general.user.destroy'), 200);
+        return DB::trasaction(function () use ($id) {
+            $user = User::find($id);
+            if (!$user) {
+                return api_response(null, __('general.user.not_found'), 404);
+            }
+            $user->uuid = null;
+            $user->save();
+            $user->delete();
+            return api_response(null, __('general.user.destroy'), 200);
+        });
     }
 }

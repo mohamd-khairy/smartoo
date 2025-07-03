@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], function () {
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
         Route::post('/register', [\App\Http\Controllers\API\V1\AuthController::class, 'register'])->name('register');
-       
+
         Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/me', [\App\Http\Controllers\API\V1\AuthController::class, 'me'])->name('me');
             Route::put('/profile', [\App\Http\Controllers\API\V1\AuthController::class, 'updateProfile'])->name('update-profile');
@@ -23,11 +23,11 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
     });
 
     // Route::group(['prefix' => 'remote-settings', 'middleware' => 'auth:sanctum', 'as' => 'remote-settings.'], function () {
-        // Route::get('/', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'index'])->name('index');
-        // Route::get('/{country_code}', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'show'])->name('show');
-        // Route::put('/{country_code}', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'update'])->name('update');
-        // Route::post('/', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'store'])->name('store');
-        // Route::delete('/{country_code}', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'destroy'])->name('destroy');
+    // Route::get('/', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'index'])->name('index');
+    // Route::get('/{country_code}', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'show'])->name('show');
+    // Route::put('/{country_code}', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'update'])->name('update');
+    // Route::post('/', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'store'])->name('store');
+    // Route::delete('/{country_code}', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'destroy'])->name('destroy');
     // });
 
     // Route::group(['prefix' => 'users', 'middleware' => 'auth:sanctum', 'as' => 'users.'], function () {
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
     //     Route::get('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'show'])->name('show');
     //     Route::post('/', [\App\Http\Controllers\API\V1\UserController::class, 'store'])->name('store');
     //     Route::put('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'update'])->name('update');
-    //     Route::delete('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'destroy'])->name('destroy');
+    Route::delete('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'destroy'])->name('destroy');
     // });
 
     // Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
