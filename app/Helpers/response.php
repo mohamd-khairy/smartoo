@@ -16,7 +16,7 @@ if (!function_exists('login_response')) {
     {
         if ($user && $user->locale) {
             setEnv('APP_LOCALE', $user->locale);
-            // $user->touch('last_login_at');
+            $user->touch('last_login_at');
         }
 
         $data = $user ? [
