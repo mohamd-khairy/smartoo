@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -8,6 +9,8 @@ Route::get('/', function () {
 });
 Route::view('/swagger-ui', 'swagger');
 Route::get('/swagger-docs', function () {
+    Artisan::call('scribe:generate');
+    
     $path = 'scribe/openapi.yaml'; // relative to storage/app/private
 
     if (!Storage::disk('private')->exists($path)) {
