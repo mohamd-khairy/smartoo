@@ -15,8 +15,8 @@ if (!function_exists('login_response')) {
     function login_response($user = null, $message = '', $statusCode = 200)
     {
         if ($user && $user->locale) {
-            $user->touch('last_login_at');
             setEnv('APP_LOCALE', $user->locale);
+            // $user->touch('last_login_at');
         }
 
         $data = $user ? [
@@ -24,11 +24,10 @@ if (!function_exists('login_response')) {
             'token' => $user->createToken('auth_token')->plainTextToken,
             'translations' => Translation::get()->mapWithKeys(function ($item) {
                 $obj = new \stdClass();
-                $obj->{$item->key} = $item->value;  // Assign key-value pair to the stdClass object
-                return [$item->key => $obj];  // Return key-value pair in the correct format
+                $obj->{$item->key} = $item->value;  
+                return [$item->key => $obj];  
             }), //$translationsObject,
             //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
-
             // }),
             'remote_settings' => //cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
             json_decode(RemoteSetting::where('country_code', 'default' ?? $user->country_code)
