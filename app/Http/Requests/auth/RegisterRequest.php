@@ -23,7 +23,6 @@ class RegisterRequest extends FormRequest
     {
         return [
             'uuid' => 'required',
-            'password' => 'required|string',
             'device_type' => 'required|string',
             'country_code' => 'nullable|string',
             'locale' => 'nullable|string',

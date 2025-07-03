@@ -68,10 +68,10 @@ class UserResource extends Resource
                 //     ->email()
                 //     ->maxLength(255)
                 //     ->label(__('resources.email')),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->maxLength(255)
-                    ->label(__('resources.password')),
+                // Forms\Components\TextInput::make('password')
+                //     ->password()
+                //     ->maxLength(255)
+                //     ->label(__('resources.password')),
                 Forms\Components\TextInput::make('country_code')
                     ->maxLength(255)
                     ->default('EG')
@@ -132,6 +132,7 @@ class UserResource extends Resource
                     ->label(__('resources.client_secret')),
                 Tables\Columns\TextColumn::make('password')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.password')),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()

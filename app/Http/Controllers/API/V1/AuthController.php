@@ -24,21 +24,12 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        // $user = User::firstOrCreate(
-        //     $request->only('device_type', 'uuid'),
-        //     $request->validated()
-        // );
+        $user = User::firstOrCreate(
+            $request->only('device_type', 'uuid'),
+            $request->validated()
+        );
 
-        $user = User::where([
-            'device_type' => $request->device_type,
-            'uuid' => $request->uuid,
-        ])->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            $user = User::create($request->validated());
-        }
-
-        if ($user && Hash::check($request->password, $user->password)) {
+        if ($user) {
             return login_response($user, __('general.auth.login'), 200);
         }
 
@@ -50,11 +41,11 @@ class AuthController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(MeRequest $request)
+    public function me(Request $request)
     {
         $user = $request->user();
 
-        if (Hash::check($request->password, $user->password)) {
+        if ($user) {
             return login_response($user, __('general.auth.login'), 200);
         }
         return api_response(null, __('general.auth.login_failed'), 401);
