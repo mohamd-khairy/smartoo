@@ -19,23 +19,18 @@ if (!function_exists('login_response')) {
             $user->touch('last_login_at');
         }
 
+        Translation::whereNull('translations')->delete();
         $data = $user ? [
             'user' => $user,
             'token' => $user->createToken('auth_token')->plainTextToken,
-            'translations' => Translation::get()->mapWithKeys(function ($item) {
+            'translations' => Translation::whereNotNull('translations')->get()->mapWithKeys(function ($item) {
                 $obj = new \stdClass();
-                $obj->{$item->key} = $item->value;  
-                return [$item->key => $obj];  
-            }), //$translationsObject,
-            //cache()->remember("translations_{$user->locale}", now()->addMinutes(5), function () use ($user) {
-            // }),
-            'remote_settings' => //cache()->remember("remote_settings_{$user->country_code}", now()->addMinutes(5), function () use ($user) {
-            json_decode(RemoteSetting::where('country_code', 'default' ?? $user->country_code)
-                ->value('value') ?: '[]') // Cache the remote settings, fallback to empty array if not found
-            //}),
+                $obj->{$item->key} = $item->value;
+                return [$item->key => $obj];
+            }),
+            'remote_settings' =>  json_decode(RemoteSetting::where('country_code', 'default' ?? $user->country_code)->value('value') ?: '[]')
         ] : null;
 
-        // Return the API response with success flag, message, and data
         return api_response($data, $message, $statusCode);
     }
 }
