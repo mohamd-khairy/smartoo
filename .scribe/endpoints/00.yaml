@@ -10,14 +10,14 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'auth register a new user (either anonymous or with full details)'
+      title: 'auth register user'
       description: ''
       authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-      X-Authorization: your-default-x-auth-token
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -33,6 +33,16 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
       device_type:
         name: device_type
         description: ''
@@ -43,9 +53,76 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      country_code:
+        name: country_code
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      locale:
+        name: locale
+        description: ''
+        required: false
+        example: sr_BA
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      app_version:
+        name: app_version
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      oc:
+        name: oc
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      client_secret:
+        name: client_secret
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      client_id:
+        name: client_id
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
       uuid: architecto
+      password: '|]|{+-'
       device_type: architecto
+      country_code: architecto
+      locale: sr_BA
+      app_version: architecto
+      oc: architecto
+      client_secret: architecto
+      client_id: architecto
     fileParameters: []
     responses: []
     responseFields: []
@@ -56,14 +133,14 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PUT
-    uri: api/v1/auth/profile
+      - POST
+    uri: api/v1/auth/login
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'auth update profile'
+      title: 'auth login user'
       description: ''
       authenticated: true
       custom: []
@@ -71,94 +148,24 @@ endpoints:
       Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
       Content-Type: application/json
       Accept: application/json
-      X-Authorization: your-default-x-auth-token
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      first_name:
-        name: first_name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: b
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      last_name:
-        name: last_name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      locale:
-        name: locale
+      password:
+        name: password
         description: ''
-        required: false
-        example: en
-        type: string
-        enumValues:
-          - en
-          - ar
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      country_code:
-        name: country_code
-        description: 'Must be 2 characters.'
-        required: false
-        example: gz
+        required: true
+        example: '|]|{+-'
         type: string
         enumValues: []
         exampleWasSpecified: false
-        nullable: true
-        custom: []
-      gender:
-        name: gender
-        description: ''
-        required: false
-        example: female
-        type: string
-        enumValues:
-          - male
-          - female
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      device_token:
-        name: device_token
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      subscription_id:
-        name: subscription_id
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
-      first_name: b
-      last_name: 'n'
-      locale: en
-      country_code: gz
-      gender: female
-      device_token: architecto
-      subscription_id: architecto
+      password: '|]|{+-'
     fileParameters: []
     responses: []
     responseFields: []
@@ -172,14 +179,14 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: api/v1/auth/refresh-token
+      - PUT
+    uri: api/v1/auth/profile
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'auth refresh token'
+      title: 'auth update user'
       description: ''
       authenticated: true
       custom: []
@@ -187,13 +194,46 @@ endpoints:
       Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
       Content-Type: application/json
       Accept: application/json
-      X-Authorization: your-default-x-auth-token
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      country_code:
+        name: country_code
+        description: 'Must be 2 characters.'
+        required: false
+        example: ng
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: b
+      phone: architecto
+      country_code: ng
     fileParameters: []
     responses: []
     responseFields: []
@@ -222,7 +262,7 @@ endpoints:
       Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
       Content-Type: application/json
       Accept: application/json
-      X-Authorization: your-default-x-auth-token
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -265,13 +305,13 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/translations/{id}'
+    uri: 'api/v1/{id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'translation destroy'
+      title: 'user destroy'
       description: ''
       authenticated: true
       custom: []
@@ -279,11 +319,11 @@ endpoints:
       Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
       Content-Type: application/json
       Accept: application/json
-      X-Authorization: your-default-x-auth-token
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
     urlParameters:
       id:
         name: id
-        description: 'The ID of the translation.'
+        description: 'The ID of the v1.'
         required: true
         example: architecto
         type: string
@@ -297,77 +337,6 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/v1/remote-settings
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'remote setting store'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-      Content-Type: application/json
-      Accept: application/json
-      X-Authorization: your-default-x-auth-token
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      country_code:
-        name: country_code
-        description: 'Must not be greater than 10 characters.'
-        required: true
-        example: bngzmi
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      type:
-        name: type
-        description: ''
-        required: true
-        example: yaml
-        type: string
-        enumValues:
-          - json
-          - xml
-          - yaml
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      value:
-        name: value
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      country_code: bngzmi
-      type: yaml
-      value: architecto
     fileParameters: []
     responses: []
     responseFields: []
