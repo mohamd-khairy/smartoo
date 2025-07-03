@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\auth\LoginRequest;
+use App\Http\Requests\auth\MeRequest;
 use App\Http\Requests\auth\RegisterRequest;
 use App\Http\Requests\auth\UpdateProfileRequest;
 use App\Http\Requests\auth\VerifyRequest;
@@ -16,38 +17,51 @@ use App\Models\Subscription;
 class AuthController extends Controller
 {
     /**
-     * auth register a new user (either anonymous or with full details)
+     * auth register user
      * @param \App\Http\Requests\auth\RegisterRequest $request
      * @return \Illuminate\Http\JsonResponse
      * @unauthenticated
      */
     public function register(RegisterRequest $request)
     {
-        $user = User::firstOrCreate(
-            $request->only('device_type', 'uuid'),
-            $request->validated()
-        );
+        // $user = User::firstOrCreate(
+        //     $request->only('device_type', 'uuid'),
+        //     $request->validated()
+        // );
 
-        if ($user) {
-            return login_response($user, __('general.auth.phone_verified'), 200);
+        $user = User::where([
+            'device_type' => $request->device_type,
+            'uuid' => $request->uuid,
+        ])->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            $user = User::create($request->validated());
         }
 
-        return api_response(null, __('general.auth.invalid_verification_code'), 401);
+        if ($user && Hash::check($request->password, $user->password)) {
+            return login_response($user, __('general.auth.login'), 200);
+        }
+
+        return api_response(null, __('general.auth.login_failed'), 401);
     }
 
     /**
-     * auth Get the authenticated user's profile
+     * auth login user
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me(Request $request)
+    public function login(MeRequest $request)
     {
         $user = $request->user();
-        return login_response($user, __('general.auth.profile_retrieved'), 200);
+
+        if (Hash::check($request->password, $user->password)) {
+            return login_response($user, __('general.auth.login'), 200);
+        }
+        return api_response(null, __('general.auth.login_failed'), 401);
     }
 
     /**
-     * auth update profile
+     * auth update user
      * @param \App\Http\Requests\auth\UpdateProfileRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -60,7 +74,7 @@ class AuthController extends Controller
     }
 
     /**
-     * auth Logout the user and revoke their token
+     * auth Logout
      */
     public function logout(Request $request)
     {

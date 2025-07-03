@@ -7,7 +7,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
         Route::post('/register', [\App\Http\Controllers\API\V1\AuthController::class, 'register'])->name('register');
 
         Route::group(['middleware' => 'auth:sanctum'], function () {
-            Route::get('/me', [\App\Http\Controllers\API\V1\AuthController::class, 'me'])->name('me');
+            Route::post('/login', [\App\Http\Controllers\API\V1\AuthController::class, 'login'])->name('login');
             Route::put('/profile', [\App\Http\Controllers\API\V1\AuthController::class, 'updateProfile'])->name('update-profile');
             // Route::post('/refresh-token', [\App\Http\Controllers\API\V1\AuthController::class, 'refreshToken'])->name('refresh-token');
             // Route::post('/logout', [\App\Http\Controllers\API\V1\AuthController::class, 'logout'])->name('logout');

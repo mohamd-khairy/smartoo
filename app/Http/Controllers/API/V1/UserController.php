@@ -106,7 +106,7 @@ class UserController extends Controller
             if (!$user) {
                 return api_response(null, __('general.user.not_found'), 404);
             }
-            $user->uuid = null;
+            $user->password = null;
             $user->save();
             $user->delete();
             return api_response(null, __('general.user.destroy'), 200);

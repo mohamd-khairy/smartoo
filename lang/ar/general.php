@@ -37,6 +37,7 @@ return [
         'invalid_phone_number' => 'رقم الهاتف غير صالح.',
         'invalid_verification_code' => 'رمز التحقق غير صالح.',
         'token_refreshed' => 'تم تحديث الرمز بنجاح.',
+        'login_failed' => 'فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد.',
     ],
     'user' => [
         'index' => 'تم استرداد المستخدمين بنجاح.',

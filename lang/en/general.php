@@ -36,6 +36,7 @@ return [
         'invalid_phone_number' => 'Invalid phone number provided.',
         'invalid_verification_code' => 'Invalid verification code provided.',
         'token_refreshed' => 'Token refreshed successfully.',
+        'login_failed' => 'Login failed. Please check your credentials.',
     ],
     'user' => [
         'index' => 'Users retrieved successfully.',
