@@ -230,7 +230,7 @@ return [
             Strategies\StaticData::withSettings(data: [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'X-Authorization' => env('SCRIBE_X_AUTH', 'your-default-x-auth-token'),
+                'X-Authorization' => env('SCRIBE_X_AUTH', 'SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA'),
             ]),
         ],
         'urlParameters' => [
