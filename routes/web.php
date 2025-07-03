@@ -9,8 +9,7 @@ Route::get('/', function () {
 });
 Route::view('/swagger-ui', 'swagger');
 Route::get('/swagger-docs', function () {
-    Artisan::call('scribe:generate');
-    
+
     $path = 'scribe/openapi.yaml'; // relative to storage/app/private
 
     if (!Storage::disk('private')->exists($path)) {
@@ -20,6 +19,10 @@ Route::get('/swagger-docs', function () {
     return response(Storage::disk('private')->get($path), 200, [
         'Content-Type' => 'application/yaml',
     ]);
+});
+
+Route::get('/scribe', function () {
+    Artisan::call('scribe:generate');
 });
 
 Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
