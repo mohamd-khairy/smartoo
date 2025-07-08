@@ -35,7 +35,7 @@ return [
     'text' => 'Text',
     'arabic' => 'Arabic',
     'english' => 'English',
-    
+
     'currency' => 'Currency',
     'price' => 'Price',
     'duration_days' => 'Duration Days',
@@ -55,9 +55,6 @@ return [
     'updated_by' => 'Updated By',
     'deleted_by' => 'Deleted By',
     'deleted_at' => 'Deleted At',
-    'created_at' => 'Created At',
-    'updated_at' => 'Updated At',
-    'deleted_at' => 'Deleted At',
 
     'id' => 'ID',
     'title' => 'Title',
@@ -66,7 +63,10 @@ return [
     'app_version' => 'App Version',
     'client_id' => 'Client ID',
     'client_secret' => 'Client Secret',
-    'device_type' => 'Device Type',
-    'status' => 'Status',
     'uuid' => 'UUID',
+
+    'expires_at' => 'تاريخ انتهاء الصلاحية',
+    'original_transaction_id' => 'Original Transaction ID',
+    'product_id' => 'Product ID',
+    'is_renewal' => 'Is Renewal',
 ];

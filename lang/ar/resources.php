@@ -35,7 +35,7 @@ return [
     'text' => 'النص',
     'arabic' => 'العربية',
     'english' => 'الإنجليزية',
-    
+
     'plans' => 'الخطط',
     'plan' => 'الخطة',
     'description' => 'الوصف',
@@ -54,7 +54,7 @@ return [
     'subscription' => 'الاشتراك',
     'user_id' => 'معرف المستخدم',
     'plan_id' => 'معرف الخطة',
-    
+
 
     'id' => 'المعرف',
     'title' => 'العنوان',
@@ -62,11 +62,10 @@ return [
     'app_version' => 'احدث نسخة',
     'client_id' => 'معرف العميل',
     'client_secret' => 'سر العميل',
-    'device_type' => 'نوع الجهاز',
-    'status' => 'الحالة',
-    'mac_address' => 'عنوان MAC',
-    'ip_address' => 'عنوان IP',
-    'timezone' => 'المنطقة الزمنية',
-    'last_login_at' => 'تاريخ آخر تسجيل دخول',
     'uuid' => 'UUID',
+    'expires_at' => 'تاريخ انتهاء الصلاحية',
+    'expired' => 'انتهى',
+    'original_transaction_id' => 'معرف الطلب الأصلي',
+    'product_id' => 'معرف المنتج',
+    'is_renewal' => 'تجديد',
 ];
