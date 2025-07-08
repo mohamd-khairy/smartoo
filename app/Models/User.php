@@ -81,6 +81,11 @@ class User extends Authenticatable implements Auditable
         'last_login_at',
     ];
 
+    public function getNameAttrbute($value)
+    {
+        return $value ?? 'guest' . $this->attributes['uuid'];
+    }
+
     public function setImageAttribute($value)
     {
         if (!strpos($value, 'http')) {
