@@ -52,7 +52,11 @@ class SubscriptionResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->required()
                     ->relationship('user', 'name')
-                    ->label(__('resources.user_id')),
+                    ->label(__('resources.user_id'))
+                    ->default(function ($record) {
+                        // Check if the 'name' is null or not
+                        return $record->user && $record->user->name ? $record->user->uuid : 'guest' . $record->user->uuid; // Set default to null if name is null
+                    }),
 
                 Forms\Components\TextInput::make('original_transaction_id')
                     ->required()
