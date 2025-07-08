@@ -49,6 +49,11 @@ class SubscriptionResource extends Resource
         return $form
             ->schema([
 
+                Forms\Components\Select::make('user_id')
+                    ->required()
+                    ->relationship('user', 'name')
+                    ->label(__('resources.user_id')),
+
                 Forms\Components\TextInput::make('original_transaction_id')
                     ->required()
                     ->label(__('resources.original_transaction_id')),
