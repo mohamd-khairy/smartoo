@@ -48,23 +48,32 @@ class SubscriptionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
+
+                Forms\Components\TextInput::make('original_transaction_id')
                     ->required()
-                    ->numeric()
-                    ->label(__('resources.user_id')),
-                Forms\Components\TextInput::make('plan_id')
+                    ->label(__('resources.original_transaction_id')),
+
+                Forms\Components\TextInput::make('product_id')
                     ->required()
-                    ->numeric()
-                    ->label(__('resources.plan_id')),
-                Forms\Components\DatePicker::make('start_date')
-                    ->required()
-                    ->label(__('resources.start_date')),
-                Forms\Components\DatePicker::make('end_date')
-                    ->required()
-                    ->label(__('resources.end_date')),
-                Forms\Components\TextInput::make('status')
+                    ->label(__('resources.product_id')),
+
+                Forms\Components\ToggleButtons::make('status')
+                    ->options([
+                        'active' => __('resources.active'),
+                        'inactive' => __('resources.inactive'),
+                        'expired' => __('resources.expired'),
+                    ])
                     ->required()
                     ->label(__('resources.status')),
+
+                Forms\Components\ToggleButtons::make('is_renewal')
+                    ->label('is_renewal?')
+                    ->boolean()
+                    ->grouped(),
+
+                Forms\Components\DatePicker::make('expires_at')
+                    ->required()
+                    ->label(__('resources.expires_at')),
             ]);
     }
 
@@ -76,20 +85,28 @@ class SubscriptionResource extends Resource
                     ->numeric()
                     ->sortable()
                     ->label(__('resources.user_id')),
-                Tables\Columns\TextColumn::make('plan_id')
-                    ->numeric()
-                    ->sortable()
-                    ->label(__('resources.plan_id')),
-                Tables\Columns\TextColumn::make('start_date')
-                    ->date()
-                    ->sortable()
-                    ->label(__('resources.start_date')),
-                Tables\Columns\TextColumn::make('end_date')
-                    ->date()
-                    ->sortable()
-                    ->label(__('resources.end_date')),
-                Tables\Columns\TextColumn::make('status')
+
+                Tables\Columns\TextColumn::make('original_transaction_id')
+                    ->label(__('resources.original_transaction_id')),
+
+                Tables\Columns\TextColumn::make('product_id')
+                    ->label(__('resources.product_id')),
+
+                Tables\Columns\ToggleColumn::make('is_renewal')
+                    ->label(__('resources.is_renewal')),
+
+                Tables\Columns\SelectColumn::make('status')
+                    ->options([
+                        'active' => __('resources.active'),
+                        'inactive' => __('resources.inactive'),
+                        'expired' => __('resources.expired'),
+                    ])
                     ->label(__('resources.status')),
+
+                Tables\Columns\TextColumn::make('expires_at')
+                    ->date()
+                    ->sortable()
+                    ->label(__('resources.expires_at')),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -107,9 +124,17 @@ class SubscriptionResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }

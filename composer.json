@@ -10,6 +10,7 @@
         "creagia/filament-code-field": "^3.0",
         "ejarnutowski/laravel-api-key": "^1.0",
         "filament/filament": "^3.3",
+        "firebase/php-jwt": "^6.11",
         "knuckleswtf/scribe": "^5.2",
         "laravel/framework": "^12.0",
         "laravel/nightwatch": "^1.10",

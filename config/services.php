@@ -34,5 +34,12 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'apple' => [ // Production
+        'url' => env('APPlE_MODE', 'Sandbox')
+            ? 'https://api.storekit-sandbox.itunes.apple.com'
+            : 'https://api.storekit.itunes.apple.com',
+        'issuer_id' => env('APPLE_ISSUER_ID', ''),
+        'key_id' => env('APPLE_KEY_ID', ''),
+    ],
 
 ];

@@ -6,10 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\subscriptions\CreateSubscriptionRequest;
 use App\Http\Requests\subscriptions\UpdateSubscriptionRequest;
 use App\Models\Subscription;
+use App\Services\AppleJwtService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
+    protected $appleJwtService;
+
+    public function __construct(AppleJwtService $appleJwtService)
+    {
+        $this->appleJwtService = $appleJwtService;
+    }
+
     /**
      * subscription index
      * @return \Illuminate\Http\JsonResponse
@@ -43,12 +52,30 @@ class SubscriptionController extends Controller
      */
     public function store(CreateSubscriptionRequest $request)
     {
-        // Logic to create a new subscription
-        $subscription = Subscription::firstOrCreate(
-            $request->only('user_id', 'plan_id', 'status'), // Find the subscription by user and plan
-            $request->validated()
-        );
-        return api_response($subscription, __('general.subscription.store'), 201);
+        $data = $request->validated();
+
+        $user = auth()->user();
+
+        $appleRes = $this->appleJwtService->verifyTransaction($data['original_transaction_id']);
+
+        if ($appleRes->status === 0) { // ناجح
+            $subscription = Subscription::updateOrCreate(
+                ['original_transaction_id' => $data['original_transaction_id']],
+                [
+                    'user_id' => $user->id,
+                    'product_id' => $appleRes->productId,
+                    'transaction_id' => $appleRes->transactionId,
+                    'expires_at' => Carbon::createFromTimestampMs($appleRes->expiresDate),
+                    'is_renewal' => $appleRes->isRenewal,
+                    'status' => $appleRes->subscriptionStatus,
+                ]
+            );
+
+            $user->subscription_id = $subscription->id;
+            $user->save();
+        }
+
+        return api_response(true, __('general.subscription.store'), 201);
     }
 
     /**

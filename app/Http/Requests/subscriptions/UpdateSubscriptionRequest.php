@@ -22,17 +22,14 @@ class UpdateSubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'user_id' is required and should exist in the 'users' table
-            'user_id' => 'required|exists:users,id', // Ensure the user exists
-
             // 'plan_id' is required and should exist in the 'plans' table
-            'plan_id' => 'required|exists:plans,id', // Ensure the selected plan exists
+            'product_id' => 'required|string', // Ensure the selected plan exists
 
             // 'start_date' is nullable, but if provided, it should be a valid date and must be before 'end_date'
-            'start_date' => 'nullable|date|before:end_date', // Make it nullable but check it if present
+            'expires_at' => 'nullable|date|before:end_date', // Make it nullable but check it if present
 
             // 'end_date' is nullable, but if provided, it should be a valid date and must be after 'start_date'
-            'end_date' => 'nullable|date|after:start_date', // Make it nullable but check it if present
+            'is_renewal' => 'nullable|boolean', // Make it nullable but check it if present
 
             // 'status' is nullable, but if provided, it must be one of 'active', 'inactive', 'expired'
             'status' => 'nullable|in:active,inactive,expired',
