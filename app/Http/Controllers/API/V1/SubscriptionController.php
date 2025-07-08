@@ -58,7 +58,7 @@ class SubscriptionController extends Controller
 
         $appleRes = $this->appleJwtService->verifyTransaction($data['original_transaction_id']);
 
-        if ($appleRes->status === 0) { // ناجح
+        if (isset($appleRes->status) && $appleRes->status === 0) { // ناجح
             $subscription = Subscription::updateOrCreate(
                 ['original_transaction_id' => $data['original_transaction_id']],
                 [
@@ -73,9 +73,10 @@ class SubscriptionController extends Controller
 
             $user->subscription_id = $subscription->id;
             $user->save();
+            return api_response(true, __('general.subscription.store'), 201);
         }
 
-        return api_response(true, __('general.subscription.store'), 201);
+        return api_response(null, __('general.subscription.not_found'), 400);
     }
 
     /**

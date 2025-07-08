@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Firebase\JWT\JWT;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class AppleJwtService
@@ -31,7 +32,7 @@ class AppleJwtService
                 'iss' => $this->teamId,
                 'iat' => $issuedAt,
                 'exp' => $expirationTime,
-                'aud' => 'https://appleid.apple.com',
+                'aud' => "appstoreconnect-v1",
                 'sub' => $this->clientId,
             ];
 
@@ -48,21 +49,34 @@ class AppleJwtService
     public function verifyTransaction(string $originalTransactionId)
     {
         try {
+            $jwt = $this->generateJwt();
+            info('JWT: ' . $jwt);
+            $baseUrl = config('services.apple.url');  // sandbox or production
+            $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
 
-            $client = new \GuzzleHttp\Client([
-                'base_uri' => config('services.apple.url'), // sandbox او production
-            ]);
+            // Make the HTTP POST request using Laravel HTTP Client
+            $response = Http::withHeaders([
+                'Authorization' => "Bearer {$jwt}",
+                'Content-Type' => 'application/json',
+            ])->post($url);
 
+            dd($response);
 
-            $response = $client->get("/inApps/v1/transactions/{$originalTransactionId}", [
-                'headers' => [
-                    'Authorization' => "Bearer {$this->generateJwt()}",
-                ]
-            ]);
+            // Log the response status code and body for debugging
+            Log::info('API Response:', ['status_code' => $response->status(), 'body' => $response->body()]);
 
-            return json_decode($response->getBody()->getContents(), true);
+            if($response->status() !== 200) {
+                return false;
+            }
+
+            // Return the response body as an array
+            return $response->json();
+
+            // return  json_decode($response->getBody()->getContents(), true);
             //code...
         } catch (\Throwable $th) {
+            Log::info('API Response:', ['body' => $th->getMessage()]);
+
             throw $th;
         }
     }

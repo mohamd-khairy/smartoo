@@ -35,16 +35,6 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
-      password:
-        name: password
-        description: ''
-        required: true
-        example: '|]|{+-'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
       device_type:
         name: device_type
         description: ''
@@ -69,9 +59,11 @@ endpoints:
         name: locale
         description: ''
         required: false
-        example: sr_BA
+        example: ar
         type: string
-        enumValues: []
+        enumValues:
+          - en
+          - ar
         exampleWasSpecified: false
         nullable: true
         custom: []
@@ -117,10 +109,9 @@ endpoints:
         custom: []
     cleanBodyParameters:
       uuid: architecto
-      password: '|]|{+-'
       device_type: architecto
       country_code: architecto
-      locale: sr_BA
+      locale: ar
       app_version: architecto
       oc: architecto
       client_secret: architecto
@@ -135,8 +126,8 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: api/v1/auth/login
+      - GET
+    uri: api/v1/auth/me
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -155,21 +146,19 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      password:
-        name: password
-        description: ''
-        required: true
-        example: '|]|{+-'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      password: '|]|{+-'
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
     responseFields: []
     auth:
       - headers
@@ -204,7 +193,7 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: false
         example: b
         type: string
@@ -224,7 +213,7 @@ endpoints:
         custom: []
       country_code:
         name: country_code
-        description: 'Must be 2 characters.'
+        description: 'يجب أن يكون value بحجم 2 حرفًا.'
         required: false
         example: ng
         type: string
@@ -236,6 +225,52 @@ endpoints:
       name: b
       phone: architecto
       country_code: ng
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'user destroy'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+      Content-Type: application/json
+      Accept: application/json
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the v1.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses: []
     responseFields: []
@@ -272,7 +307,7 @@ endpoints:
     bodyParameters:
       key:
         name: key
-        description: 'Must not be greater than 255 characters.'
+        description: 'يجب ألا يكون value أكبر من 255 حرفًا.'
         required: true
         example: b
         type: string
@@ -306,14 +341,14 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - DELETE
-    uri: 'api/v1/{id}'
+      - GET
+    uri: 'api/v1/subscriptions/{id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'user destroy'
+      title: 'Summary of show'
       description: ''
       authenticated: true
       custom: []
@@ -325,7 +360,119 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the v1.'
+        description: 'The ID of the subscription.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"errors":[{"message":"Unauthorized"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/subscriptions
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'subscription store'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+      Content-Type: application/json
+      Accept: application/json
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      original_transaction_id:
+        name: original_transaction_id
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      original_transaction_id: architecto
+      product_id: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/subscriptions/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'subscription destroy'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+      Content-Type: application/json
+      Accept: application/json
+      X-Authorization: SZvJUyAWjpAY2O9ih2cQlXWgJqxawFVnFj0QE1BJFAHA471HJ3bzdCgvpy2rIKzA
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the subscription.'
         required: true
         example: architecto
         type: string
