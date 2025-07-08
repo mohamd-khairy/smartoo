@@ -81,7 +81,7 @@ class User extends Authenticatable implements Auditable
         'last_login_at',
     ];
 
-    public function getNameAttrbute($value)
+    public function setNameAttrbute($value)
     {
         return $value ?? 'guest' . $this->attributes['uuid'];
     }
