@@ -86,10 +86,9 @@ class SubscriptionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('user.name')
                     ->sortable()
-                    ->label(__('resources.user_id')),
+                    ->label(__('resources.user')),
 
                 Tables\Columns\TextColumn::make('original_transaction_id')
                     ->label(__('resources.original_transaction_id')),
