@@ -55,7 +55,7 @@ class SubscriptionResource extends Resource
                     ->label(__('resources.user_id'))
                     ->default(function ($record) {
                         // Check if the 'name' is null or not
-                        return $record && $record->user->name ? $record->user->uuid : 'guest' . $record->user->uuid; // Set default to null if name is null
+                        return $record && isset($record->user->name) ? $record->user->uuid : 'guest'; // Set default to null if name is null
                     }),
 
                 Forms\Components\TextInput::make('original_transaction_id')
