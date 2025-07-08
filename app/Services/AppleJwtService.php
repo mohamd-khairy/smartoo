@@ -8,15 +8,16 @@ use Illuminate\Support\Facades\Log;
 class AppleJwtService
 {
     protected $privateKey;
-    protected $issuerId;
+    protected $teamId;
     protected $keyId;
+    protected $clientId;
 
     public function __construct()
     {
-        // Load the private key from the .p8 file
-        $this->privateKey = file_get_contents(storage_path('app/apple/AuthKey_ABC123.p8')); // Replace with your .p8 path
-        $this->issuerId = config('services.apple.issuer_id'); // Issuer ID from App Store Connect
-        $this->keyId = config('services.apple.key_id'); // Key ID from App Store Connect
+        $this->privateKey = file_get_contents(storage_path(config('services.apple.private_key_path')));
+        $this->teamId = config('services.apple.team_id');
+        $this->keyId = config('services.apple.key_id');
+        $this->clientId = config('services.apple.client_id');
     }
 
     public function generateJwt()
@@ -27,10 +28,11 @@ class AppleJwtService
             $expirationTime = $issuedAt + 600; // JWT is valid for 10 minutes
 
             $payload = [
-                'iss' => $this->issuerId,
+                'iss' => $this->teamId,
                 'iat' => $issuedAt,
                 'exp' => $expirationTime,
-                'aud' => 'appstoreconnect-v1',
+                'aud' => 'https://appleid.apple.com',
+                'sub' => $this->clientId,
             ];
 
             // Encode the JWT using the private key and ES256 algorithm
@@ -43,7 +45,7 @@ class AppleJwtService
         }
     }
 
-    public function verifyTransaction(string $signedTransaction)
+    public function verifyTransaction(string $originalTransactionId)
     {
         try {
 
@@ -51,12 +53,11 @@ class AppleJwtService
                 'base_uri' => config('services.apple.url'), // sandbox او production
             ]);
 
-            $response = $client->get('/inApps/v1/transactions/', [
+
+            $response = $client->get("/inApps/v1/transactions/{$originalTransactionId}", [
                 'headers' => [
                     'Authorization' => "Bearer {$this->generateJwt()}",
-                    'Content-Type' => 'application/json'
-                ],
-                'json' => ['signedTransactionInfo' => $signedTransaction]
+                ]
             ]);
 
             return json_decode($response->getBody()->getContents(), true);
