@@ -5,6 +5,7 @@ namespace App\Services;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class AppleJwtService
 {
@@ -16,7 +17,7 @@ class AppleJwtService
 
     public function __construct()
     {
-        $this->privateKey = file_get_contents(storage_path(config('services.apple.private_key_path')));
+        $this->privateKey = Storage::get(config('services.apple.private_key_path')); //file_get_contents(storage_path(config('services.apple.private_key_path')));
         $this->issuerId = config('services.apple.issuer_id');
         $this->teamId = config('services.apple.team_id');
         $this->keyId = config('services.apple.key_id');
