@@ -53,6 +53,8 @@ class AppleJwtService
     {
         try {
             $jwt = $this->generateJwt();
+            dd($jwt);
+
             info('JWT: ' . $jwt);
             $baseUrl = config('services.apple.url');  // sandbox or production
             $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
