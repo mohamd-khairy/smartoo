@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 class AppleJwtService
 {
     protected $privateKey;
+    protected $issuerId;
     protected $teamId;
     protected $keyId;
     protected $clientId;
@@ -16,6 +17,7 @@ class AppleJwtService
     public function __construct()
     {
         $this->privateKey = file_get_contents(storage_path(config('services.apple.private_key_path')));
+        $this->issuerId = config('services.apple.issuer_id');
         $this->teamId = config('services.apple.team_id');
         $this->keyId = config('services.apple.key_id');
         $this->clientId = config('services.apple.client_id');
@@ -29,7 +31,7 @@ class AppleJwtService
             $expirationTime = $issuedAt + 600; // JWT is valid for 10 minutes
 
             $payload = [
-                'iss' => $this->teamId,
+                'iss' => $this->issuerId,
                 'iat' => $issuedAt,
                 'exp' => $expirationTime,
                 'aud' => "appstoreconnect-v1",
@@ -65,7 +67,7 @@ class AppleJwtService
             // Log the response status code and body for debugging
             Log::info('API Response:', ['status_code' => $response->status(), 'body' => $response->body()]);
 
-            if($response->status() !== 200) {
+            if ($response->status() !== 200) {
                 return false;
             }
 
