@@ -24,29 +24,32 @@ class AppleJwtService
         $this->clientId = config('services.apple.client_id');
     }
 
-    public function generateJwt()
+    public function generateJwt(): string|null
     {
-        try {
-            // JWT payload
-            $issuedAt = time();
-            $expirationTime = $issuedAt + 600; // JWT is valid for 10 minutes
+        $keyPath = config('services.apple.private_key_path');
 
-            $payload = [
-                'iss' => $this->issuerId,
-                'iat' => $issuedAt,
-                'exp' => $expirationTime,
-                'aud' => "appstoreconnect-v1",
-                'sub' => $this->clientId,
-            ];
-
-            // Encode the JWT using the private key and ES256 algorithm
-            $jwt = JWT::encode($payload, $this->privateKey, 'ES256', $this->keyId);
-
-            return $jwt;
-        } catch (\Exception $e) {
-            Log::error('Error generating JWT: ' . $e->getMessage());
+        if (!Storage::exists($keyPath)) {
+            Log::error("Apple private key file not found: $keyPath");
             return null;
         }
+
+        $privateKey = Storage::get($keyPath);
+
+        $now  = time();
+        $jwt  = JWT::encode(
+            [
+                'iss' => config('services.apple.issuer_id'),
+                'iat' => $now,
+                'exp' => $now + 1200,                // 20 minutes
+                'aud' => 'appstoreconnect-v1',
+                'bid' => config('services.apple.client_id'), // <— Server-API spec
+            ],
+            $privateKey,
+            'ES256',
+            config('services.apple.key_id')
+        );
+
+        return $jwt;
     }
 
     public function verifyTransaction(string $originalTransactionId)
