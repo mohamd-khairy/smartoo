@@ -57,7 +57,7 @@ endpoints:
         name: locale
         description: ''
         required: false
-        example: ar
+        example: en
         type: string
         enumValues:
           - en
@@ -109,7 +109,7 @@ endpoints:
       uuid: architecto
       device_type: architecto
       country_code: architecto
-      locale: ar
+      locale: en
       app_version: architecto
       oc: architecto
       client_secret: architecto

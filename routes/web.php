@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\AppleJwtService;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,9 @@ Route::get('/swagger-docs', function () {
 });
 
 Route::get('/scribe', function () {
-    Artisan::call('scribe:generate');
+    // Artisan::call('scribe:generate');
+    $jwt = (new AppleJwtService())->verifyTransaction('123456');
+    return $jwt;
 });
 
 Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
