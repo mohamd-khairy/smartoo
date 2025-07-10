@@ -26,7 +26,7 @@ Route::get('/scribe', function () {
     // Artisan::call('scribe:generate');
 
     $originalTransactionId = "100000XXXXXX";
-    $url = "https://api.sandbox.storekit.itunes.apple.com/inApps/v1/history/{$originalTransactionId}";
+    $url = "https://api.sandbox.storekit.itunes.apple.com/inApps/v1/transactions/{$originalTransactionId}";
     $jwt = (new AppleJwtService())->generateJwt();
 
     $headers = [
