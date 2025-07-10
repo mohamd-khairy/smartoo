@@ -60,7 +60,7 @@ class AppleJwtService
         $response = Http::withHeaders([
             'Authorization' => "Bearer {$jwt}",
             'Content-Type' => 'application/json',
-        ])->post($url);
+        ])->get($url);
 
         dd($response);
 
