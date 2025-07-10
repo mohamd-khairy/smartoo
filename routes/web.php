@@ -3,6 +3,7 @@
 use App\Services\AppleJwtService;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,8 +24,19 @@ Route::get('/swagger-docs', function () {
 
 Route::get('/scribe', function () {
     // Artisan::call('scribe:generate');
-    $jwt = (new AppleJwtService())->verifyTransaction('123456');
-    return $jwt;
+
+    $originalTransactionId = "100000XXXXXX";
+    $url = "https://api.sandbox.storekit.itunes.apple.com/inApps/v1/history/{$originalTransactionId}";
+    $jwt = (new AppleJwtService())->generateJwt();
+
+    $headers = [
+        'Authorization' => "Bearer {$jwt}",
+    ];
+
+    $response = Http::withHeaders($headers)->get($url);
+
+
+    return $response;
 });
 
 Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
