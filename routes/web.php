@@ -22,10 +22,9 @@ Route::get('/swagger-docs', function () {
     ]);
 });
 
-Route::get('/scribe', function () {
+Route::get('/scribe/{originalTransactionId}', function ($originalTransactionId) {
     // Artisan::call('scribe:generate');
 
-    $originalTransactionId = "100000XXXXXX";
     $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/history/{$originalTransactionId}";
     $jwt = (new AppleJwtService())->generateJwt();
 
