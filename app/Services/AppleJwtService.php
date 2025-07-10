@@ -29,7 +29,8 @@ class AppleJwtService
         $keyPath = config('services.apple.private_key_path');
 
 
-        $privateKey = file_get_contents(storage_path($keyPath));  //Storage::get($keyPath);
+        // $privateKey = file_get_contents(storage_path($keyPath));  
+        $privateKey = Storage::get($keyPath);
 
         $now = time();
         $jwt = JWT::encode(
@@ -51,7 +52,7 @@ class AppleJwtService
     public function verifyTransaction(string $originalTransactionId)
     {
         $jwt = $this->generateJwt();
-dd($jwt);
+        dd($jwt);
         $baseUrl = config('services.apple.url');  // sandbox or production
         $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
 
