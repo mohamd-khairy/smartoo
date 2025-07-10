@@ -52,7 +52,7 @@ class AppleJwtService
     public function verifyTransaction(string $originalTransactionId)
     {
         $jwt = $this->generateJwt();
-        dd($jwt);
+     
         $baseUrl = config('services.apple.url');  // sandbox or production
         $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
 
