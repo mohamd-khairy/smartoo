@@ -29,8 +29,8 @@ class AppleJwtService
         $keyPath = config('services.apple.private_key_path');
 
 
-        // $privateKey = file_get_contents(storage_path($keyPath));  
-        $privateKey = Storage::get($keyPath);
+        $privateKey = file_get_contents(storage_path($keyPath));  
+        // $privateKey = Storage::get($keyPath);
 
         $now = time();
         $jwt = JWT::encode(
