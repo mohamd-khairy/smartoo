@@ -69,7 +69,7 @@ Route::get('webhook', function () {
 });
 
 Route::get('/scribe/{transactionId}', function ($transactionId) {
-    $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/subscriptions/{$transactionId}?status=1&status=4";
+    $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/subscriptions";
     $jwt = (new AppleJwtService())->generateJwt();
 
     $headers = [
