@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::post('/scribe', function ($request) {
+Route::post('/scribe', function () {
 
     info('here');
 
