@@ -27,7 +27,7 @@ class CheckActiveSubscriptions extends Command implements Isolatable
             // Get the Apple API endpoint and JWT for this subscription
             $transactionId = $sub->transaction_id;
 
-            $data = $this->AppleJwtService->verifyTransaction($transactionId, $sub->type ?? 'Sandbox');
+            $data = $this->appleJwtService->verifyTransaction($transactionId, $sub->type ?? 'Sandbox');
 
             if ($data && isset($data['transactionId'])) {
 
