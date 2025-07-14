@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::post('/scribe', function ($request) {
+
+    info('here');
+
+    return response()->json(['message' => 'Hello World']);
+});
+
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], function () {
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
         Route::post('/register', [\App\Http\Controllers\API\V1\AuthController::class, 'register'])->name('register');
