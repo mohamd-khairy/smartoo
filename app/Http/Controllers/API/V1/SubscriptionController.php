@@ -67,7 +67,7 @@ class SubscriptionController extends Controller
                     'transaction_id' => $appleRes['transactionId'],
                     'expires_at' => Carbon::createFromTimestampMs($appleRes['expiresDate']),
                     'is_renewal' => false,
-                    'status' => $appleRes['isActive'],
+                    'status' => $appleRes['isActive'] ? 'active' : 'inactive',
                 ]
             );
 
