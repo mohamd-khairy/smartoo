@@ -6,6 +6,7 @@ use App\Models\Subscription;
 use App\Services\AppleJwtService;
 use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Support\Facades\Http;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class CheckActiveSubscriptions extends Command implements Isolatable
 {
@@ -16,6 +17,8 @@ class CheckActiveSubscriptions extends Command implements Isolatable
 
     public function __construct(AppleJwtService $appleJwtService)
     {
+        parent::__construct();
+
         $this->appleJwtService = $appleJwtService;
     }
 
