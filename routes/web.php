@@ -35,7 +35,6 @@ Route::get('/scribe/{transactionId}', function ($transactionId) {
     $response = Http::withHeaders($headers)->get($url);
 
     if (!$response->ok()) {
-        // Optionally dd($response->json()) for Apple error details
         abort($response->status(), 'Apple API Error: ' . json_encode($response->json()));
     }
 
@@ -54,7 +53,6 @@ Route::get('/scribe/{transactionId}', function ($transactionId) {
 
     // Decode payload (the second part)
     $payload = $parts[1];
-    // Pad base64url as needed
     $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
     $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
     $data = json_decode($json, true);
@@ -63,19 +61,17 @@ Route::get('/scribe/{transactionId}', function ($transactionId) {
     $isActive = false;
 
     if ($expiresDateMs) {
-        // Current UTC time in milliseconds
         $nowMs = (int) (microtime(true) * 1000);
         $isActive = ($expiresDateMs > $nowMs);
     }
 
-    // $isActive is true if the subscription is valid (not expired)
-    $data + [
+    // Properly add new keys to the response
+    $data = array_merge($data, [
         'expiresDate' => $expiresDateMs,
         'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
         'isActive' => $isActive,
-    ];
+    ]);
 
-    // Return for debugging or further handling
     return response()->json($data);
 });
 
