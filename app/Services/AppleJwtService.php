@@ -29,7 +29,7 @@ class AppleJwtService
         $keyPath = config('services.apple.private_key_path');
 
 
-        $privateKey = file_get_contents(storage_path($keyPath));  
+        $privateKey = file_get_contents(storage_path($keyPath));
         // $privateKey = Storage::get($keyPath);
 
         $now = time();
@@ -52,17 +52,15 @@ class AppleJwtService
     public function verifyTransaction(string $originalTransactionId)
     {
         $jwt = $this->generateJwt();
-     
+
         $baseUrl = config('services.apple.url');  // sandbox or production
         $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
 
         // Make the HTTP POST request using Laravel HTTP Client
         $response = Http::withHeaders([
             'Authorization' => "Bearer {$jwt}",
-            'Content-Type' => 'application/json',
         ])->get($url);
 
-        dd($response);
 
         if ($response->status() !== 200) {
             return false;
