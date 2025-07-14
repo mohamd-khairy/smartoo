@@ -11,11 +11,11 @@ class CheckActiveSubscriptions extends Command
     protected $signature = 'subscriptions:check';
     protected $description = 'Check the status of active subscriptions via Apple API';
 
-    public $AppleJwtService;
+    protected $appleJwtService;
 
-    public function __construct()
+    public function __construct(AppleJwtService $appleJwtService)
     {
-        $this->AppleJwtService = new AppleJwtService();
+        $this->appleJwtService = $appleJwtService;
     }
 
     public function handle()
