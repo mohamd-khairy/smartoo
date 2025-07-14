@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->app->booted(function () {
-        //     $schedule = app(Schedule::class);
-        //     $schedule->command('subscriptions:check')->everyMinute();
-        // });
+        $this->app->booted(function () {
+            $schedule = app(Schedule::class);
+            $schedule->command('subscriptions:check')->everyMinute();
+        });
     }
 }

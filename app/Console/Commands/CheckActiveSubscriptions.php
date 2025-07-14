@@ -4,9 +4,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Subscription;
 use App\Services\AppleJwtService;
+use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Support\Facades\Http;
 
-class CheckActiveSubscriptions extends Command
+class CheckActiveSubscriptions extends Command implements Isolatable
 {
     protected $signature = 'subscriptions:check';
     protected $description = 'Check the status of active subscriptions via Apple API';
