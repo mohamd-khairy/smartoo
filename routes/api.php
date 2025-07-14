@@ -4,13 +4,6 @@ use App\Services\AppleJwtService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/scribe', function (Request $request) {
-
-    $data = (new AppleJwtService())->verifyWebhook($request);
-
-    return response()->json($data, 200);
-});
-
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], function () {
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
         Route::post('/register', [\App\Http\Controllers\API\V1\AuthController::class, 'register'])->name('register');
@@ -64,3 +57,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
     //     Route::delete('/{id}', [\App\Http\Controllers\API\V1\PlanController::class, 'destroy'])->name('destroy');
     // });
 });
+Route::post('/webhook/handle', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'webhookHandle'])->name('webhook.handle');

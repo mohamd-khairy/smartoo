@@ -35,9 +35,12 @@ return [
         ],
     ],
     'apple' => [ // Production
+        'env_type' => env('APPlE_MODE', 'Sandbox'),
         'url' => env('APPlE_MODE', 'Sandbox')
             ? 'https://api.storekit-sandbox.itunes.apple.com'
             : 'https://api.storekit.itunes.apple.com',
+        'sandbox_url' => 'https://api.storekit-sandbox.itunes.apple.com',
+        'production_url' => 'https://api.storekit.itunes.apple.com',
         'issuer_id' => env('APPLE_ISSUER_ID', ''),
         'team_id' => env('APPLE_TEAM_ID', ''),
         'key_id' => env('APPLE_KEY_ID', ''),

@@ -9,6 +9,7 @@ use App\Models\Subscription;
 use App\Services\AppleJwtService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
@@ -52,31 +53,60 @@ class SubscriptionController extends Controller
      */
     public function store(CreateSubscriptionRequest $request)
     {
-        $data = $request->validated();
+        return DB::transaction(function () use ($request) {
+            $data = $request->validated();
 
-        $user = auth()->user();
+            $user = auth()->user();
 
-        $appleRes = $this->appleJwtService->verifyTransaction($data['original_transaction_id']);
-     
-        if ($appleRes && $user) { // ناجح
-            $subscription = Subscription::updateOrCreate(
-                ['original_transaction_id' => $data['original_transaction_id']],
-                [
-                    'user_id' => $user->id,
-                    'product_id' => $appleRes['productId'],
-                    'transaction_id' => $appleRes['transactionId'],
-                    'expires_at' => Carbon::createFromTimestampMs($appleRes['expiresDate']),
-                    'is_renewal' => false,
-                    'status' => $appleRes['isActive'] ? 'active' : 'inactive',
-                ]
-            );
+            $appleRes = $this->appleJwtService->verifyTransaction($data['original_transaction_id']);
 
-            $user->subscription_id = $subscription->id;
-            $user->save();
-            return api_response(true, __('general.subscription.store'), 201);
+            if ($appleRes && $user) { // ناجح
+                $subscription = Subscription::updateOrCreate(
+                    ['original_transaction_id' => $data['original_transaction_id']],
+                    [
+                        'user_id' => $user->id,
+                        'product_id' => $appleRes['productId'] ?? null,
+                        'transaction_id' => $appleRes['transactionId'] ?? null,
+                        'expires_at' => isset($appleRes['expiresDate']) ? Carbon::createFromTimestampMs($appleRes['expiresDate']) : null,
+                        'is_renewal' => true,
+                        'status' => $appleRes['isActive'] ? 'active' : 'inactive',
+                        'type' => $appleRes['environment'] ?? 'Sandbox',
+                        'data' => $appleRes ?? [],
+                    ]
+                );
+
+                if ($subscription) {
+                    $user->subscription_id = $subscription->id;
+                    $user->save();
+                }
+                return api_response(true, __('general.subscription.store'), 201);
+            }
+
+            return api_response(null, __('general.subscription.not_found'), 400);
+        });
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     */
+    public function webhookHandle(Request $request)
+    {
+        $data = $this->appleJwtService->verifyWebhook($request);
+
+        if ($data && isset($data['transactionId']) && isset($data['expiresAt'])) {
+
+            $subscription = Subscription::where('transaction_id', $data['transactionId'])->first();
+            // Update subscription in DB
+            $subscription->expires_at = isset($data['expiresAt']) ? $data['expiresAt'] : null;
+            $subscription->status = $data['isActive'];
+            $subscription->save();
+
+            info("Subscription {$subscription->id} with {$subscription->transaction_id} checked: " . ($data['isActive'] ? 'active' : 'expired'));
+
+            return api_response($subscription, __('general.subscription.update'), 200);
         }
 
-        return api_response(null, __('general.subscription.not_found'), 400);
+        return api_response(null, __('general.subscription.not_found'), 404);
     }
 
     /**

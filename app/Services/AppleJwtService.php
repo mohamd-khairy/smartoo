@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Subscription;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class AppleJwtService
 {
@@ -17,7 +16,7 @@ class AppleJwtService
 
     public function __construct()
     {
-        $this->privateKey = Storage::get(config('services.apple.private_key_path')); //file_get_contents(storage_path(config('services.apple.private_key_path')));
+        $this->privateKey = config('services.apple.private_key_path');
         $this->issuerId = config('services.apple.issuer_id');
         $this->teamId = config('services.apple.team_id');
         $this->keyId = config('services.apple.key_id');
@@ -26,126 +25,141 @@ class AppleJwtService
 
     public function generateJwt(): string|null
     {
-        $keyPath = config('services.apple.private_key_path');
+        try {
 
+            $privateKey = file_get_contents(storage_path($this->privateKey));
 
-        $privateKey = file_get_contents(storage_path($keyPath));
-        // $privateKey = Storage::get($keyPath);
+            $now = time();
 
-        $now = time();
-        $jwt = JWT::encode(
-            [
-                'iss' => config('services.apple.issuer_id'),
-                'iat' => $now,
-                'exp' => $now + 1200,                // 20 minutes
-                'aud' => 'appstoreconnect-v1',
-                'bid' => config('services.apple.client_id'), // <— Server-API spec
-            ],
-            $privateKey,
-            'ES256',
-            config('services.apple.key_id')
-        );
+            $jwt = JWT::encode(
+                [
+                    'iss' => config('services.apple.issuer_id'),
+                    'iat' => $now,
+                    'exp' => $now + 1200,                // 20 minutes
+                    'aud' => 'appstoreconnect-v1',
+                    'bid' => config('services.apple.client_id'), // <— Server-API spec
+                ],
+                $privateKey,
+                'ES256',
+                config('services.apple.key_id')
+            );
 
-        return $jwt;
+            return $jwt;
+
+        } catch (\Throwable $th) {
+            return null;
+        }
     }
 
-    public function verifyTransaction(string $originalTransactionId)
+    public function verifyTransaction(string $originalTransactionId, $envType = null)
     {
-        $jwt = $this->generateJwt();
+        try {
+            $envType = $envType ?? config('services.apple.env_type');
 
-        $baseUrl = config('services.apple.url');  // sandbox or production
-        $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
+            $jwt = $this->generateJwt();
 
-        // Make the HTTP POST request using Laravel HTTP Client
-        $response = Http::withHeaders([
-            'Authorization' => "Bearer {$jwt}",
-        ])->get($url);
+            if (!$jwt)
+                return false;
+
+            $baseUrl = $envType == 'Sandbox' ? config('services.apple.sandbox_url') : config('services.apple.production_url');
+
+            $url = "{$baseUrl}/inApps/v1/transactions/{$originalTransactionId}";
+
+            // Make the HTTP POST request using Laravel HTTP Client
+            $response = Http::withHeaders([
+                'Authorization' => "Bearer {$jwt}",
+            ])->get($url);
 
 
-        if ($response->status() !== 200) {
-            return false;
+            if ($response->status() !== 200) {
+                return false;
+            }
+
+            $body = $response->json();
+
+            if (empty($body['signedTransactionInfo'])) {
+                return false;
+            }
+
+            $jws = $body['signedTransactionInfo'];
+            $parts = explode('.', $jws);
+
+            if (count($parts) !== 3) {
+                return false;
+            }
+
+            $payload = $parts[1];
+            $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
+            $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
+            $data = json_decode($json, true);
+
+            $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
+            $isActive = false;
+
+            if ($expiresDateMs) {
+                $nowMs = (int) (microtime(true) * 1000);
+                $isActive = ($expiresDateMs > $nowMs);
+            }
+
+            // Properly add new keys to the response
+            $data = array_merge($data, [
+                'expiresDate' => $expiresDateMs,
+                'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
+                'isActive' => $isActive,
+            ]);
+
+            return $data;
+
+        } catch (\Throwable $th) {
+            info('error in verify transaction: ' . $th->getMessage());
+
+            throw $th;
+            // return false;
         }
-
-        $body = $response->json();
-
-        if (empty($body['signedTransactionInfo'])) {
-            return false;
-        }
-
-        $jws = $body['signedTransactionInfo'];
-        $parts = explode('.', $jws);
-
-        if (count($parts) !== 3) {
-            return false;
-        }
-
-        $payload = $parts[1];
-        $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
-        $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
-        $data = json_decode($json, true);
-
-        $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
-        $isActive = false;
-
-        if ($expiresDateMs) {
-            $nowMs = (int) (microtime(true) * 1000);
-            $isActive = ($expiresDateMs > $nowMs);
-        }
-
-        // Properly add new keys to the response
-        $data = array_merge($data, [
-            'expiresDate' => $expiresDateMs,
-            'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
-            'isActive' => $isActive,
-        ]);
-
-        return $data;
-
-        //         try {
-
-        // } catch (\Throwable $th) {
-        //     Log::info('API Response:', ['body' => $th->getMessage()]);
-
-        //     throw $th;
-        // }
     }
-
 
     public function verifyWebhook($request)
     {
-        if (!$request->signedPayload) {
-            return false;
+        try {
+            if (!$request->signedPayload) {
+                return false;
+            }
+
+            $jws = $request->signedPayload;
+            $parts = explode('.', $jws);
+
+            if (count($parts) !== 3) {
+                return false;
+            }
+
+            $payload = $parts[1];
+            $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
+            $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
+            $data = json_decode($json, true);
+
+            $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
+            $isActive = false;
+
+            if ($expiresDateMs) {
+                $nowMs = (int) (microtime(true) * 1000);
+                $isActive = ($expiresDateMs > $nowMs);
+            }
+
+            // Properly add new keys to the response
+            $data = array_merge($data, [
+                'expiresDate' => $expiresDateMs,
+                'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
+                'isActive' => $isActive,
+            ]);
+
+            info('API Response Webhook From Apple:', $data);
+
+            return $data;
+        } catch (\Throwable $th) {
+            info('Error from webhook: ' . $th->getMessage());
+
+            throw $th;
+            // return false;
         }
-
-        $jws = $request->signedPayload;
-        $parts = explode('.', $jws);
-
-        if (count($parts) !== 3) {
-            return false;
-        }
-
-        $payload = $parts[1];
-        $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
-        $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
-        $data = json_decode($json, true);
-
-        $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
-        $isActive = false;
-
-        if ($expiresDateMs) {
-            $nowMs = (int) (microtime(true) * 1000);
-            $isActive = ($expiresDateMs > $nowMs);
-        }
-
-        // Properly add new keys to the response
-        $data = array_merge($data, [
-            'expiresDate' => $expiresDateMs,
-            'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
-            'isActive' => $isActive,
-        ]);
-
-        info('API Response:', ['body' => $data]);
-
-        return $data;
     }
 }

@@ -12,7 +12,7 @@ class Subscription extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'original_transaction_id', 'product_id', 'is_renewal', 'status', 'expires_at'];
+    protected $fillable = ['user_id', 'original_transaction_id', 'product_id', 'is_renewal', 'status', 'expires_at', 'data', 'type'];
 
     public function user()
     {

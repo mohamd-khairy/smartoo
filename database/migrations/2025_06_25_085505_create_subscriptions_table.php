@@ -18,6 +18,8 @@ return new class extends Migration {
             $table->enum('status', ['active', 'inactive', 'expired'])->default('inactive');
             $table->boolean('is_renewal')->default(false);
             $table->timestamp('expires_at')->nullable();
+            $table->enum('type', ['Sandbox', 'Production'])->default('Sandbox');
+            $table->text('data')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
