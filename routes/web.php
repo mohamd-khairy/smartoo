@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\RemoteSetting;
 use App\Services\AppleJwtService;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Artisan;
@@ -46,29 +47,39 @@ Route::get('webhook', function () {
 });
 
 Route::post('/scribe', function ($request) {
-    $jws = $request->getContent();
-    info('Received JWS: ' . $jws);
-    // Decode JWS (do real signature validation in prod)
-    $parts = explode('.', $jws);
-    if (count($parts) !== 3) {
-        return response()->json(['error' => 'Malformed JWS'], 400);
-    }
 
-    $payload = $parts[1];
-    $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
-    $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
-    $data = json_decode($json, true);
+    RemoteSetting::create([
+        'country_code' => 'ae',
+        'value' => $request->input('value'),
+        'type' => 'string',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+    
+    
+    // $jws = $request->getContent();
+    // info('Received JWS: ' . $jws);
+    // // Decode JWS (do real signature validation in prod)
+    // $parts = explode('.', $jws);
+    // if (count($parts) !== 3) {
+    //     return response()->json(['error' => 'Malformed JWS'], 400);
+    // }
 
-    // Example: handle subscription status
-    $notificationType = $data['notificationType'] ?? null;
-    $transactionId = $data['data']['transactionId'] ?? null;
+    // $payload = $parts[1];
+    // $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
+    // $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
+    // $data = json_decode($json, true);
 
-    info('Received notification: ' . $notificationType);
-    info('Received transaction ID: ' . $transactionId);
-    // TODO: Update your user/subscription database here based on notification type
+    // // Example: handle subscription status
+    // $notificationType = $data['notificationType'] ?? null;
+    // $transactionId = $data['data']['transactionId'] ?? null;
 
-    info('Received notification: ' . json_encode($data));
-    return response()->json(['status' => 'ok']);
+    // info('Received notification: ' . $notificationType);
+    // info('Received transaction ID: ' . $transactionId);
+    // // TODO: Update your user/subscription database here based on notification type
+
+    // info('Received notification: ' . json_encode($data));
+    // return response()->json(['status' => 'ok']);
 });
 
 Route::get('/scribe/{transactionId}', function ($transactionId) {
