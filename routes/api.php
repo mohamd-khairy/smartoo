@@ -21,13 +21,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
         });
     });
 
-    // Route::group(['prefix' => 'users', 'middleware' => 'auth:sanctum', 'as' => 'users.'], function () {
-    //     Route::get('/', [\App\Http\Controllers\API\V1\UserController::class, 'index'])->name('index');
-    //     Route::get('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'show'])->name('show');
-    //     Route::post('/', [\App\Http\Controllers\API\V1\UserController::class, 'store'])->name('store');
-    //     Route::put('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'update'])->name('update');
-    Route::delete('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'destroy'])->name('destroy');
-    // });
+    Route::group(['prefix' => 'users', 'middleware' => 'auth:sanctum', 'as' => 'users.'], function () {
+        //     Route::get('/', [\App\Http\Controllers\API\V1\UserController::class, 'index'])->name('index');
+        //     Route::get('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'show'])->name('show');
+        //     Route::post('/', [\App\Http\Controllers\API\V1\UserController::class, 'store'])->name('store');
+        //     Route::put('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'update'])->name('update');
+        Route::delete('/{id}', [\App\Http\Controllers\API\V1\UserController::class, 'destroy'])->name('destroy');
+    });
 
     Route::group(['prefix' => 'translations', 'middleware' => 'auth:sanctum', 'as' => 'translations.'], function () {
         // Route::get('/', [\App\Http\Controllers\API\V1\TranslationController::class, 'index'])->name('index');
@@ -37,7 +37,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => 'auth.apikey'], 
         // Route::delete('/{id}', [\App\Http\Controllers\API\V1\TranslationController::class, 'destroy'])->name('destroy');
     });
 
-    Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
+    Route::group(['prefix' => 'subscriptions', 'middleware' => 'auth:sanctum', 'as' => 'subscriptions.'], function () {
         //     Route::get('/', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'index'])->name('index');
         Route::get('/{id}', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'show'])->name('show');
         Route::post('/', [\App\Http\Controllers\API\V1\SubscriptionController::class, 'store'])->name('store');

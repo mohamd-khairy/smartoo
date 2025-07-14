@@ -58,7 +58,7 @@ class SubscriptionController extends Controller
 
         $appleRes = $this->appleJwtService->verifyTransaction($data['original_transaction_id']);
      
-        if ($appleRes) { // ناجح
+        if ($appleRes && $user) { // ناجح
             $subscription = Subscription::updateOrCreate(
                 ['original_transaction_id' => $data['original_transaction_id']],
                 [
