@@ -71,14 +71,6 @@ Route::get('webhook', function () {
 Route::post('/scribe', function ($request) {
 
     info('here');
-    // RemoteSetting::create([
-    //     'country_code' => 'ae',
-    //     'value' => $request->input('value'),
-    //     'type' => 'string',
-    //     'created_at' => now(),
-    //     'updated_at' => now(),
-    // ]);
-
 
     // $jws = $request->getContent();
     // info('Received JWS: ' . $jws);
@@ -106,7 +98,7 @@ Route::post('/scribe', function ($request) {
 });
 
 Route::get('/scribe/{transactionId}', function ($transactionId) {
-    $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/transactions/{$transactionId}";
+    $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/subscriptions/{$transactionId}";
     $jwt = (new AppleJwtService())->generateJwt();
 
     $headers = [
@@ -122,39 +114,40 @@ Route::get('/scribe/{transactionId}', function ($transactionId) {
 
     $body = $response->json();
 
-    if (empty($body['signedTransactionInfo'])) {
-        abort(500, 'No signedTransactionInfo found in response.');
-    }
+    dd($body);
+    // if (empty($body['signedTransactionInfo'])) {
+    //     abort(500, 'No signedTransactionInfo found in response.');
+    // }
 
-    $jws = $body['signedTransactionInfo'];
-    $parts = explode('.', $jws);
+    // $jws = $body['signedTransactionInfo'];
+    // $parts = explode('.', $jws);
 
-    if (count($parts) !== 3) {
-        abort(500, 'Malformed JWS!');
-    }
+    // if (count($parts) !== 3) {
+    //     abort(500, 'Malformed JWS!');
+    // }
 
-    // Decode payload (the second part)
-    $payload = $parts[1];
-    $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
-    $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
-    $data = json_decode($json, true);
+    // // Decode payload (the second part)
+    // $payload = $parts[1];
+    // $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
+    // $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
+    // $data = json_decode($json, true);
 
-    $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
-    $isActive = false;
+    // $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
+    // $isActive = false;
 
-    if ($expiresDateMs) {
-        $nowMs = (int) (microtime(true) * 1000);
-        $isActive = ($expiresDateMs > $nowMs);
-    }
+    // if ($expiresDateMs) {
+    //     $nowMs = (int) (microtime(true) * 1000);
+    //     $isActive = ($expiresDateMs > $nowMs);
+    // }
 
-    // Properly add new keys to the response
-    $data = array_merge($data, [
-        'expiresDate' => $expiresDateMs,
-        'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
-        'isActive' => $isActive,
-    ]);
+    // // Properly add new keys to the response
+    // $data = array_merge($data, [
+    //     'expiresDate' => $expiresDateMs,
+    //     'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
+    //     'isActive' => $isActive,
+    // ]);
 
-    return response()->json($data);
+    // return response()->json($data);
 });
 
 

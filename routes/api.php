@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/scribe', function () {
+Route::post('/scribe', function (Request $request) {
 
     info('here');
+    info($request->all());
 
     return response()->json(['message' => 'Hello World']);
 });

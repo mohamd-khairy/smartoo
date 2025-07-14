@@ -109,4 +109,21 @@ class AppleJwtService
         //     throw $th;
         // }
     }
+
+
+    public function verifySubscriptions()
+    {
+        // $data = $this->verifyTransaction($originalTransactionId);
+
+        // if (!$data) {
+        //     return false;
+        // }
+
+        // if ($data['isActive']) {
+        //     return true;
+        // }
+
+
+
+    }
 }
