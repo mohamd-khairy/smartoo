@@ -70,13 +70,14 @@ Route::get('webhook', function () {
 
 Route::post('/scribe', function ($request) {
 
-    RemoteSetting::create([
-        'country_code' => 'ae',
-        'value' => $request->input('value'),
-        'type' => 'string',
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
+    info('here');
+    // RemoteSetting::create([
+    //     'country_code' => 'ae',
+    //     'value' => $request->input('value'),
+    //     'type' => 'string',
+    //     'created_at' => now(),
+    //     'updated_at' => now(),
+    // ]);
 
 
     // $jws = $request->getContent();
@@ -101,7 +102,7 @@ Route::post('/scribe', function ($request) {
     // // TODO: Update your user/subscription database here based on notification type
 
     // info('Received notification: ' . json_encode($data));
-    // return response()->json(['status' => 'ok']);
+    return response()->json(['status' => 'ok']);
 });
 
 Route::get('/scribe/{transactionId}', function ($transactionId) {
