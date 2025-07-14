@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,12 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
+        VerifyCsrfToken::class;
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // $exceptions->render(function (\Illuminate\Auth\AuthenticationException $e, $request) {
         //     return api_response(message: 'Unauthenticated.', statusCode: 401);
         // });
-
+    
         // $exceptions->render(function (\Illuminate\Validation\ValidationException $e, $request) {
         //     // First, get the errors array and shift the first field's errors
         //     $errors = $e->errors();
