@@ -59,6 +59,22 @@ Route::get('/scribe/{transactionId}', function ($transactionId) {
     $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
     $data = json_decode($json, true);
 
+    $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
+    $isActive = false;
+
+    if ($expiresDateMs) {
+        // Current UTC time in milliseconds
+        $nowMs = (int) (microtime(true) * 1000);
+        $isActive = ($expiresDateMs > $nowMs);
+    }
+
+    // $isActive is true if the subscription is valid (not expired)
+    $data + [
+        'expiresDate' => $expiresDateMs,
+        'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
+        'isActive' => $isActive,
+    ];
+
     // Return for debugging or further handling
     return response()->json($data);
 });
