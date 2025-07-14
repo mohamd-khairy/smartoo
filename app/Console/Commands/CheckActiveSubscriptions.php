@@ -1,7 +1,6 @@
 <?php
 namespace App\Console\Commands;
 
-use App\Services\AppleJwtService;
 use Illuminate\Console\Command;
 use App\Models\Subscription;
 use App\Services\AppleJwtService;
