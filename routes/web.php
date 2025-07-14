@@ -22,6 +22,9 @@ Route::get('/swagger-docs', function () {
     ]);
 });
 
+Route::post('/scribe', function ($request) {
+    dd($request->all());
+});
 
 Route::get('/scribe/{transactionId}', function ($transactionId) {
     $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/transactions/{$transactionId}";
