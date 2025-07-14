@@ -23,6 +23,28 @@ Route::get('/swagger-docs', function () {
     ]);
 });
 
+Route::get('noti/{testNotificationToken}', function ($testNotificationToken) {
+
+    $jwt = (new AppleJwtService())->generateJwt();
+
+    $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/notifications/test/{$testNotificationToken}";
+
+    $response = Http::withHeaders([
+        'Authorization' => "Bearer {$jwt}",
+        'Accept' => 'application/json',
+    ])->get($url);
+
+    if ($response->successful()) {
+        // Notification status/result
+        return $response->json();
+    } else {
+        // Error handling
+        dd($response->status(), $response->json());
+    }
+
+});
+
+
 
 Route::get('webhook', function () {
 
@@ -55,8 +77,8 @@ Route::post('/scribe', function ($request) {
         'created_at' => now(),
         'updated_at' => now(),
     ]);
-    
-    
+
+
     // $jws = $request->getContent();
     // info('Received JWS: ' . $jws);
     // // Decode JWS (do real signature validation in prod)
