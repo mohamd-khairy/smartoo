@@ -66,8 +66,40 @@ class AppleJwtService
             return false;
         }
 
-        // Return the response body as an array
-        return $response->json();
+        $body = $response->json();
+
+        if (empty($body['signedTransactionInfo'])) {
+            return false;
+        }
+
+        $jws = $body['signedTransactionInfo'];
+        $parts = explode('.', $jws);
+
+        if (count($parts) !== 3) {
+            return false;
+        }
+
+        $payload = $parts[1];
+        $paddedPayload = str_pad($payload, (4 - strlen($payload) % 4) % 4 + strlen($payload), '=', STR_PAD_RIGHT);
+        $json = base64_decode(strtr($paddedPayload, '-_', '+/'));
+        $data = json_decode($json, true);
+
+        $expiresDateMs = $data['expiresDate'] ?? null; // milliseconds
+        $isActive = false;
+
+        if ($expiresDateMs) {
+            $nowMs = (int) (microtime(true) * 1000);
+            $isActive = ($expiresDateMs > $nowMs);
+        }
+
+        // Properly add new keys to the response
+        $data = array_merge($data, [
+            'expiresDate' => $expiresDateMs,
+            'expiresAt' => $expiresDateMs ? date('Y-m-d H:i:s', $expiresDateMs / 1000) : null,
+            'isActive' => $isActive,
+        ]);
+
+        return $data;
 
         //         try {
 

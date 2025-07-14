@@ -58,16 +58,16 @@ class SubscriptionController extends Controller
 
         $appleRes = $this->appleJwtService->verifyTransaction($data['original_transaction_id']);
      
-        if (isset($appleRes->status) && $appleRes->status === 0) { // ناجح
+        if ($appleRes) { // ناجح
             $subscription = Subscription::updateOrCreate(
                 ['original_transaction_id' => $data['original_transaction_id']],
                 [
                     'user_id' => $user->id,
-                    'product_id' => $appleRes->productId,
-                    'transaction_id' => $appleRes->transactionId,
-                    'expires_at' => Carbon::createFromTimestampMs($appleRes->expiresDate),
-                    'is_renewal' => $appleRes->isRenewal,
-                    'status' => $appleRes->subscriptionStatus,
+                    'product_id' => $appleRes['productId'],
+                    'transaction_id' => $appleRes['transactionId'],
+                    'expires_at' => Carbon::createFromTimestampMs($appleRes['expiresDate']),
+                    'is_renewal' => false,
+                    'status' => $appleRes['statuisActives'],
                 ]
             );
 
