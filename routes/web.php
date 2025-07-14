@@ -22,9 +22,32 @@ Route::get('/swagger-docs', function () {
     ]);
 });
 
+
+Route::get('webhook', function () {
+
+    $url = "https://api.storekit-sandbox.itunes.apple.com/inApps/v1/notifications/test";
+    $jwt = (new AppleJwtService())->generateJwt();
+
+    $headers = [
+        'Authorization' => "Bearer {$jwt}",
+        'Accept' => 'application/json',
+    ];
+
+    $response = Http::withHeaders($headers)->post($url);
+
+    // Inspect result
+    if ($response->successful()) {
+        return $response->json();
+    } else {
+        // Apple will return error codes/details here if failed
+        dd($response->status(), $response->json());
+    }
+
+});
+
 Route::post('/scribe', function ($request) {
     $jws = $request->getContent();
-
+    info('Received JWS: ' . $jws);
     // Decode JWS (do real signature validation in prod)
     $parts = explode('.', $jws);
     if (count($parts) !== 3) {
@@ -40,6 +63,8 @@ Route::post('/scribe', function ($request) {
     $notificationType = $data['notificationType'] ?? null;
     $transactionId = $data['data']['transactionId'] ?? null;
 
+    info('Received notification: ' . $notificationType);
+    info('Received transaction ID: ' . $transactionId);
     // TODO: Update your user/subscription database here based on notification type
 
     info('Received notification: ' . json_encode($data));
