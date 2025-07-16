@@ -59,7 +59,7 @@ return [
     'id' => 'ID',
     'title' => 'Title',
     'description' => 'Description',
-    'oc' => 'OC',
+    'os' => 'os',
     'app_version' => 'App Version',
     'client_id' => 'Client ID',
     'client_secret' => 'Client Secret',

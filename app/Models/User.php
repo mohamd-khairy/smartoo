@@ -23,7 +23,7 @@ class User extends Authenticatable implements Auditable
     protected $fillable = [
         'uuid',
         'app_version',
-        'oc',
+        'os',
         'client_secret',
         'client_id',
         'device_type',

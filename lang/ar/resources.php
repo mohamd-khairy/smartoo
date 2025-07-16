@@ -58,7 +58,7 @@ return [
 
     'id' => 'المعرف',
     'title' => 'العنوان',
-    'oc' => 'OC',
+    'os' => 'os',
     'app_version' => 'احدث نسخة',
     'client_id' => 'معرف العميل',
     'client_secret' => 'سر العميل',

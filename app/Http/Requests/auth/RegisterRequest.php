@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'country_code' => 'nullable|string',
             'locale' => 'nullable|string|in:en,ar',
             'app_version' => 'nullable|string',
-            'oc' => 'nullable|string',
+            'os' => 'nullable|string',
             'client_secret' => 'nullable|string',
             'client_id' => 'nullable|string',
         ];

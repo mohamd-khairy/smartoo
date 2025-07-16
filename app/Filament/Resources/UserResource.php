@@ -49,9 +49,9 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('uuid')
                     ->maxLength(255)
                     ->label(__('resources.uuid')),
-                Forms\Components\TextInput::make('oc')
+                Forms\Components\TextInput::make('os')
                     ->maxLength(255)
-                    ->label(__('resources.oc')),
+                    ->label(__('resources.os')),
                 Forms\Components\TextInput::make('app_version')
                     ->maxLength(255)
                     ->label(__('resources.app_version')),
@@ -124,9 +124,9 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('uuid')
                     ->searchable()
                     ->label(__('resources.uuid')),
-                Tables\Columns\TextColumn::make('oc')
+                Tables\Columns\TextColumn::make('os')
                     ->searchable()
-                    ->label(__('resources.oc')),
+                    ->label(__('resources.os')),
                 Tables\Columns\TextColumn::make('app_version')
                     ->searchable()
                     ->label(__('resources.app_version')),

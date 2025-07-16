@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('device_type')->nullable();
             $table->string('uuid')->nullable()->unique();
             $table->string('app_version')->nullable(); 
-            $table->string('oc')->nullable(); 
+            $table->string('os')->nullable(); 
 
             $table->string('name')->nullable(); 
             $table->string('locale')->default('en');
