@@ -82,6 +82,13 @@ class User extends Authenticatable implements Auditable
         'last_login_at',
     ];
 
+    protected $appends = ['premium'];
+
+    public function getPremiumAttribute()
+    {
+        return $this->subscription_id ? true : false;
+    }
+
     public function setNameAttrbute($value)
     {
         return $value ?? 'guest' . $this->attributes['uuid'];
