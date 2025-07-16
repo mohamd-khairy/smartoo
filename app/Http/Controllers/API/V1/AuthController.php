@@ -60,7 +60,6 @@ class AuthController extends Controller
     {
         $user = $request->user();
         $user = User::find($user->id);
-        info('data profile update:' .$request->all());
         $user->update($request->validated());
         return api_response($user->refresh(), __('general.auth.profile_updated'), 200);
     }
