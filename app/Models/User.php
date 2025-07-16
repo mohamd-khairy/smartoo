@@ -30,10 +30,11 @@ class User extends Authenticatable implements Auditable
         'country_code',
         'device_token',
         'idfa_token',
-
-        'locale',
         'phone',
         'name',
+        'age_id',
+
+        'locale',
         'email',
         'password',
         'phone_verification_code',

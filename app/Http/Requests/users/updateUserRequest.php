@@ -31,6 +31,7 @@ class UpdateUserRequest extends FormRequest
             'device_type' => 'nullable|string',
             'idfa_token' => 'nullable|string',
             'device_token' => 'nullable|string',
+            'age_id' => 'nullable|integer',
             
             'mac_address' => 'nullable|string',
             'timezone' => 'nullable|string',

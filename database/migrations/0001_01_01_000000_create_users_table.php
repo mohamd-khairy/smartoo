@@ -28,6 +28,7 @@ return new class extends Migration
 
             $table->string('device_token')->nullable()->unique();
             $table->string('idfa_token')->nullable()->unique();
+            $table->integer('age_id')->nullable();
 
             $table->string('subscription_id')->nullable();
             $table->string('ip_address')->nullable();

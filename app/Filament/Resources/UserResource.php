@@ -70,6 +70,9 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('idfa_token')
                     ->maxLength(255)
                     ->label(__('resources.idfa_token')),
+                Forms\Components\TextInput::make('age_id')
+                    ->maxLength(255)
+                    ->label(__('resources.age_id')),
                 // Forms\Components\TextInput::make('email')
                 //     ->email()
                 //     ->maxLength(255)
@@ -136,6 +139,15 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('client_secret')
                     ->searchable()
                     ->label(__('resources.client_secret')),
+                Tables\Columns\TextColumn::make('age_id')
+                    ->searchable()
+                    ->label(__('resources.age_id')),
+                Tables\Columns\TextColumn::make('country_code')
+                    ->searchable()
+                    ->label(__('resources.country_code')),
+                Tables\Columns\TextColumn::make('phone')
+                    ->searchable()
+                    ->label(__('resources.phone')),
                 Tables\Columns\TextColumn::make('password')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true)
@@ -149,12 +161,7 @@ class UserResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('resources.email_verified_at')),
-                Tables\Columns\TextColumn::make('country_code')
-                    ->searchable()
-                    ->label(__('resources.country_code')),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable()
-                    ->label(__('resources.phone')),
+
                 Tables\Columns\TextColumn::make('phone_verification_code')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true)

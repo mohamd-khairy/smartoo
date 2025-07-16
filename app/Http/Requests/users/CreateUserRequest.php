@@ -29,6 +29,7 @@ class CreateUserRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'role' => 'required|string|in:admin,supervisor,employee,user',
             'device_type' => 'nullable|string',
+            'age_id' => 'nullable|integer',
             'mac_address' => 'nullable|string',
             'timezone' => 'nullable|string',
             'device_token' => 'nullable|string',

@@ -27,6 +27,7 @@ class UpdateProfileRequest extends FormRequest
             'country_code' => 'nullable|string|size:2',
             'device_token' => 'nullable|string',
             'idfa_token' => 'nullable|string',
+            'age_id' => 'nullable|integer',
 
             // 'locale' => 'nullable|string|in:en,ar',
             // 'gender' => 'nullable|string|in:male,female',
