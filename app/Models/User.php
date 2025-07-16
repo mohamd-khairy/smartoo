@@ -28,6 +28,8 @@ class User extends Authenticatable implements Auditable
         'client_id',
         'device_type',
         'country_code',
+        'device_token',
+        'idfa_token',
 
         'locale',
         'phone',
@@ -40,7 +42,6 @@ class User extends Authenticatable implements Auditable
         'status',
         'timezone',
         'last_login_at',
-        'device_token',
         'ip_address',
         'mac_address',
         'email_verified_at',
@@ -48,7 +49,6 @@ class User extends Authenticatable implements Auditable
         'gender',
         'contact_permission',
         'notification_permission',
-        'tracking_permission',
         'subscription_id'
     ];
 

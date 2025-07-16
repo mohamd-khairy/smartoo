@@ -21,12 +21,14 @@ return new class extends Migration
             $table->string('app_version')->nullable(); 
             $table->string('oc')->nullable(); 
 
+            $table->string('name')->nullable(); 
             $table->string('locale')->default('en');
             $table->string('phone')->nullable(); // Required phone number for registration
             $table->string('country_code')->nullable()->default('EG'); // Nullable for users without email
-            $table->string('name')->nullable(); 
 
             $table->string('device_token')->nullable()->unique();
+            $table->string('idfa_token')->nullable()->unique();
+
             $table->string('subscription_id')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('mac_address')->nullable();

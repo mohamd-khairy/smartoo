@@ -29,9 +29,11 @@ class UpdateUserRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'role' => 'nullable|string|in:admin,supervisor,employee,user',
             'device_type' => 'nullable|string',
+            'idfa_token' => 'nullable|string',
+            'device_token' => 'nullable|string',
+            
             'mac_address' => 'nullable|string',
             'timezone' => 'nullable|string',
-            'device_token' => 'nullable|string',
             'locale' => 'nullable|string|in:en,ar',
             'country_code' => 'nullable|string',
             'gender' => 'nullable|string|in:male,female',

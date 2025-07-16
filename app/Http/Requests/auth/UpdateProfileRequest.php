@@ -25,10 +25,11 @@ class UpdateProfileRequest extends FormRequest
             'name' => 'nullable|string|max:255',
             'phone' => 'nullable|string',
             'country_code' => 'nullable|string|size:2',
+            'device_token' => 'nullable|string',
+            'idfa_token' => 'nullable|string',
 
             // 'locale' => 'nullable|string|in:en,ar',
             // 'gender' => 'nullable|string|in:male,female',
-            // 'device_token' => 'nullable|string',
             // 'subscription_id' => 'nullable|string',
 
             // 'email' => 'nullable|email|unique:users,email,' . $this->id,

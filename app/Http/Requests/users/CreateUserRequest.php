@@ -37,8 +37,8 @@ class CreateUserRequest extends FormRequest
             'gender' => 'nullable|string',
             'contact_permission' => 'nullable|boolean',
             'notification_permission' => 'nullable|boolean',
-            'tracking_permission' => 'nullable|boolean',
-            'subscription_id' => 'nullable|string|exists:subscriptions,id'
+            'idfa_token' => 'nullable|string',
+            'subscription_id' => 'nullable|string|exists:subscriptions,id',
         ];
     }
 }
