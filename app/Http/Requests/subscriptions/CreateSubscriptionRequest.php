@@ -23,7 +23,6 @@ class CreateSubscriptionRequest extends FormRequest
     {
         return [
             'original_transaction_id' => 'required|string',
-            'product_id' => 'required|string',
         ];
     }
 }
