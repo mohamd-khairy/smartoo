@@ -61,9 +61,15 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('client_secret')
                     ->maxLength(255)
                     ->label(__('resources.client_secret')),
+                Forms\Components\TextInput::make('device_token')
+                    ->maxLength(255)
+                    ->label(__('resources.device_token')),
                 Forms\Components\TextInput::make('device_type')
                     ->maxLength(255)
                     ->label(__('resources.device_type')),
+                Forms\Components\TextInput::make('idfa_token')
+                    ->maxLength(255)
+                    ->label(__('resources.idfa_token')),
                 // Forms\Components\TextInput::make('email')
                 //     ->email()
                 //     ->maxLength(255)
@@ -172,6 +178,12 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('device_type')
                     ->searchable()
                     ->label(__('resources.device_type')),
+                Tables\Columns\TextColumn::make('device_token')
+                    ->searchable()
+                    ->label(__('resources.device_token')),
+                Tables\Columns\TextColumn::make('idfa_token')
+                    ->searchable()
+                    ->label(__('resources.idfa_token')),
                 Tables\Columns\TextColumn::make('mac_address')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true)
