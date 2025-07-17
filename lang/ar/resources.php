@@ -35,7 +35,7 @@ return [
     'text' => 'النص',
     'arabic' => 'العربية',
     'english' => 'الإنجليزية',
-
+    'questions' => 'الأسئلة',
     'plans' => 'الخطط',
     'plan' => 'الخطة',
     'description' => 'الوصف',
@@ -68,4 +68,8 @@ return [
     'original_transaction_id' => 'معرف الطلب الأصلي',
     'product_id' => 'معرف المنتج',
     'is_renewal' => 'تجديد',
+    'question' => 'السؤال',
+    'pending' => 'قيد الانتظار',
+    'approved' => 'مقبولة',
+    'rejected' => 'مرفوضة',
 ];

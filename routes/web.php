@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserQuestionController;
 use App\Models\RemoteSetting;
 use App\Services\AppleJwtService;
 use Firebase\JWT\JWT;
@@ -9,6 +10,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Route::view('/', 'welcome');
+Route::view('privacy-policy', 'pages.privacy-policy')->name('privacy.policy');
+Route::view('user-question', 'pages.user-question')->name('user.question');
+Route::post('user-question', [UserQuestionController::class, 'store'])->name('user.questions.store');
+Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
+
+
 Route::view('/swagger-ui', 'swagger');
 Route::get('/swagger-docs', function () {
 
@@ -120,4 +127,3 @@ Route::get('/scribe/{transactionId}', function ($transactionId) {
 });
 
 
-Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');

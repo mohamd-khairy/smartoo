@@ -64,9 +64,14 @@ return [
     'client_id' => 'Client ID',
     'client_secret' => 'Client Secret',
     'uuid' => 'UUID',
-
+    'question' => 'Question',
+    'questions' => 'Questions',
     'expires_at' => 'تاريخ انتهاء الصلاحية',
     'original_transaction_id' => 'Original Transaction ID',
     'product_id' => 'Product ID',
     'is_renewal' => 'Is Renewal',
+
+    'pending' => 'Pending',
+    'approved' => 'Approved',
+    'rejected' => 'Rejected',
 ];
