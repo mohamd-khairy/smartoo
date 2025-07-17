@@ -38,6 +38,9 @@ class UserQuestionResource extends Resource
     {
         return $form
             ->schema([
+                Tables\Columns\TextColumn::make('id')
+                    ->searchable()
+                    ->label(__('resources.id')),
                 Forms\Components\TextInput::make('phone')
                     ->tel()
                     ->maxLength(255)
@@ -63,6 +66,9 @@ class UserQuestionResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->label(__('resources.phone')),
+                Tables\Columns\TextColumn::make('question')
+                    ->searchable()
+                    ->label(__('resources.question')),
                 Tables\Columns\SelectColumn::make('status')
                     ->options([
                         'pending' => __('resources.pending'),
@@ -107,7 +113,7 @@ class UserQuestionResource extends Resource
     {
         return [
             'index' => Pages\ListUserQuestions::route('/'),
-            'create' => Pages\CreateUserQuestion::route('/create'),
+            // 'create' => Pages\CreateUserQuestion::route('/create'),
             // 'edit' => Pages\EditUserQuestion::route('/{record}/edit'),
             'show' => Pages\ShowAudit::route('/{record}'),
         ];
