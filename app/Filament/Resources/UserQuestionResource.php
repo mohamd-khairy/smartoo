@@ -38,9 +38,6 @@ class UserQuestionResource extends Resource
     {
         return $form
             ->schema([
-                Tables\Columns\TextColumn::make('id')
-                    ->searchable()
-                    ->label(__('resources.id')),
                 Forms\Components\TextInput::make('phone')
                     ->tel()
                     ->maxLength(255)
@@ -63,6 +60,9 @@ class UserQuestionResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->searchable()
+                    ->label(__('resources.id')),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->label(__('resources.phone')),
