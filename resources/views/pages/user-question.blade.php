@@ -98,7 +98,7 @@
                         {{ __('user_question.cancel') }}
                     </a>
                     <button type="submit"
-                        class="inline-flex items-center px-5 py-2.5 rounded-lg text-gray-500 bg-primary-600 dark:text-white font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                        class="inline-flex items-center px-5 py-2.5 rounded-lg text-gray-500 bg-warning-600 dark:text-white font-medium hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                         {{ __('user_question.submit') }}
                     </button>
                 </div>
