@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 Route::view('/', 'welcome');
 Route::view('privacy-policy', 'pages.privacy-policy')->name('privacy.policy');
-Route::view('user-question', 'pages.user-question')->name('user.question');
-Route::post('user-question', [UserQuestionController::class, 'store'])->name('user.questions.store');
+Route::view('contact-us', 'pages.user-question')->name('user.question');
+Route::post('contact-us', [UserQuestionController::class, 'store'])->name('user.questions.store');
 Route::post('change-language', [\App\Http\Controllers\API\V1\RemoteSettingController::class, 'changeLanguage'])->name('change-language');
 
 
